@@ -1,16 +1,69 @@
 <template>
-    <nuxt-tutorial/>
+    <div class="sections h-full">
+        <d-section class=".section">
+            <h1 class="text-3xl">Main section</h1>
+        </d-section>
+
+        <d-section class=".section">
+            <h1 class="text-3xl">Projects preview</h1>
+        </d-section>
+
+        <d-section class=".section">
+            <h1 class="text-3xl">Roadmap</h1>
+        </d-section>
+
+        <d-section class=".section">
+            <h1 class="text-3xl">Why choose us</h1>
+        </d-section>
+
+        <d-section class=".section">
+            <h1 class="text-3xl">Raise or invest</h1>
+        </d-section>
+
+        <d-section class=".section">
+            <h1 class="text-3xl">Mail</h1>
+        </d-section>
+    </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
 import Component from "vue-class-component";
-import NuxtTutorial from "~/components/Tutorial.vue";
-
+import DSection from "~/components/DSection.vue";
 @Component({
-    components: {NuxtTutorial}
+    components: {DSection}
 })
 export default class IndexPage extends Vue {
 
 }
 </script>
+
+<style lang="scss" scoped>
+.sections {
+    .section:nth-child(even) {
+        @apply bg-gray-200;
+        @apply dark:bg-gray-900;
+    }
+}
+</style>
+
+<style>
+/* Style that should be applied to all the application */
+
+* {
+    scroll-behavior: smooth;
+}
+
+html, body {
+    /* Common theme */
+    @apply p-0 min-w-full min-h-full h-full;
+    /* Light theme */
+    @apply bg-gray-100 text-gray-900;
+    /* Dark theme */
+    @apply dark:bg-black dark:text-gray-100;
+}
+
+#__nuxt, #__layout {
+    @apply min-h-full h-full
+}
+</style>
