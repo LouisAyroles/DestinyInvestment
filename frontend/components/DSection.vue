@@ -9,7 +9,7 @@ import Vue from "vue";
 import Component from "vue-class-component";
 
 @Component
-export default class DSection extends Vue{
+export default class DSection extends Vue {
 }
 </script>
 
