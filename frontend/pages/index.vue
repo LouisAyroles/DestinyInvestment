@@ -14,3 +14,9 @@ export default class IndexPage extends Vue {
 
 }
 </script>
+
+<style>
+html, body {
+    @apply p-0 min-w-full min-h-full
+}
+</style>
