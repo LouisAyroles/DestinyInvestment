@@ -1,7 +1,7 @@
 <template>
-    <div class="section">
+    <section class="section">
         <slot></slot>
-    </div>
+    </section>
 </template>
 
 <script lang="ts">
@@ -15,6 +15,6 @@ export default class DSection extends Vue{
 
 <style lang="scss" scoped>
 .section {
-    @apply p-6 min-w-full min-h-full bg-green-900
+    @apply p-6 min-w-full min-h-full;
 }
 </style>
