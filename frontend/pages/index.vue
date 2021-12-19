@@ -1,14 +1,17 @@
 <template>
-    <nuxt-tutorial/>
+    <div>
+        <d-section>
+            content
+        </d-section>
+    </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
 import Component from "vue-class-component";
-import NuxtTutorial from "~/components/Tutorial.vue";
-
+import DSection from "~/components/DSection.vue";
 @Component({
-    components: {NuxtTutorial}
+    components: {DSection}
 })
 export default class IndexPage extends Vue {
 
