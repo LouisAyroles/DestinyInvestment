@@ -21,7 +21,8 @@ export default {
 
     // Global CSS: https://go.nuxtjs.dev/config-css
     css: [
-        '@/assets/css/main.css'
+        '@/assets/css/main.css',
+        '@mdi/font/css/materialdesignicons.min.css'
     ],
 
     // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
@@ -36,13 +37,13 @@ export default {
         '@nuxt/typescript-build',
         // https://go.nuxtjs.dev/tailwindcss
         '@nuxtjs/tailwindcss',
-        '@nuxt/postcss8'
+        '@nuxt/postcss8',
     ],
 
     // Modules: https://go.nuxtjs.dev/config-modules
     modules: [
         // https://go.nuxtjs.dev/axios
-        '@nuxtjs/axios'
+        '@nuxtjs/axios',
     ],
 
     // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -68,5 +69,7 @@ export default {
                 autoprefixer: {}
             },
         },
+
+        transpile: ['mdi-vue']
     }
 }
