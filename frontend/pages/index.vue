@@ -1,5 +1,6 @@
 <template>
     <div class="sections h-full">
+        <d-app-bar></d-app-bar>
         <d-section class=".section">
             <d-title>Main section</d-title>
             <p>test</p>
