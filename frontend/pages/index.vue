@@ -1,28 +1,32 @@
 <template>
     <div class="sections h-full">
         <d-section class=".section">
-            <d-title>Main section</d-title>
-            <p>test</p>
+            <h1 class="title-1">Title 1</h1>
+            <h2 class="title-2">Title 2</h2>
+            <h3 class="title-3">Title 3</h3>
+            <h4 class="title-4">Title 4</h4>
+            <h5 class="title-5">Title 5</h5>
+            <p>Normal text</p>
         </d-section>
 
         <d-section class=".section">
-            <d-title>Projects preview</d-title>
+            <h1 class="title-1">Projects preview</h1>
         </d-section>
 
         <d-section class=".section">
-            <d-title>Roadmap</d-title>
+            <h1 class="title-1">Roadmap</h1>
         </d-section>
 
         <d-section class=".section">
-            <d-title>Why choose us</d-title>
+            <h1 class="title-1">Why choose us</h1>
         </d-section>
 
         <d-section class=".section">
-            <d-title>Raise or invest</d-title>
+            <h1 class="title-1">Raise or invest</h1>
         </d-section>
 
         <d-section class=".section">
-            <d-title>Mail</d-title>
+            <h1 class="title-1">Mail</h1>
         </d-section>
     </div>
 </template>
