@@ -19,6 +19,18 @@
 
         <d-section class=".section">
             <h1 class="title-1">Why choose us</h1>
+
+            <div class="cards">
+                <d-small-card :content="'Secure user data and transaction'" class="max-w-xs" icon="currency-usd" background-color-class="bg-gray-200 dark:bg-gray-900"/>
+                <d-small-card :content="'Secure user data and transaction'" class="max-w-xs" icon="currency-usd" background-color-class="bg-gray-200 dark:bg-gray-900"/>
+                <d-small-card :content="'Secure user data and transaction'" class="max-w-xs" icon="currency-usd" background-color-class="bg-gray-200 dark:bg-gray-900"/>
+                <d-small-card :content="'Secure user data and transaction'" class="max-w-xs" icon="currency-usd" background-color-class="bg-gray-200 dark:bg-gray-900"/>
+                <d-small-card :content="'Secure user data and transaction'" class="max-w-xs" icon="currency-usd" background-color-class="bg-gray-200 dark:bg-gray-900"/>
+                <d-small-card :content="'Secure user data and transaction'" class="max-w-xs" icon="currency-usd" background-color-class="bg-gray-200 dark:bg-gray-900"/>
+                <d-small-card :content="'Secure user data and transaction'" class="max-w-xs" icon="currency-usd" background-color-class="bg-gray-200 dark:bg-gray-900"/>
+                <d-small-card :content="'Secure user data and transaction'" class="max-w-xs" icon="currency-usd" background-color-class="bg-gray-200 dark:bg-gray-900"/>
+                <d-small-card :content="'Secure user data and transaction'" class="max-w-xs" icon="currency-usd" background-color-class="bg-gray-200 dark:bg-gray-900"/>
+            </div>
         </d-section>
 
         <d-section class=".section">
@@ -48,6 +60,13 @@ export default class IndexPage extends Vue {
     .section:nth-child(even) {
         @apply bg-gray-200;
         @apply dark:bg-gray-900;
+    }
+}
+
+.cards {
+    @apply grid grid-cols-3 grid-rows-3 gap-3 h-full;
+    & > * {
+        @apply justify-self-center self-center;
     }
 }
 </style>
