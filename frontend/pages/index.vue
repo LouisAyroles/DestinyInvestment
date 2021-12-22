@@ -16,22 +16,22 @@
                         :title="'Psst..!'"
                         :short_desc="'Psst..! est une application indispensable pour vos futures découvertes'"
                         :available_date="'20/01/2022'"
-                        :money_raise="'20321'"
-                        :goal_raise="'51100'">
+                        :money_raise="20321"
+                        :goal_raise="51100">
                 </d-card>
                 <d-card :image="'second.jpg'"
                         :title="'Doggies in town'"
                         :short_desc="'The only app you and your lovely dog will ever need.'"
                         :available_date="'20/01/2022'"
-                        :money_raise="'7500'"
-                        :goal_raise="'12500'">
+                        :money_raise="7500"
+                        :goal_raise="12500">
                 </d-card>
                 <d-card :image="'third.jpg'"
                         :title="'Towni'"
                         :short_desc="'Towni is THE applicaiton that you need to find you dream appartment !'"
                         :available_date="'20/01/2022'"
-                        :money_raise="'20321'"
-                        :goal_raise="'51100'">
+                        :money_raise="20321"
+                        :goal_raise="51100">
 
                 </d-card>
             </div>
