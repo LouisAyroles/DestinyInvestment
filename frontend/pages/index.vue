@@ -1,6 +1,6 @@
 <template>
     <div class="sections h-full">
-        <d-app-bar></d-app-bar>
+        <d-app-bar class="fixed left-0 top-0 right-0"></d-app-bar>
         <d-section class=".section">
             <d-title>Main section</d-title>
             <p>test</p>
@@ -42,8 +42,8 @@ export default class IndexPage extends Vue {
 
 <style lang="scss" scoped>
 .sections {
-    .section:nth-child(even) {
-        @apply bg-gray-200;
+    .section:nth-child(odd) {
+        @apply bg-gray-300;
         @apply dark:bg-gray-900;
     }
 }
@@ -62,7 +62,7 @@ html, body {
     /* Light theme */
     @apply bg-gray-100 text-gray-900;
     /* Dark theme */
-    @apply dark:bg-black dark:text-gray-100;
+    @apply dark:bg-black dark:text-gray-200;
 }
 
 #__nuxt, #__layout {

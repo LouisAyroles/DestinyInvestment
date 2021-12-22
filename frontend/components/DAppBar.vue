@@ -1,11 +1,10 @@
 <template>
-    <!-- This example requires Tailwind CSS v2.0+ -->
-    <nav class="bg-gray-800">
+    <nav class="backdrop-blur-sm">
         <div class="margin">
             <div class="content">
                 <div class="center">
                     <!-- Mobile menu button-->
-                    <button type="button" class="center" aria-controls="mobile-menu" aria-expanded="false">
+                    <button type="button" class="center mobile-menu-button" aria-controls="mobile-menu" aria-expanded="false">
                         <span class="sr-only">Open main menu</span>
                         <!--Icon when menu is closed. -->
                         <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
@@ -18,14 +17,13 @@
                     </button>
                 </div>
                 <div class="items">
-                    <div class=" flex items-center">
-                        <img class="block lg:hidden h-8 w-auto image-test" src="@/assets/logos/destinylogo.png" alt="Destiny">
-                        <img class="hidden lg:block h-8 w-auto" src="@/assets/logos/destinyfullLogo.png" alt="Destiny">
+                    <div class="flex items-center">
+                        <img class="hidden lg:block h-14 w-auto" src="@/assets/logos/destinyfullLogo.png" alt="Destiny">
                     </div>
                     <div class="hidden items-center justify-end sm:block sm:ml-6">
                         <div class="flex space-x-4">
-                            <a href="#" class="title" aria-current="page">Home</a>
-                            <a href="#" class="title" aria-current="page">Raise</a>
+                            <a href="#" class="titleHome">Home</a>
+                            <a href="#" class="title">Raise</a>
                             <a href="#" class="title">Invest</a>
                             <a href="#" class="title">Blog</a>
                             <a href="#" class="title">Contact us</a>
@@ -36,13 +34,13 @@
         </div>
 
         <!-- Mobile menu, show/hide based on menu state. -->
-        <div class="sm:hidden" id="mobile-menu">
+        <div class="hidden sm:hidden mobile-menu">
             <div class="px-2 pt-2 pb-3 space-y-1">
-                <a href="#" class="title" aria-current="page">Home</a>
-                <a href="#" class="title" aria-current="page">Raise</a>
-                <a href="#" class="title">Invest</a>
-                <a href="#" class="title">Blog</a>
-                <a href="#" class="title">Contact us</a>
+                <a href="#" class="mobile-title" aria-current="page">Home</a>
+                <a href="#" class="mobile-title" aria-current="page">Raise</a>
+                <a href="#" class="mobile-title">Invest</a>
+                <a href="#" class="mobile-title">Blog</a>
+                <a href="#" class="mobile-title">Contact us</a>
             </div>
         </div>
     </nav>
@@ -54,6 +52,13 @@ import {Component, Vue} from 'vue-property-decorator'
 
 @Component
 export default class DAppBar extends Vue {
+    mounted() {
+        const btn = document.querySelector('button.mobile-menu-button')
+        const menu = document.querySelector('.mobile-menu')
+        btn?.addEventListener("click", () => {
+            menu?.classList.toggle('hidden');
+        })
+    };
 }
 </script>
 
@@ -63,7 +68,7 @@ export default class DAppBar extends Vue {
 }
 
 .content{
-    @apply relative flex items-center justify-between h-16;
+    @apply relative flex items-center justify-between h-20;
 }
 
 .mobile{
@@ -79,7 +84,10 @@ export default class DAppBar extends Vue {
     @apply flex-1 flex justify-between items-center sm:items-stretch
 }
 .title{
-    @apply text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium
+    @apply text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-lg font-medium
+}
+.titleHome{
+    @apply text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 dark:text-primary rounded-md text-lg font-medium
 }
 .mobile-title{
     @apply text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium
