@@ -2,7 +2,7 @@
     <div class="sections h-full">
         <d-app-bar class="fixed left-0 top-0 right-0"></d-app-bar>
         <d-section class=".section">
-            <d-title>Main section</d-title>
+            <d-title class="pt-20">Main section</d-title>
             <p>test</p>
         </d-section>
 
