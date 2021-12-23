@@ -15,6 +15,7 @@
 
         <d-section class=".section">
             <h1 class="title-1">Roadmap</h1>
+            <d-road-map></d-road-map>
         </d-section>
 
         <d-section class=".section">
