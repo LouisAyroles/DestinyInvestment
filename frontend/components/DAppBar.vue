@@ -1,6 +1,6 @@
 <template>
-    <nav ref="menu" class="backdrop-blur-sm z-50 animated">
-        <div class="margin">
+    <nav ref="menu" class="backdrop-blur-sm z-50 animated bg-black">
+        <div class="margin z-30">
             <div class="content">
                 <div class="center">
                     <!-- Mobile menu button-->
@@ -38,7 +38,7 @@
 
         <!-- Mobile menu, show/hide based on menu state. -->
         <div ref="mobile-menu" class="hidden sm:hidden mobile-menu">
-            <div class="px-2 pt-2 pb-3 space-y-1">
+            <div class="px-2 pt-2 pb-3 space-y-1 ">
                 <nuxt-link
                     v-for="(item, index) in menuItems"
                     :key="index"
@@ -58,16 +58,20 @@ import {Component, Vue} from 'vue-property-decorator'
 @Component
 export default class DAppBar extends Vue {
     readonly menuItems = [
-        { title: 'Home',    href: '#home' },
-        { title: 'Raise',   href: '#raise' },
-        { title: 'Invest',  href: '#invest' },
-        { title: 'Blog',    href: '#blog' },
-        { title: 'Contact', href: '#contact' },
+        { title: 'Home',    href: '/'    },
+        { title: 'Raise',   href: '/raise'   },
+        { title: 'Invest',  href: '/invest'  },
+        { title: 'Blog',    href: '/blog'    },
+        { title: 'Contact', href: '/#contact' },
     ]
+
     mounted() {
         const button = this.$refs['mobile-toggle'] as HTMLElement
         button.addEventListener('click', this.toggleMobileMenu)
         window.addEventListener('scroll', this.scrollListener)
+
+        this.scrollListener()
+
     }
 
     beforeDestroy() {
@@ -94,9 +98,6 @@ export default class DAppBar extends Vue {
         const bgColor = getBackgroundColor(section)
         if (!bgColor) return
         menu.style.backgroundColor = bgColor
-
-        console.log(section.id)
-        //this.$router.replace('/')
     }
 }
 </script>
@@ -114,6 +115,10 @@ export default class DAppBar extends Vue {
     @apply inline-flex items-center justify-center p-2 rounded-md text-gray-400;
     @apply focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white;
     @apply hover:text-white hover:bg-gray-700;
+}
+
+.mobile-menu {
+    @apply transition duration-500 ease-in-out;
 }
 
 .center{
