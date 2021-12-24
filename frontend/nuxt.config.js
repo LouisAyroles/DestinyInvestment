@@ -38,7 +38,17 @@ export default {
         // https://go.nuxtjs.dev/tailwindcss
         '@nuxtjs/tailwindcss',
         '@nuxt/postcss8',
+        '@nuxtjs/color-mode'
     ],
+
+    tailwindcss: {
+        jit: true,
+        // add '~tailwind.config` alias
+        exposeConfig: true
+    },
+    colorMode: {
+        classSuffix: ""
+    },
 
     // Modules: https://go.nuxtjs.dev/config-modules
     modules: [
