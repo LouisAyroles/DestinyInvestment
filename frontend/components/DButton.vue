@@ -7,8 +7,11 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator'
+import DIcon from "~/components/DIcon.vue";
 
-@Component
+@Component({
+    components: {DIcon}
+})
 export default class DButton extends Vue {
     @Prop({required: false, type: String})
     linkTo!: string | undefined

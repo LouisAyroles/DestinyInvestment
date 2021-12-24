@@ -1,41 +1,54 @@
 <template>
     <div class="sections h-full">
-        <d-app-bar class="fixed left-0 top-0 right-0"></d-app-bar>
-        <d-section id="home" class=".section">
-            <d-title class="pt-20">Main section</d-title>
-            <p>test</p>
-        </d-section>
-
-        <d-section id="raise" class=".section">
-            <d-title>Projects preview</d-title>
-        </d-section>
-
-        <d-section id="invest" class=".section">
-            <d-title>Roadmap</d-title>
-        </d-section>
-
-        <d-section id="blog" class=".section">
-            <d-title>Why choose us</d-title>
-        </d-section>
-
-        <d-section id="contact" class=".section">
-            <d-title>Raise or invest</d-title>
+        <d-section class=".section">
+            <h1 class="title-1">Title 1</h1>
+            <h2 class="title-2">Title 2</h2>
+            <h3 class="title-3">Title 3</h3>
+            <h4 class="title-4">Title 4</h4>
+            <h5 class="title-5">Title 5</h5>
+            <p>Normal text</p>
         </d-section>
 
         <d-section class=".section">
-            <d-title>Mail</d-title>
+            <h1 class="title-1">Projects preview</h1>
+        </d-section>
+
+        <d-section class=".section">
+            <h1 class="title-1">Roadmap</h1>
+        </d-section>
+
+        <d-section class=".section">
+            <h1 class="title-1">Why choose us</h1>
+
+            <div class="cards">
+                <d-small-card :content="'Secure user data and transaction'" class="max-w-xs" icon="currency-usd" background-color-class="bg-gray-200 dark:bg-gray-900"/>
+                <d-small-card :content="'Secure user data and transaction'" class="max-w-xs" icon="currency-usd" background-color-class="bg-gray-200 dark:bg-gray-900"/>
+                <d-small-card :content="'Secure user data and transaction'" class="max-w-xs" icon="currency-usd" background-color-class="bg-gray-200 dark:bg-gray-900"/>
+                <d-small-card :content="'Secure user data and transaction'" class="max-w-xs" icon="currency-usd" background-color-class="bg-gray-200 dark:bg-gray-900"/>
+                <d-small-card :content="'Secure user data and transaction'" class="max-w-xs" icon="currency-usd" background-color-class="bg-gray-200 dark:bg-gray-900"/>
+                <d-small-card :content="'Secure user data and transaction'" class="max-w-xs" icon="currency-usd" background-color-class="bg-gray-200 dark:bg-gray-900"/>
+                <d-small-card :content="'Secure user data and transaction'" class="max-w-xs" icon="currency-usd" background-color-class="bg-gray-200 dark:bg-gray-900"/>
+                <d-small-card :content="'Secure user data and transaction'" class="max-w-xs" icon="currency-usd" background-color-class="bg-gray-200 dark:bg-gray-900"/>
+                <d-small-card :content="'Secure user data and transaction'" class="max-w-xs" icon="currency-usd" background-color-class="bg-gray-200 dark:bg-gray-900"/>
+            </div>
+        </d-section>
+
+        <d-section class=".section">
+            <h1 class="title-1">Raise or invest</h1>
+        </d-section>
+
+        <d-section class=".section">
+            <h1 class="title-1">Mail</h1>
         </d-section>
     </div>
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
-import Component from "vue-class-component";
+import { Component, Vue } from 'vue-property-decorator'
 import DSection from "~/components/DSection.vue";
-import DAppBar from "~/components/DAppBar.vue";
-import DTitle from "~/components/DTitle.vue";
+
 @Component({
-    components: {DTitle, DAppBar, DSection}
+    components: {DSection}
 })
 export default class IndexPage extends Vue {
 
@@ -44,9 +57,16 @@ export default class IndexPage extends Vue {
 
 <style lang="scss" scoped>
 .sections {
-    section:nth-child(odd) {
-        @apply bg-gray-300;
+    .section:nth-child(even) {
+        @apply bg-gray-200;
         @apply dark:bg-gray-900;
+    }
+}
+
+.cards {
+    @apply grid grid-cols-3 grid-rows-3 gap-3 h-full;
+    & > * {
+        @apply justify-self-center self-center;
     }
 }
 </style>
@@ -64,7 +84,7 @@ html, body {
     /* Light theme */
     @apply bg-gray-100 text-gray-900;
     /* Dark theme */
-    @apply dark:bg-black dark:text-gray-200;
+    @apply dark:bg-black dark:text-gray-100;
 }
 
 #__nuxt, #__layout {
