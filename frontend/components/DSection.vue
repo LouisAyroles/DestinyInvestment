@@ -14,6 +14,9 @@ export default class DSection extends Vue {
 
 <style lang="scss" scoped>
 .section {
-    @apply p-6 min-w-full min-h-full;
+    @apply p-6 min-w-full;
+    @apply bg-white dark:bg-black;
+
+    min-height: calc(100vh - 5rem)
 }
 </style>

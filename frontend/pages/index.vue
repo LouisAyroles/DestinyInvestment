@@ -1,6 +1,7 @@
 <template>
     <div class="sections h-full">
-        <d-section class=".section">
+        <d-app-bar class="fixed top-0 left-0 right-0"/>
+        <d-section id="home" class="mt-20 .section">
             <h1 class="title-1">Title 1</h1>
             <h2 class="title-2">Title 2</h2>
             <h3 class="title-3">Title 3</h3>
@@ -38,7 +39,7 @@
             <h1 class="title-1">Raise or invest</h1>
         </d-section>
 
-        <d-section class=".section">
+        <d-section id="contact" class=".section">
             <h1 class="title-1">Mail</h1>
         </d-section>
     </div>
@@ -47,9 +48,11 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
 import DSection from "~/components/DSection.vue";
+import DSmallCard from "~/components/DSmallCard.vue";
+import DAppBar from "~/components/DAppBar.vue";
 
 @Component({
-    components: {DSection}
+    components: {DAppBar, DSmallCard, DSection}
 })
 export default class IndexPage extends Vue {
 
@@ -58,14 +61,16 @@ export default class IndexPage extends Vue {
 
 <style lang="scss" scoped>
 .sections {
-    .section:nth-child(even) {
+    .section:nth-child(odd) {
         @apply bg-gray-200;
         @apply dark:bg-gray-900;
     }
 }
 
 .cards {
-    @apply grid grid-cols-3 grid-rows-3 gap-3 h-full;
+    @apply md:grid-cols-3 md:grid-rows-3;
+    @apply grid grid-cols-1 md:grid-cols-3 gap-3 h-full;
+
     & > * {
         @apply justify-self-center self-center;
     }
