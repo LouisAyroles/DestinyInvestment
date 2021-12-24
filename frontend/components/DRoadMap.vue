@@ -1,106 +1,131 @@
 <template>
     <div class="main-container">
-        <div class="sub-container">
-            <div class="timeline" style="left: 50%"></div>
-            <!-- right timeline -->
-            <div class="right-container">
-                <div class="order-1 w-5/12"></div>
-                <div class="dot-white">
-                </div>
-                <div class="little-right-card">
-                    <div class="background">
-                        <h3 class="title">February 2, 2022</h3>
-                        <p class="desc">Project is raising stars</p>
+        <ul>
+            <template v-for="(event, index) in eventsWithPosition">
+                <li :key="index" :class="{'left': event.left}">
+                    <div class="card">
+                        <div :class="['background', {left: event.left}]">
+                            <h3 class="title">{{ event.date }}</h3>
+                            <p class="description">{{ event.description }}</p>
+                        </div>
                     </div>
-                </div>
-            </div>
-
-            <!-- left timeline -->
-            <div class="left-container">
-                <div class="order-1 w-5/12"></div>
-                <div class="dot-white"></div>
-                <div class="little-left-card">
-                    <div class="background">
-                        <h3 class="title">May 01, 2022</h3>
-                        <p class="desc">Projects available</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- right timeline -->
-            <div class="right-container">
-                <div class="order-1 w-5/12"></div>
-                <div class="dot-primary">
-                </div>
-                <div class="little-right-card">
-                    <div class="background">
-                        <h3 class="title">November 01, 2021 </h3>
-                        <p class="desc">You will be able to invest</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- left timeline -->
-            <div class="left-container">
-                <div class="order-1 w-5/12"></div>
-                <div class="dot-primary">
-                </div>
-                <div class="little-left-card">
-                    <div class="background">
-                        <h3 class="title">September 03, 2021 </h3>
-                        <p class="desc">First event in Barcelona</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+                </li>
+            </template>
+        </ul>
     </div>
 
 </template>
 
 <script lang="ts">
 
-import {Component, Vue} from 'vue-property-decorator'
+import {Component, Prop, Vue} from 'vue-property-decorator'
+
+export interface RoadMapEvent {
+    date: string,
+    description: string
+}
 
 @Component
 export default class DRoadMap extends Vue {
+    @Prop({required: true, type: Array})
+    events!: RoadMapEvent[]
+
+    get eventsWithPosition() {
+        return this.events.map((event, index) => {
+            return {left: index % 2 == 0, ...event}
+        })
+    }
 }
 </script>
 
 <style lang="scss" scoped>
-    .main-container{
-        @apply container bg-black mx-auto w-full h-full
+* {
+    box-sizing: border-box !important;
+}
+
+@mixin gradient {
+    @apply bg-gradient-to-tr from-primary to-secondary;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+}
+
+@mixin gradient-inverted {
+    @include gradient;
+    @apply bg-gradient-to-tl;
+}
+
+.main-container {
+    @apply bg-black w-full h-full p-10
+}
+
+.sub-container {
+    @apply relative overflow-hidden p-10 w-full h-full;
+}
+
+.background {
+    @apply bg-gray-900 rounded-lg px-6 py-4;
+    @include gradient;
+}
+
+.background:not(.left) {
+    @include gradient-inverted;
+}
+
+ul {
+    @apply m-0 p-0 w-full flex flex-col items-center;
+
+    @mixin dot {
+        content: '';
+        width: 18px;
+        height: 18px;
+        background-color: white;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        border-radius: 9999px;
     }
-    .sub-container{
-        @apply relative overflow-hidden p-10 h-full
+
+    li {
+        @apply relative w-full sm:w-[calc(50%-32px)] sm:max-w-[400px] pb-4;
+
+        .title {
+            @apply mb-3 font-bold text-white text-xl
+        }
+
+        .description {
+            @apply text-sm font-medium leading-snug tracking-wide text-white text-opacity-100
+        }
     }
-    .timeline{
-        @apply absolute border-opacity-70 border-white h-full border
+
+    li:not(.left) {
+        @apply sm:translate-x-[calc(50%-1px)];
+        border-left: 1px solid white;
+        padding-left: 32px;
+
+        &:before {
+            @include dot;
+            @apply left-[-9px];
+        }
     }
-    .right-container{
-        @apply mb-8 flex justify-between items-center w-full
+
+    li.left {
+        @apply sm:-translate-x-1/2;
+        @apply border-white border-solid border-l-[1px] pl-[32px];
+        @apply sm:border-l-0 sm:border-r-[1px] sm:pl-[0px] sm:pl-[32px] sm:pr-[32px];
+
+        &:after {
+            @include dot;
+            @apply left-[-9px] sm:left-auto sm:right-[-9px];
+        }
+
+        .title {
+            @apply text-right
+        }
+
+        .description {
+            @apply text-right
+        }
     }
-    .left-container{
-        @apply mb-8 flex justify-between flex-row-reverse items-center w-full
-    }
-    .dot-white{
-        @apply z-20 flex items-center order-1 bg-white shadow-xl w-7 h-7 rounded-full
-    }
-    .dot-primary{
-        @apply z-20 flex items-center order-1 bg-primary shadow-xl w-7 h-7 rounded-full
-    }
-    .little-right-card{
-        @apply order-1 grid justify-items-start shadow-xl w-5/12
-    }
-    .little-left-card{
-        @apply order-1 grid justify-items-end shadow-xl w-5/12
-    }
-    .background{
-        @apply bg-gray-900 rounded-lg px-6 py-4
-    }
-    .title{
-        @apply mb-3 font-bold text-white text-xl
-    }
-    .desc{
-        @apply text-sm font-medium leading-snug tracking-wide text-primary text-opacity-100
-    }
+}
 </style>

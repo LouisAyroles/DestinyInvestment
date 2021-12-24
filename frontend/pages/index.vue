@@ -16,7 +16,7 @@
 
         <d-section class=".section">
             <h1 class="title-1">Roadmap</h1>
-            <d-road-map></d-road-map>
+            <d-road-map :events="roadMapEvents"/>
         </d-section>
 
         <d-section class=".section">
@@ -50,12 +50,25 @@ import { Component, Vue } from 'vue-property-decorator'
 import DSection from "~/components/DSection.vue";
 import DSmallCard from "~/components/DSmallCard.vue";
 import DAppBar from "~/components/DAppBar.vue";
+import DRoadMap, {RoadMapEvent} from "~/components/DRoadMap.vue";
 
 @Component({
-    components: {DAppBar, DSmallCard, DSection}
+    components: {DRoadMap, DAppBar, DSmallCard, DSection}
 })
 export default class IndexPage extends Vue {
-
+    readonly roadMapEvents: RoadMapEvent[] = [{
+        date: "February 2, 2022",
+        description: "Project is raising stars"
+    }, {
+        date: "May 01, 2022",
+        description: "Projects available"
+    }, {
+        date: "November 01, 2021",
+        description: "You will be able to invest"
+    }, {
+        date: "September 03, 2021",
+        description: "First event in Barcelona"
+    }]
 }
 </script>
 
