@@ -14,18 +14,23 @@
             <h1 class="title-1">Projects preview</h1>
         </d-section>
 
-        <d-section class=".section">
-            <h1 class="title-1">Roadmap</h1>
+        <d-section class="flex flex-col content-center">
+            <h1 class="title-1 grow-0">Roadmap</h1>
+            <d-road-map class="grow" :events="roadMapEvents"/>
         </d-section>
 
         <d-section class=".section">
             <h1 class="title-1">Why choose us</h1>
 
             <div class="cards">
-                <d-small-card :content="'Secure user data and transaction'" class="max-w-xs" icon="currency-usd" background-color-class="bg-gray-200 dark:bg-gray-900"/>
-                <d-small-card :content="'Secure user data and transaction'" class="max-w-xs" icon="currency-usd" background-color-class="bg-gray-200 dark:bg-gray-900"/>
-                <d-small-card :content="'Secure user data and transaction'" class="max-w-xs" icon="currency-usd" background-color-class="bg-gray-200 dark:bg-gray-900"/>
-                <d-small-card :content="'Secure user data and transaction'" class="max-w-xs" icon="currency-usd" background-color-class="bg-gray-200 dark:bg-gray-900"/>
+                <d-small-card :content="'Secure user data and transaction'" class="max-w-xs" icon="currency-usd"
+                              background-color-class="bg-gray-200 dark:bg-gray-900"/>
+                <d-small-card :content="'Secure user data and transaction'" class="max-w-xs" icon="currency-usd"
+                              background-color-class="bg-gray-200 dark:bg-gray-900"/>
+                <d-small-card :content="'Secure user data and transaction'" class="max-w-xs" icon="currency-usd"
+                              background-color-class="bg-gray-200 dark:bg-gray-900"/>
+                <d-small-card :content="'Secure user data and transaction'" class="max-w-xs" icon="currency-usd"
+                              background-color-class="bg-gray-200 dark:bg-gray-900"/>
                 <d-small-card :content="'Secure user data and transaction'" class="max-w-xs" icon="currency-usd" background-color-class="bg-gray-200 dark:bg-gray-900"/>
                 <d-small-card :content="'Secure user data and transaction'" class="max-w-xs" icon="currency-usd" background-color-class="bg-gray-200 dark:bg-gray-900"/>
                 <d-small-card :content="'Secure user data and transaction'" class="max-w-xs" icon="currency-usd" background-color-class="bg-gray-200 dark:bg-gray-900"/>
@@ -45,16 +50,29 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
+import {Component, Vue} from 'vue-property-decorator'
 import DSection from "~/components/DSection.vue";
 import DSmallCard from "~/components/DSmallCard.vue";
 import DAppBar from "~/components/DAppBar.vue";
+import DRoadMap, {RoadMapEvent} from "~/components/DRoadMap.vue";
 
 @Component({
-    components: {DAppBar, DSmallCard, DSection}
+    components: {DRoadMap, DAppBar, DSmallCard, DSection}
 })
 export default class IndexPage extends Vue {
-
+    readonly roadMapEvents: RoadMapEvent[] = [{
+        date: "February 2, 2022",
+        description: "Project is raising stars"
+    }, {
+        date: "May 01, 2022",
+        description: "Projects available"
+    }, {
+        date: "November 01, 2021",
+        description: "You will be able to invest"
+    }, {
+        date: "September 03, 2021",
+        description: "First event in Barcelona"
+    }]
 }
 </script>
 
