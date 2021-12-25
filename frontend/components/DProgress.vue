@@ -12,16 +12,24 @@ import {Component, Prop, Vue} from 'vue-property-decorator'
 
 @Component
 export default class DProgress extends Vue {
-    @Prop({type: Number})
-    progression!: int | undefined
+    @Prop({type: Number, required: true})
+    actual!: number
+
+    @Prop({type: Number, required: true})
+    goal!: number
+
+    get progression(): number {
+        return Math.round(this.actual / this.goal * 100);
+    }
 }
 </script>
 
 <style lang="scss" scoped>
-    .done{
-        @apply flex bg-primary
-    }
-    .overall{
-        @apply overflow-hidden w-5/6  h-2 text-xs flex rounded bg-secondary
-    }
+.done {
+    @apply flex bg-primary
+}
+
+.overall {
+    @apply overflow-hidden h-2 text-xs flex rounded dark:bg-white
+}
 </style>

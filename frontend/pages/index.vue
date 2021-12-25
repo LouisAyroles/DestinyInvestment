@@ -10,31 +10,12 @@
             <p>Normal text</p>
         </d-section>
 
-        <d-section class=".section">
-            <h1 class="title-1">Projects preview</h1>
-            <div class="cards">
-                <d-card :image="'first.jpg'"
-                        :title="'Psst..!'"
-                        :short_desc="'Psst..! est une application indispensable pour vos futures découvertes'"
-                        :available_date="'20/01/2022'"
-                        :money_raise="20321"
-                        :goal_raise="51100">
-                </d-card>
-                <d-card :image="'second.jpg'"
-                        :title="'Doggies in town'"
-                        :short_desc="'The only app you and your lovely dog will ever need.'"
-                        :available_date="'20/01/2022'"
-                        :money_raise="7500"
-                        :goal_raise="12500">
-                </d-card>
-                <d-card :image="'third.jpg'"
-                        :title="'Towni'"
-                        :short_desc="'Towni is THE applicaiton that you need to find you dream appartment !'"
-                        :available_date="'20/01/2022'"
-                        :money_raise="20321"
-                        :goal_raise="51100">
-
-                </d-card>
+        <d-section class="flex flex-col">
+            <h1 class="title-1 grow-0">Lunching soon</h1>
+            <div class="project-cards grow">
+                <template v-for="project in projects">
+                    <d-card :key="project.id" :project="project"/>
+                </template>
             </div>
         </d-section>
 
@@ -69,10 +50,11 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
+import {Component, Vue} from 'vue-property-decorator'
 import DSection from "~/components/DSection.vue";
 import DSmallCard from "~/components/DSmallCard.vue";
 import DAppBar from "~/components/DAppBar.vue";
+import {Project} from "~/components/DCard.vue";
 
 @Component({
     components: {DAppBar, DSmallCard, DSection}
@@ -87,6 +69,13 @@ export default class IndexPage extends Vue {
     .section:nth-child(odd) {
         @apply bg-gray-200;
         @apply dark:bg-gray-900;
+    }
+}
+
+.project-cards {
+    @apply flex flex-wrap gap-x-8 gap-y-16 justify-around items-center;
+    & > * {
+        @apply justify-self-center self-center;
     }
 }
 
