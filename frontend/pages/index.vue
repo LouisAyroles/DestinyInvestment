@@ -26,23 +26,23 @@
             <d-road-map class="grow" :events="roadMapEvents"/>
         </d-section>
 
-        <d-section class=".section">
+        <d-section class="flex flex-col content-around">
             <h1 class="title-1">Why choose us</h1>
 
             <div class="cards">
                 <d-small-card :content="'Secure user data and transaction'" class="max-w-xs" icon="currency-usd"
                               background-color-class="bg-gray-200 dark:bg-gray-900"/>
-                <d-small-card :content="'Secure user data and transaction'" class="max-w-xs" icon="currency-usd"
+                <d-small-card :content="'Most credibility cause exclusivity'" class="max-w-xs"
+                              icon="shield-check-outline"
                               background-color-class="bg-gray-200 dark:bg-gray-900"/>
-                <d-small-card :content="'Secure user data and transaction'" class="max-w-xs" icon="currency-usd"
+                <d-small-card :content="'Grown your network'" class="max-w-xs" icon="chart-line-variant"
                               background-color-class="bg-gray-200 dark:bg-gray-900"/>
-                <d-small-card :content="'Secure user data and transaction'" class="max-w-xs" icon="currency-usd"
+                <d-small-card :content="'Invest in innovative projects'" class="max-w-xs" icon="lightbulb-outline"
                               background-color-class="bg-gray-200 dark:bg-gray-900"/>
-                <d-small-card :content="'Secure user data and transaction'" class="max-w-xs" icon="currency-usd" background-color-class="bg-gray-200 dark:bg-gray-900"/>
-                <d-small-card :content="'Secure user data and transaction'" class="max-w-xs" icon="currency-usd" background-color-class="bg-gray-200 dark:bg-gray-900"/>
-                <d-small-card :content="'Secure user data and transaction'" class="max-w-xs" icon="currency-usd" background-color-class="bg-gray-200 dark:bg-gray-900"/>
-                <d-small-card :content="'Secure user data and transaction'" class="max-w-xs" icon="currency-usd" background-color-class="bg-gray-200 dark:bg-gray-900"/>
-                <d-small-card :content="'Secure user data and transaction'" class="max-w-xs" icon="currency-usd" background-color-class="bg-gray-200 dark:bg-gray-900"/>
+                <d-small-card :content="'Physical meeting'" class="max-w-xs" icon="face-man"
+                              background-color-class="bg-gray-200 dark:bg-gray-900"/>
+                <d-small-card :content="'24/7 support'" class="max-w-xs" icon="face-agent"
+                              background-color-class="bg-gray-200 dark:bg-gray-900"/>
             </div>
         </d-section>
 
@@ -144,8 +144,8 @@ export default class IndexPage extends Vue {
 }
 
 .cards {
-    @apply md:grid-cols-3 md:grid-rows-3;
-    @apply grid grid-cols-1 md:grid-cols-3 gap-3 h-full;
+    @apply md:grid-rows-2 grow;
+    @apply grid grid-cols-1 md:grid-cols-3 gap-8;
 
     & > * {
         @apply justify-self-center self-center;
