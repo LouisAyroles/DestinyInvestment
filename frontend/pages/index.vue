@@ -10,8 +10,13 @@
             <p>Normal text</p>
         </d-section>
 
-        <d-section class=".section">
-            <h1 class="title-1">Projects preview</h1>
+        <d-section class="flex flex-col">
+            <h1 class="title-1 grow-0">Lunching soon</h1>
+            <div class="project-cards grow">
+                <template v-for="project in projects">
+                    <d-card :key="project.id" :project="project"/>
+                </template>
+            </div>
         </d-section>
 
         <d-section class="flex flex-col content-center">
@@ -55,6 +60,7 @@ import DSection from "~/components/DSection.vue";
 import DSmallCard from "~/components/DSmallCard.vue";
 import DAppBar from "~/components/DAppBar.vue";
 import DRoadMap, {RoadMapEvent} from "~/components/DRoadMap.vue";
+import {Project} from "~/components/DCard.vue";
 
 @Component({
     components: {DRoadMap, DAppBar, DSmallCard, DSection}
@@ -73,6 +79,50 @@ export default class IndexPage extends Vue {
         date: "September 03, 2021",
         description: "First event in Barcelona"
     }]
+    readonly projects: Project[] = [{
+        id: 1,
+        image: "first.jpg",
+        title: "Psst..!",
+        short_desc: "Psst..! est une application indispensable pour vos futures découvertes",
+        available_date: "20/01/2022",
+        money_raised: 20321,
+        goal_raise: 51100,
+        information: [
+            'Après de nombreux Congrès de pilotage en one-to-one',
+            'Nous avons décider de créer un Diagramme des best practices conceptuel',
+            'Afin de Concrétiser les tendances interoperables'
+        ]
+    }, {
+        id: 2,
+        image: "second.jpg",
+        title: "Doggies in town",
+        short_desc: "The only app you and your lovely dog will ever need.",
+        available_date: "20/01/2022",
+        money_raised: 7500,
+        goal_raise: 12500,
+        information: [
+            'Notre but: Dématérialser les key-learnings pérennes',
+            'Pourquoi faire ? Prospecter un chemin de conversion composite',
+            "L'avenir appartient aux personnes qui savent Boostrapper une overview à iso-périmètre",
+            "L'avenir appartient aux personnes qui savent Boostrapper une overview à iso-périmètre",
+            "L'avenir appartient aux personnes qui savent Boostrapper une overview à iso-périmètre",
+            "L'avenir appartient aux personnes qui savent Boostrapper une overview à iso-périmètre"
+        ]
+    }, {
+        id: 3,
+        image: "third.jpg",
+        title: "Towni",
+        short_desc: "Towni is THE applicaiton that you need to find you dream appartment !",
+        available_date: "20/01/2022",
+        money_raised: 20321,
+        goal_raise: 51100,
+        information: [
+            'Nous cherchons à Dynamiser les feedbacks appétants',
+            'Afin de Boostrapper un rebilling intuitif',
+            'Notre job: Fullstack transformation recruiter'
+        ]
+    }
+    ]
 }
 </script>
 
@@ -81,6 +131,13 @@ export default class IndexPage extends Vue {
     .section:nth-child(odd) {
         @apply bg-gray-200;
         @apply dark:bg-gray-900;
+    }
+}
+
+.project-cards {
+    @apply flex flex-wrap gap-x-8 gap-y-16 justify-around items-center;
+    & > * {
+        @apply justify-self-center self-center;
     }
 }
 
