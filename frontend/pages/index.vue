@@ -60,7 +60,50 @@ import {Project} from "~/components/DCard.vue";
     components: {DAppBar, DSmallCard, DSection}
 })
 export default class IndexPage extends Vue {
-
+    readonly projects: Project[] = [{
+        id: 1,
+        image: "first.jpg",
+        title: "Psst..!",
+        short_desc: "Psst..! est une application indispensable pour vos futures découvertes",
+        available_date: "20/01/2022",
+        money_raised: 20321,
+        goal_raise: 51100,
+        information: [
+            'Après de nombreux Congrès de pilotage en one-to-one',
+            'Nous avons décider de créer un Diagramme des best practices conceptuel',
+            'Afin de Concrétiser les tendances interoperables'
+        ]
+    }, {
+        id: 2,
+        image: "second.jpg",
+        title: "Doggies in town",
+        short_desc: "The only app you and your lovely dog will ever need.",
+        available_date: "20/01/2022",
+        money_raised: 7500,
+        goal_raise: 12500,
+        information: [
+            'Notre but: Dématérialser les key-learnings pérennes',
+            'Pourquoi faire ? Prospecter un chemin de conversion composite',
+            "L'avenir appartient aux personnes qui savent Boostrapper une overview à iso-périmètre",
+            "L'avenir appartient aux personnes qui savent Boostrapper une overview à iso-périmètre",
+            "L'avenir appartient aux personnes qui savent Boostrapper une overview à iso-périmètre",
+            "L'avenir appartient aux personnes qui savent Boostrapper une overview à iso-périmètre"
+        ]
+    }, {
+        id: 3,
+        image: "third.jpg",
+        title: "Towni",
+        short_desc: "Towni is THE applicaiton that you need to find you dream appartment !",
+        available_date: "20/01/2022",
+        money_raised: 20321,
+        goal_raise: 51100,
+        information: [
+            'Nous cherchons à Dynamiser les feedbacks appétants',
+            'Afin de Boostrapper un rebilling intuitif',
+            'Notre job: Fullstack transformation recruiter'
+        ]
+    }
+    ]
 }
 </script>
 

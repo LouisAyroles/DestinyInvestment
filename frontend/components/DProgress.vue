@@ -1,7 +1,7 @@
 <template>
-    <div class="flex justify-center">
+    <div class="w-full">
         <div class="overall">
-            <div class="done" :style="{width: progression +  '%'}" ></div>
+            <div class="done" :style="{width: `${progression}%`}"></div>
         </div>
     </div>
 </template>

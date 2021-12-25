@@ -49,27 +49,21 @@
 
 import {Component, Prop, Vue} from 'vue-property-decorator'
 
+export interface Project {
+    id: number,
+    image: string,
+    title: string,
+    short_desc: string,
+    available_date: string,
+    goal_raise: number,
+    money_raised: number
+    information: string[]
+}
+
 @Component
 export default class DCard extends Vue {
-    @Prop({type: String})
-    image!: string | undefined
-
-    @Prop({type: String})
-    title!: string | undefined
-
-    @Prop({type: String})
-    short_desc!: string | undefined
-
-    @Prop({type: String})
-    available_date!: string | undefined
-
-    @Prop({type: Number})
-    goal_raise!: number | undefined
-
-    @Prop({type: Number})
-    money_raise!: number | undefined
-
-
+    @Prop({type: Object as () => Project, required: true})
+    project!: Project
 }
 </script>
 
