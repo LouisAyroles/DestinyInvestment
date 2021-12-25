@@ -66,10 +66,10 @@ export default class DRoadMap extends Vue {
 .background {
     @apply bg-gray-900 rounded-lg px-6 py-4;
     @include gradient;
-}
 
-.background:not(.left) {
-    @include gradient-inverted;
+    &:not(.left) {
+        @include gradient-inverted;
+    }
 }
 
 ul {
