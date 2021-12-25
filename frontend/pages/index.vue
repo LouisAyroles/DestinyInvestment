@@ -36,16 +36,31 @@
                               background-color-class="bg-gray-200 dark:bg-gray-900"/>
                 <d-small-card :content="'Secure user data and transaction'" class="max-w-xs" icon="currency-usd"
                               background-color-class="bg-gray-200 dark:bg-gray-900"/>
-                <d-small-card :content="'Secure user data and transaction'" class="max-w-xs" icon="currency-usd" background-color-class="bg-gray-200 dark:bg-gray-900"/>
-                <d-small-card :content="'Secure user data and transaction'" class="max-w-xs" icon="currency-usd" background-color-class="bg-gray-200 dark:bg-gray-900"/>
-                <d-small-card :content="'Secure user data and transaction'" class="max-w-xs" icon="currency-usd" background-color-class="bg-gray-200 dark:bg-gray-900"/>
-                <d-small-card :content="'Secure user data and transaction'" class="max-w-xs" icon="currency-usd" background-color-class="bg-gray-200 dark:bg-gray-900"/>
-                <d-small-card :content="'Secure user data and transaction'" class="max-w-xs" icon="currency-usd" background-color-class="bg-gray-200 dark:bg-gray-900"/>
+                <d-small-card :content="'Secure user data and transaction'" class="max-w-xs" icon="currency-usd"
+                              background-color-class="bg-gray-200 dark:bg-gray-900"/>
+                <d-small-card :content="'Secure user data and transaction'" class="max-w-xs" icon="currency-usd"
+                              background-color-class="bg-gray-200 dark:bg-gray-900"/>
+                <d-small-card :content="'Secure user data and transaction'" class="max-w-xs" icon="currency-usd"
+                              background-color-class="bg-gray-200 dark:bg-gray-900"/>
+                <d-small-card :content="'Secure user data and transaction'" class="max-w-xs" icon="currency-usd"
+                              background-color-class="bg-gray-200 dark:bg-gray-900"/>
+                <d-small-card :content="'Secure user data and transaction'" class="max-w-xs" icon="currency-usd"
+                              background-color-class="bg-gray-200 dark:bg-gray-900"/>
             </div>
         </d-section>
 
-        <d-section class=".section">
-            <h1 class="title-1">Raise or invest</h1>
+        <d-section class="flex flex-col content-center">
+            <div class="raise-or-invest-section-container">
+                <div class="raise-or-invest-left-panel">
+                    <h1 class="title-1 max-w-md">Are you looking to raise capital for your startup?</h1>
+                    <DButton class="raise-or-invest-button" icon="arrow-right-thick"> APPLY TO RAISE</DButton>
+                </div>
+                <div class="divider"></div>
+                <div class="raise-or-invest-right-panel">
+                    <h1 class="title-1 max-w-md">Are you looking to invest in innovative projects?</h1>
+                    <DButton class="raise-or-invest-button" icon="arrow-right-thick"> APPLY TO INVEST</DButton>
+                </div>
+            </div>
         </d-section>
 
         <d-section id="contact" class=".section">
@@ -139,6 +154,27 @@ export default class IndexPage extends Vue {
     & > * {
         @apply justify-self-center self-center;
     }
+}
+
+.raise-or-invest-section-container {
+    @apply grow h-full grid grid-cols-1 gap-6 grid-rows-1 sm:grid-cols-2 place-items-center
+}
+
+.raise-or-invest-left-panel {
+    @apply order-2 sm:order-1 grid justify-items-center
+}
+
+.raise-or-invest-right-panel {
+    @apply order-1 sm:order-2 grid justify-items-center
+}
+
+.raise-or-invest-button {
+    @apply sm:mt-20 mt-8
+}
+
+.divider {
+    @apply absolute hidden sm:flex border-opacity-80 border-white h-3/5 border;
+    left: 50%;
 }
 
 .cards {
