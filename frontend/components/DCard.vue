@@ -74,7 +74,7 @@ export default class DCard extends Vue {
 
 .flip-card {
     @apply w-full min-h-max rounded-lg;
-    @apply rounded-lg h-[24rem]  sm:h-[28rem] sm:w-[24rem] w-[18rem];
+    @apply rounded-lg h-[24rem] sm:h-[28rem] sm:w-[24rem] w-[18rem];
     perspective: 1000px;
 
     .inner {
