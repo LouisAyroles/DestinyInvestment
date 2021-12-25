@@ -1,16 +1,18 @@
 <template>
     <div class="sections h-full">
         <d-app-bar class="fixed top-0 left-0 right-0"/>
-        <d-section id="home" class="mt-20 .section">
-            <h1 class="title-1">Title 1</h1>
-            <h2 class="title-2">Title 2</h2>
-            <h3 class="title-3">Title 3</h3>
-            <h4 class="title-4">Title 4</h4>
-            <h5 class="title-5">Title 5</h5>
-            <p>Normal text</p>
+        <d-section id="home" class="home-section">
+            <div class="main-section-container">
+                <div class="main-left-panel">
+                    <h1 class="main-title title-1 ">Smart and Secure way<br> to invest!</h1>
+                    <h3 class="mt-8">Choose between <br>Currency or Crypto</h3>
+                    <DButton class="mt-8" icon="arrow-right-thick"> JOIN US</DButton>
+                </div>
+                <img class="main-right-panel" src="@/assets/infography/main.jpg" alt="destiny">
+            </div>
         </d-section>
 
-        <d-section class=".section">
+        <d-section>
             <h1 class="title-1">Projects preview</h1>
         </d-section>
 
@@ -91,6 +93,26 @@ export default class IndexPage extends Vue {
     & > * {
         @apply justify-self-center self-center;
     }
+}
+
+.home-section {
+    @apply mt-20 flex flex-col content-center
+}
+
+.main-section-container {
+    @apply grow h-full grid grid-cols-1 grid-rows-1 sm:grid-cols-2 place-items-center
+}
+
+.main-left-panel {
+    @apply order-2 sm:order-1 grid justify-items-center sm:justify-items-start
+}
+
+.main-right-panel {
+    @apply order-1 sm:order-2
+}
+
+.main-title {
+    @apply text-center sm:text-left text-black dark:text-white
 }
 </style>
 
