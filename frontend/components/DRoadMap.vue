@@ -52,7 +52,7 @@ export default class DRoadMap extends Vue {
 
 @mixin gradient-inverted {
     @include gradient;
-    @apply bg-gradient-to-tl;
+    @apply sm:bg-gradient-to-tl;
 }
 
 .main-container {
@@ -120,11 +120,11 @@ ul {
         }
 
         .title {
-            @apply text-right
+            @apply sm:text-right
         }
 
         .description {
-            @apply text-right
+            @apply sm:text-right
         }
     }
 }
