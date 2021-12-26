@@ -13,7 +13,7 @@
         </d-section>
 
         <d-section class="flex flex-col">
-            <h1 class="title-1 grow-0">Lunching soon</h1>
+            <h1 class="title-1 grow-0 m-6">Lunching soon</h1>
             <div class="project-cards grow">
                 <template v-for="project in projects">
                     <d-card :key="project.id" :project="project"/>
