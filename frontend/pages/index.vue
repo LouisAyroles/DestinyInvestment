@@ -4,9 +4,9 @@
         <d-section id="home" class="home-section">
             <div class="main-section-container">
                 <div class="main-left-panel">
-                    <h1 class="main-title title-1 ">Smart and Secure way<br> to invest!</h1>
-                    <h3 class="mt-8">Choose between <br>Currency or Crypto</h3>
-                    <DButton class="mt-8" icon="arrow-right-thick"> JOIN US</DButton>
+                    <h1 class="main-title title-1 ">Smart and Secure way<br>to invest !</h1>
+                    <h3 class="mt-8 text-center sm:text-left">Choose between<br>Currency or Crypto</h3>
+                    <d-button class="mt-8" icon="arrow-right-thick">JOIN US</d-button>
                 </div>
                 <img class="main-right-panel" src="@/assets/infography/main.jpg" alt="destiny">
             </div>
@@ -204,7 +204,7 @@ export default class IndexPage extends Vue {
 }
 
 .main-section-container {
-    @apply grow h-full grid grid-cols-1 grid-rows-1 sm:grid-cols-2 place-items-center
+    @apply grow h-full grid grid-cols-1 grid-rows-1 sm:grid-cols-2 place-items-center p-10;
 }
 
 .main-left-panel {
