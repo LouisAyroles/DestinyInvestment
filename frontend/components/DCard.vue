@@ -28,12 +28,12 @@
                 </div>
                 <div class="card-back back max-h-full">
                     <div class="grow-0">
-                        <h1 class="title text-center">{{ project.title }}</h1>
-                        <ul class="info-list">
+                        <h1 class="title text-center mb-2">{{ project.title }}</h1>
+                        <p class="info-list">
                             <template v-for="(info, index) in project.information">
-                                <li class="mt-4" :key="index">{{ info }}</li>
+                                <span>• </span><span class="mt-4" :key="index">{{ info }}</span><br>
                             </template>
-                        </ul>
+                        </p>
                     </div>
                     <div class="container-button">
                         <d-button icon="chevron-right">See more</d-button>
@@ -49,6 +49,7 @@
 
 import {Component, Prop, Vue} from 'vue-property-decorator'
 import DButton from "~/components/DButton.vue";
+import DProgress from "~/components/DProgress.vue";
 
 export interface Project {
     id: number,
@@ -62,7 +63,7 @@ export interface Project {
 }
 
 @Component({
-    components: {DButton}
+    components: {DProgress, DButton}
 })
 export default class DCard extends Vue {
     @Prop({type: Object as () => Project, required: true})
@@ -72,21 +73,20 @@ export default class DCard extends Vue {
 
 <style lang="scss" scoped>
 .container {
-    @apply flex justify-center rounded-lg w-fit;
+    @apply flex justify-center w-fit;
 }
 
 .flip-card {
-    @apply w-full min-h-max rounded-lg;
-    @apply rounded-lg h-[24rem] sm:h-[28rem] sm:w-[24rem] w-[18rem];
+    @apply w-full min-h-max;
+    @apply h-[24rem] sm:h-[28rem] sm:w-[24rem] w-[18rem];
     perspective: 1000px;
 
     .inner {
         @apply w-full h-full relative transition-transform duration-700;
         transform-style: preserve-3d;
 
-        .front,
-        .back {
-            @apply h-full w-full absolute bg-black rounded-lg justify-center;
+        .front, .back {
+            @apply h-full w-full absolute bg-black justify-center rounded-lg;
             -webkit-backface-visibility: hidden;
             backface-visibility: hidden;
         }
@@ -105,11 +105,11 @@ export default class DCard extends Vue {
 }
 
 .card-front {
-    @apply flex flex-col overflow-hidden
+    @apply flex flex-col overflow-hidden;
 }
 
 .card-back {
-    @apply flex flex-col
+    @apply flex flex-col overflow-hidden;
 }
 
 .title-date {
@@ -125,18 +125,12 @@ export default class DCard extends Vue {
 }
 
 .info-list {
-    @apply overflow-hidden text-ellipsis list-disc list-inside;
-    display: -webkit-box;
-    -webkit-line-clamp: 10;
-    line-clamp: 10;
-    -webkit-box-orient: vertical;
+    @apply overflow-hidden text-ellipsis list-disc list-inside line-clamp-9;
 }
 
 .desc {
-    @apply text-gray-700 text-base dark:text-white flex justify-around overflow-hidden text-ellipsis;
+    @apply text-gray-700 text-base dark:text-white flex justify-around overflow-hidden text-ellipsis line-clamp-3;
     display: -webkit-box;
-    -webkit-line-clamp: 3;
-    line-clamp: 3;
     -webkit-box-orient: vertical;
 }
 

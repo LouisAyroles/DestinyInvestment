@@ -25,6 +25,7 @@ export default {
         '@mdi/font/css/materialdesignicons.min.css'
     ],
 
+
     // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
     plugins: [],
 
