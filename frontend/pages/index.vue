@@ -52,12 +52,12 @@
         <d-section class="flex flex-col content-center">
             <div class="raise-or-invest-section-container">
                 <div class="raise-or-invest-left-panel">
-                    <h1 class="title-1 max-w-md">Are you looking to raise capital for your startup?</h1>
+                    <h1 class="title-1 sm:max-w-md">Are you looking to raise capital for your startup?</h1>
                     <DButton class="raise-or-invest-button" icon="arrow-right-thick"> APPLY TO RAISE</DButton>
                 </div>
                 <div class="divider"></div>
                 <div class="raise-or-invest-right-panel">
-                    <h1 class="title-1 max-w-md">Are you looking to invest in innovative projects?</h1>
+                    <h1 class="title-1 sm:max-w-md">Are you looking to invest in innovative projects?</h1>
                     <DButton class="raise-or-invest-button" icon="arrow-right-thick"> APPLY TO INVEST</DButton>
                 </div>
             </div>
@@ -161,11 +161,11 @@ export default class IndexPage extends Vue {
 }
 
 .raise-or-invest-left-panel {
-    @apply order-2 sm:order-1 grid justify-items-center
+    @apply order-3 sm:order-1 grid justify-items-center
 }
 
 .raise-or-invest-right-panel {
-    @apply order-1 sm:order-2 grid justify-items-center
+    @apply order-1 sm:order-3 grid justify-items-center
 }
 
 .raise-or-invest-button {
@@ -173,8 +173,7 @@ export default class IndexPage extends Vue {
 }
 
 .divider {
-    @apply absolute hidden sm:flex border-opacity-80 border-white h-3/5 border;
-    left: 50%;
+    @apply order-2 sm:absolute flex border-opacity-80 border-white gap-8 sm:h-3/5 sm:w-0 w-3/5 h-0 border left-auto sm:left-2/4;
 }
 
 .cards {
