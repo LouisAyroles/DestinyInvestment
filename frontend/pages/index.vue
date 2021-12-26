@@ -46,8 +46,21 @@
             </div>
         </d-section>
 
-        <d-section class=".section">
-            <h1 class="title-1">Raise or invest</h1>
+        <d-section class="flex flex-col content-center">
+            <div class="raise-or-invest-section-container">
+                <div class="raise-or-invest-left-panel">
+                    <h1 class="title-1 sm:max-w-md">Are you looking to raise capital for your startup?</h1>
+                    <d-button class="raise-or-invest-button" icon="arrow-right-thick">APPLY TO RAISE</d-button>
+                </div>
+                <div class="dividers">
+                    <div class="demi-divider"></div>
+                    <div class="demi-divider"></div>
+                </div>
+                <div class="raise-or-invest-right-panel">
+                    <h1 class="title-1 sm:max-w-md">Are you looking to invest in innovative projects?</h1>
+                    <d-button class="raise-or-invest-button" icon="arrow-right-thick">APPLY TO INVEST</d-button>
+                </div>
+            </div>
         </d-section>
 
         <d-section id="contact" class=".section">
@@ -62,10 +75,11 @@ import DSection from "~/components/DSection.vue";
 import DSmallCard from "~/components/DSmallCard.vue";
 import DAppBar from "~/components/DAppBar.vue";
 import DRoadMap, {RoadMapEvent} from "~/components/DRoadMap.vue";
-import {Project} from "~/components/DCard.vue";
+import DCard, {Project} from "~/components/DCard.vue";
+import DButton from "~/components/DButton.vue";
 
 @Component({
-    components: {DRoadMap, DAppBar, DSmallCard, DSection}
+    components: {DCard, DButton, DRoadMap, DAppBar, DSmallCard, DSection}
 })
 export default class IndexPage extends Vue {
     readonly roadMapEvents: RoadMapEvent[] = [{
@@ -140,6 +154,39 @@ export default class IndexPage extends Vue {
     @apply flex flex-wrap gap-x-8 gap-y-16 justify-around items-center;
     & > * {
         @apply justify-self-center self-center;
+    }
+}
+
+.raise-or-invest-section-container {
+    @apply grow flex flex-col justify-center items-center gap-16;
+    @apply sm:grid sm:grid-cols-2;
+}
+
+.raise-or-invest-left-panel {
+    @apply grid justify-items-center
+}
+
+.raise-or-invest-right-panel {
+    @apply grid justify-items-center
+}
+
+.raise-or-invest-button {
+    @apply sm:mt-20 mt-8
+}
+
+.dividers {
+    @apply w-3/5 h-[1px] flex;
+    @apply sm:absolute sm:left-2/4 sm:h-3/5 sm:w-[1px];
+    @apply sm:flex-col;
+
+    & > .demi-divider {
+        @apply w-1/2 h-[1px] bg-gradient-to-r from-transparent to-white;
+        @apply sm:w-[1px] sm:h-1/2 sm:bg-gradient-to-b;
+
+        &:last-child {
+            transform: rotateY(180deg);
+            @apply sm:rotate-180;
+        }
     }
 }
 
