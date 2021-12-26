@@ -36,11 +36,16 @@
                               background-color-class="bg-gray-200 dark:bg-gray-900"/>
                 <d-small-card :content="'Secure user data and transaction'" class="max-w-xs" icon="currency-usd"
                               background-color-class="bg-gray-200 dark:bg-gray-900"/>
-                <d-small-card :content="'Secure user data and transaction'" class="max-w-xs" icon="currency-usd" background-color-class="bg-gray-200 dark:bg-gray-900"/>
-                <d-small-card :content="'Secure user data and transaction'" class="max-w-xs" icon="currency-usd" background-color-class="bg-gray-200 dark:bg-gray-900"/>
-                <d-small-card :content="'Secure user data and transaction'" class="max-w-xs" icon="currency-usd" background-color-class="bg-gray-200 dark:bg-gray-900"/>
-                <d-small-card :content="'Secure user data and transaction'" class="max-w-xs" icon="currency-usd" background-color-class="bg-gray-200 dark:bg-gray-900"/>
-                <d-small-card :content="'Secure user data and transaction'" class="max-w-xs" icon="currency-usd" background-color-class="bg-gray-200 dark:bg-gray-900"/>
+                <d-small-card :content="'Secure user data and transaction'" class="max-w-xs" icon="currency-usd"
+                              background-color-class="bg-gray-200 dark:bg-gray-900"/>
+                <d-small-card :content="'Secure user data and transaction'" class="max-w-xs" icon="currency-usd"
+                              background-color-class="bg-gray-200 dark:bg-gray-900"/>
+                <d-small-card :content="'Secure user data and transaction'" class="max-w-xs" icon="currency-usd"
+                              background-color-class="bg-gray-200 dark:bg-gray-900"/>
+                <d-small-card :content="'Secure user data and transaction'" class="max-w-xs" icon="currency-usd"
+                              background-color-class="bg-gray-200 dark:bg-gray-900"/>
+                <d-small-card :content="'Secure user data and transaction'" class="max-w-xs" icon="currency-usd"
+                              background-color-class="bg-gray-200 dark:bg-gray-900"/>
             </div>
         </d-section>
 
@@ -48,8 +53,29 @@
             <h1 class="title-1">Raise or invest</h1>
         </d-section>
 
-        <d-section id="contact" class=".section">
-            <h1 class="title-1">Mail</h1>
+        <d-section class="flex flex-col" id="contact">
+            <div class="mail-container">
+                <h1 class="title-1">Are you on the list?</h1>
+                <div class="button-mail-container">
+                    <input class="input-mail" type="email" placeholder="Your Email"/>
+                    <button
+                        class="button-mail">
+                        JOIN
+                    </button>
+                </div>
+                <h1 class="contact-title">CONTACT</h1>
+                <div class="contact-container">
+                    <div class="contact-size">
+                        <d-icon :icon="'phone-outline'"></d-icon>
+                        06 06 06 06 06
+                    </div>
+                    <div class="contact-size">
+                        <d-icon :icon="'email'"></d-icon>
+                        contact@destinyinvestment.com
+                    </div>
+                </div>
+
+            </div>
         </d-section>
     </div>
 </template>
@@ -139,6 +165,34 @@ export default class IndexPage extends Vue {
     & > * {
         @apply justify-self-center self-center;
     }
+}
+
+.mail-container {
+    @apply grow grid content-around
+}
+
+.button-mail-container {
+    @apply flex justify-center
+}
+
+.input-mail {
+    @apply pl-3 pr-3 sm:w-96 w-52 h-14 rounded-lg rounded-r-none leading-none text-gray-800  border border-transparent focus:outline-none focus:border-gray-500
+}
+
+.button-mail {
+    @apply sm:w-24 w-20 h-14 rounded-l-none hover:bg-indigo-600 bg-indigo-700 rounded text-base font-medium leading-none text-white
+}
+
+.contact-title {
+    @apply text-center text-3xl sm:underline-offset-[4rem] underline-offset-[2rem] underline mb-8
+}
+
+.contact-container {
+    @apply grid grid-cols-1 sm:grid-cols-2 justify-items-center
+}
+
+.contact-size {
+    @apply sm:text-xl lg:text-3xl
 }
 
 .cards {
