@@ -68,19 +68,16 @@
                 <h1 class="title-1">Are you on the list?</h1>
                 <div class="button-mail-container">
                     <input class="input-mail" type="email" placeholder="Your Email"/>
-                    <button
-                        class="button-mail">
-                        JOIN
-                    </button>
+                    <button class="button-mail uppercase">join</button>
                 </div>
-                <h1 class="contact-title">CONTACT</h1>
+                <h1 class="contact-title uppercase">contact</h1>
                 <div class="contact-container">
                     <div class="contact-size">
-                        <d-icon :icon="'phone-outline'"></d-icon>
+                        <d-icon :icon="'phone-outline'"/>
                         06 06 06 06 06
                     </div>
                     <div class="contact-size">
-                        <d-icon :icon="'email'"></d-icon>
+                        <d-icon :icon="'email'"/>
                         contact@destinyinvestment.com
                     </div>
                 </div>
@@ -98,9 +95,10 @@ import DAppBar from "~/components/DAppBar.vue";
 import DRoadMap, {RoadMapEvent} from "~/components/DRoadMap.vue";
 import DCard, {Project} from "~/components/DCard.vue";
 import DButton from "~/components/DButton.vue";
+import DIcon from "~/components/DIcon.vue";
 
 @Component({
-    components: {DCard, DButton, DRoadMap, DAppBar, DSmallCard, DSection}
+    components: {DIcon, DCard, DButton, DRoadMap, DAppBar, DSmallCard, DSection}
 })
 export default class IndexPage extends Vue {
     readonly roadMapEvents: RoadMapEvent[] = [{
@@ -212,31 +210,31 @@ export default class IndexPage extends Vue {
 }
 
 .mail-container {
-    @apply grow grid content-around
-}
+    @apply grow grid content-around;
 
-.button-mail-container {
-    @apply flex justify-center
-}
+    .contact-title {
+        @apply text-center text-3xl sm:underline-offset-[4rem] underline-offset-[2rem] underline mb-8
+    }
 
-.input-mail {
-    @apply pl-3 pr-3 sm:w-96 w-52 h-14 rounded-lg rounded-r-none leading-none text-gray-800  border border-transparent focus:outline-none focus:border-gray-500
-}
+    .button-mail-container {
+        @apply flex justify-center
+    }
 
-.button-mail {
-    @apply sm:w-24 w-20 h-14 rounded-l-none hover:bg-indigo-600 bg-indigo-700 rounded text-base font-medium leading-none text-white
-}
+    .input-mail {
+        @apply pl-3 pr-3 sm:w-96 w-52 h-14 rounded-lg rounded-r-none leading-none text-gray-800  border border-transparent focus:outline-none focus:border-gray-500
+    }
 
-.contact-title {
-    @apply text-center text-3xl sm:underline-offset-[4rem] underline-offset-[2rem] underline mb-8
-}
+    .button-mail {
+        @apply sm:w-24 w-20 h-14 rounded-l-none hover:bg-indigo-600 bg-indigo-700 rounded text-base font-medium leading-none text-white
+    }
 
-.contact-container {
-    @apply grid grid-cols-1 sm:grid-cols-2 justify-items-center
-}
+    .contact-container {
+        @apply grid grid-cols-1 sm:grid-cols-2 justify-items-center
+    }
 
-.contact-size {
-    @apply sm:text-xl lg:text-3xl
+    .contact-size {
+        @apply sm:text-xl lg:text-3xl
+    }
 }
 
 .cards {

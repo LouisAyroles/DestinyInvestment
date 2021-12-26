@@ -48,6 +48,7 @@
 <script lang="ts">
 
 import {Component, Prop, Vue} from 'vue-property-decorator'
+import DButton from "~/components/DButton.vue";
 
 export interface Project {
     id: number,
@@ -60,7 +61,9 @@ export interface Project {
     information: string[]
 }
 
-@Component
+@Component({
+    components: {DButton}
+})
 export default class DCard extends Vue {
     @Prop({type: Object as () => Project, required: true})
     project!: Project
