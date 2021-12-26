@@ -2,7 +2,7 @@
     <div class="gradient-border">
         <div class="card" :class="backgroundColorClass">
             <d-icon v-if="icon" :icon="icon" class="text-5xl"/>
-            <p v-if="content" class="title-2 text-center">
+            <p v-if="content" class="title-2 grow text-center">
                 {{ content }}
             </p>
         </div>
@@ -33,8 +33,8 @@ export default class DSmallCard extends Vue {
 }
 
 .card {
-    @apply w-fit rounded h-full;
-    @apply p-5;
+    @apply w-56 h-32 md:w-56 md:h-36 lg:w-72 lg:h-32;
+    @apply p-5 rounded;
     @apply flex items-center gap-1.5;
 }
 </style>
