@@ -1,13 +1,15 @@
 <template>
     <div class="sections h-full">
         <d-app-bar class="fixed top-0 left-0 right-0"/>
-        <d-section id="home" class="mt-20 .section">
-            <h1 class="title-1">Title 1</h1>
-            <h2 class="title-2">Title 2</h2>
-            <h3 class="title-3">Title 3</h3>
-            <h4 class="title-4">Title 4</h4>
-            <h5 class="title-5">Title 5</h5>
-            <p>Normal text</p>
+        <d-section id="home" class="home-section">
+            <div class="main-section-container">
+                <div class="main-left-panel">
+                    <h1 class="main-title title-1 ">Smart and Secure way<br>to invest !</h1>
+                    <h3 class="mt-8 text-center sm:text-left">Choose between<br>Currency or Crypto</h3>
+                    <d-button class="mt-8" icon="arrow-right-thick">JOIN US</d-button>
+                </div>
+                <img class="main-right-panel" src="@/assets/infography/main.jpg" alt="destiny">
+            </div>
         </d-section>
 
         <d-section class="flex flex-col">
@@ -24,33 +26,41 @@
             <d-road-map class="grow" :events="roadMapEvents"/>
         </d-section>
 
-        <d-section class=".section">
+        <d-section class="flex flex-col content-around">
             <h1 class="title-1">Why choose us</h1>
 
             <div class="cards">
                 <d-small-card :content="'Secure user data and transaction'" class="max-w-xs" icon="currency-usd"
                               background-color-class="bg-gray-200 dark:bg-gray-900"/>
-                <d-small-card :content="'Secure user data and transaction'" class="max-w-xs" icon="currency-usd"
+                <d-small-card :content="'Most credibility cause exclusivity'" class="max-w-xs"
+                              icon="shield-check-outline"
                               background-color-class="bg-gray-200 dark:bg-gray-900"/>
-                <d-small-card :content="'Secure user data and transaction'" class="max-w-xs" icon="currency-usd"
+                <d-small-card :content="'Grown your network'" class="max-w-xs" icon="chart-line-variant"
                               background-color-class="bg-gray-200 dark:bg-gray-900"/>
-                <d-small-card :content="'Secure user data and transaction'" class="max-w-xs" icon="currency-usd"
+                <d-small-card :content="'Invest in innovative projects'" class="max-w-xs" icon="lightbulb-outline"
                               background-color-class="bg-gray-200 dark:bg-gray-900"/>
-                <d-small-card :content="'Secure user data and transaction'" class="max-w-xs" icon="currency-usd"
+                <d-small-card :content="'Physical meeting'" class="max-w-xs" icon="face-man"
                               background-color-class="bg-gray-200 dark:bg-gray-900"/>
-                <d-small-card :content="'Secure user data and transaction'" class="max-w-xs" icon="currency-usd"
-                              background-color-class="bg-gray-200 dark:bg-gray-900"/>
-                <d-small-card :content="'Secure user data and transaction'" class="max-w-xs" icon="currency-usd"
-                              background-color-class="bg-gray-200 dark:bg-gray-900"/>
-                <d-small-card :content="'Secure user data and transaction'" class="max-w-xs" icon="currency-usd"
-                              background-color-class="bg-gray-200 dark:bg-gray-900"/>
-                <d-small-card :content="'Secure user data and transaction'" class="max-w-xs" icon="currency-usd"
+                <d-small-card :content="'24/7 support'" class="max-w-xs" icon="face-agent"
                               background-color-class="bg-gray-200 dark:bg-gray-900"/>
             </div>
         </d-section>
 
-        <d-section class=".section">
-            <h1 class="title-1">Raise or invest</h1>
+        <d-section class="flex flex-col content-center">
+            <div class="raise-or-invest-section-container">
+                <div class="raise-or-invest-left-panel">
+                    <h1 class="title-1 sm:max-w-md">Are you looking to raise capital for your startup?</h1>
+                    <d-button class="raise-or-invest-button" icon="arrow-right-thick">APPLY TO RAISE</d-button>
+                </div>
+                <div class="dividers">
+                    <div class="demi-divider"></div>
+                    <div class="demi-divider"></div>
+                </div>
+                <div class="raise-or-invest-right-panel">
+                    <h1 class="title-1 sm:max-w-md">Are you looking to invest in innovative projects?</h1>
+                    <d-button class="raise-or-invest-button" icon="arrow-right-thick">APPLY TO INVEST</d-button>
+                </div>
+            </div>
         </d-section>
 
         <d-section class="flex flex-col" id="contact">
@@ -86,10 +96,11 @@ import DSection from "~/components/DSection.vue";
 import DSmallCard from "~/components/DSmallCard.vue";
 import DAppBar from "~/components/DAppBar.vue";
 import DRoadMap, {RoadMapEvent} from "~/components/DRoadMap.vue";
-import {Project} from "~/components/DCard.vue";
+import DCard, {Project} from "~/components/DCard.vue";
+import DButton from "~/components/DButton.vue";
 
 @Component({
-    components: {DRoadMap, DAppBar, DSmallCard, DSection}
+    components: {DCard, DButton, DRoadMap, DAppBar, DSmallCard, DSection}
 })
 export default class IndexPage extends Vue {
     readonly roadMapEvents: RoadMapEvent[] = [{
@@ -167,6 +178,39 @@ export default class IndexPage extends Vue {
     }
 }
 
+.raise-or-invest-section-container {
+    @apply grow flex flex-col justify-center items-center gap-16;
+    @apply sm:grid sm:grid-cols-2;
+}
+
+.raise-or-invest-left-panel {
+    @apply grid justify-items-center
+}
+
+.raise-or-invest-right-panel {
+    @apply grid justify-items-center
+}
+
+.raise-or-invest-button {
+    @apply sm:mt-20 mt-8
+}
+
+.dividers {
+    @apply w-3/5 h-[1px] flex;
+    @apply sm:absolute sm:left-2/4 sm:h-3/5 sm:w-[1px];
+    @apply sm:flex-col;
+
+    & > .demi-divider {
+        @apply w-1/2 h-[1px] bg-gradient-to-r from-transparent to-white;
+        @apply sm:w-[1px] sm:h-1/2 sm:bg-gradient-to-b;
+
+        &:last-child {
+            transform: rotateY(180deg);
+            @apply sm:rotate-180;
+        }
+    }
+}
+
 .mail-container {
     @apply grow grid content-around
 }
@@ -196,12 +240,32 @@ export default class IndexPage extends Vue {
 }
 
 .cards {
-    @apply md:grid-cols-3 md:grid-rows-3;
-    @apply grid grid-cols-1 md:grid-cols-3 gap-3 h-full;
+    @apply md:grid-rows-2 grow;
+    @apply grid grid-cols-1 md:grid-cols-3 gap-8;
 
     & > * {
         @apply justify-self-center self-center;
     }
+}
+
+.home-section {
+    @apply mt-20 flex flex-col content-center
+}
+
+.main-section-container {
+    @apply grow h-full grid grid-cols-1 grid-rows-1 sm:grid-cols-2 place-items-center p-10;
+}
+
+.main-left-panel {
+    @apply order-2 sm:order-1 grid justify-items-center sm:justify-items-start
+}
+
+.main-right-panel {
+    @apply order-1 sm:order-2
+}
+
+.main-title {
+    @apply text-center sm:text-left text-black dark:text-white
 }
 </style>
 
