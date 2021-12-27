@@ -8,7 +8,8 @@
                     <h3 class="mt-8 text-center text-2xl sm:text-left">Choose between<br>Currency or Crypto</h3>
                     <d-button class="mt-8" icon="arrow-right-thick">JOIN US</d-button>
                 </div>
-                <img class="main-right-panel rounded-lg scale-125" src="@/assets/infography/main.png" alt="destiny">
+                <img class="main-right-panel rounded-lg lg:scale-125 md:mb-0 mb-16" src="@/assets/infography/main.png"
+                     alt="destiny">
             </div>
         </d-section>
 
@@ -272,19 +273,19 @@ export default class IndexPage extends Vue {
 }
 
 .main-section-container {
-    @apply grow h-full grid grid-cols-1 grid-rows-1 sm:grid-cols-2 place-items-center p-10;
+    @apply grow h-full grid grid-cols-1 grid-rows-1 md:grid-cols-2 place-items-center p-10;
 }
 
 .main-left-panel {
-    @apply order-2 sm:order-1 grid justify-items-center sm:justify-items-start
+    @apply order-2 md:order-1 grid justify-items-center md:justify-items-start
 }
 
 .main-right-panel {
-    @apply order-1 sm:order-2
+    @apply order-1 md:order-2
 }
 
 .main-title {
-    @apply text-6xl text-center sm:text-left text-black dark:text-white
+    @apply text-6xl text-center md:text-left text-black dark:text-white
 }
 </style>
 
