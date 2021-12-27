@@ -43,7 +43,7 @@ export default class DSmallCard extends Vue {
 }
 
 .card {
-    @apply w-[18rem] h-80 sm:w-64 md:w-[20rem] lg:w-[18rem] xl:w-[22rem];
+    @apply w-72 h-80 sm:w-64 md:w-80 lg:w-72 xl:w-[22rem];
     @apply p-5 rounded;
     @apply flex flex-col items-center gap-1.5;
 }
