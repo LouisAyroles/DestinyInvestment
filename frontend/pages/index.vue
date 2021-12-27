@@ -41,7 +41,8 @@
         </d-section>
 
         <d-section class="flex flex-col content-center">
-            <h1 class="title-1 grow-0">Roadmap</h1>
+            <h1 class="title-1 grow-0 uppercase">Roadmap</h1>
+            <h2 class="subtitle">Our timelines details</h2>
             <d-road-map class="grow" :events="roadMapEvents"/>
         </d-section>
 

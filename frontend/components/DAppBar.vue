@@ -66,7 +66,6 @@ export default class DAppBar extends Vue {
         {title: 'Home', href: '/'},
         {title: 'Raise', href: '/raise'},
         {title: 'Invest', href: '/invest'},
-        {title: 'Blog', href: '/blog'},
         {title: 'Contact', href: '/#contact'},
     ]
 
@@ -135,15 +134,15 @@ export default class DAppBar extends Vue {
 }
 
 .title {
-    @apply text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-lg font-medium
+    @apply text-gray-300 hover:text-secondary px-3 py-2 rounded-md text-lg font-medium
 }
 
 .titleHome {
-    @apply text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 dark:text-primary rounded-md text-lg font-medium
+    @apply text-gray-300 hover:text-secondary px-3 py-2 dark:text-primary rounded-md text-lg font-medium
 }
 
 .mobile-title {
-    @apply text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium
+    @apply text-gray-300 hover:text-secondary block px-3 py-2 rounded-md text-base font-medium
 }
 
 .menu-items {
