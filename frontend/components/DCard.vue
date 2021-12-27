@@ -86,7 +86,7 @@ export default class DCard extends Vue {
         transform-style: preserve-3d;
 
         .front, .back {
-            @apply h-full w-full absolute bg-black justify-center rounded-lg;
+            @apply h-full w-full absolute dark:bg-[#05051b] justify-center rounded-lg;
             -webkit-backface-visibility: hidden;
             backface-visibility: hidden;
         }

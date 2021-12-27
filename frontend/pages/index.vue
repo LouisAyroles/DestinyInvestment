@@ -117,7 +117,7 @@ export default class IndexPage extends Vue {
     }, {
         title: '24/7 support',
         desc: 'Lorem ipsum dolor sit amet, consect adipiscing elit, sed do eiusmod tempor incidiunt ut labore et dolore',
-        icon: 'secure.png'
+        icon: 'support.png'
     },]
     readonly roadMapEvents: RoadMapEvent[] = [{
         date: "February 2, 2022",
