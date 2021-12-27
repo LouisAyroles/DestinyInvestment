@@ -2,7 +2,7 @@
     <div class="sections h-full">
         <d-app-bar class="fixed top-0 left-0 right-0"/>
         <d-section id="home" class="home-section">
-            <div class="main-section-container">
+            <div class="main-section-container overflow-x-hidden">
                 <div data-aos="fade-right" data-aos-duration="1000" class="main-left-panel">
                     <h1 class="main-title">Smart and Secure way<br>to invest !</h1>
                     <h3 class="main-subtitle">Choose between<br>Currency or Crypto</h3>
