@@ -4,45 +4,11 @@
         <d-section id="home" class="home-section">
             <div class="main-section-container">
                 <div class="main-left-panel">
-                    <h1 class="main-title title-1 ">Smart and Secure way<br>to invest !</h1>
-                    <h3 class="mt-8 text-center sm:text-left">Choose between<br>Currency or Crypto</h3>
+                    <h1 class="main-title ">Smart and Secure way<br>to invest !</h1>
+                    <h3 class="mt-8 text-center text-2xl sm:text-left">Choose between<br>Currency or Crypto</h3>
                     <d-button class="mt-8" icon="arrow-right-thick">JOIN US</d-button>
                 </div>
-                <img class="main-right-panel" src="@/assets/infography/main.jpg" alt="destiny">
-            </div>
-        </d-section>
-
-        <d-section class="flex flex-col">
-            <h1 class="title-1 grow-0 m-6">Lunching soon</h1>
-            <div class="project-cards grow">
-                <template v-for="project in projects">
-                    <d-card :key="project.id" :project="project"/>
-                </template>
-            </div>
-        </d-section>
-
-        <d-section class="flex flex-col content-center">
-            <h1 class="title-1 grow-0">Roadmap</h1>
-            <d-road-map class="grow" :events="roadMapEvents"/>
-        </d-section>
-
-        <d-section class="flex flex-col content-around">
-            <h1 class="title-1">Why choose us</h1>
-
-            <div class="cards">
-                <d-small-card :content="'Secure user data and transaction'" class="max-w-xs" icon="currency-usd"
-                              background-color-class="bg-gray-200 dark:bg-gray-900"/>
-                <d-small-card :content="'Most credibility cause exclusivity'" class="max-w-xs"
-                              icon="shield-check-outline"
-                              background-color-class="bg-gray-200 dark:bg-gray-900"/>
-                <d-small-card :content="'Grown your network'" class="max-w-xs" icon="chart-line-variant"
-                              background-color-class="bg-gray-200 dark:bg-gray-900"/>
-                <d-small-card :content="'Invest in innovative projects'" class="max-w-xs" icon="lightbulb-outline"
-                              background-color-class="bg-gray-200 dark:bg-gray-900"/>
-                <d-small-card :content="'Physical meeting'" class="max-w-xs" icon="face-man"
-                              background-color-class="bg-gray-200 dark:bg-gray-900"/>
-                <d-small-card :content="'24/7 support'" class="max-w-xs" icon="face-agent"
-                              background-color-class="bg-gray-200 dark:bg-gray-900"/>
+                <img class="main-right-panel rounded-lg scale-125" src="@/assets/infography/main.png" alt="destiny">
             </div>
         </d-section>
 
@@ -60,6 +26,32 @@
                     <h1 class="title-1 sm:max-w-md">Are you looking to invest in innovative projects?</h1>
                     <d-button class="raise-or-invest-button" icon="arrow-right-thick">APPLY TO INVEST</d-button>
                 </div>
+            </div>
+        </d-section>
+
+
+        <d-section class="flex flex-col">
+            <h1 class="title-1 grow-0 m-6">Launching soon</h1>
+            <div class="project-cards grow">
+                <template v-for="project in projects">
+                    <d-card :key="project.id" :project="project"/>
+                </template>
+            </div>
+        </d-section>
+
+        <d-section class="flex flex-col content-center">
+            <h1 class="title-1 grow-0">Roadmap</h1>
+            <d-road-map class="grow" :events="roadMapEvents"/>
+        </d-section>
+
+        <d-section class="flex flex-col content-around">
+            <h1 class="title-1">Why choose us ?</h1>
+            <h2 class="subtitle">We’ve built a platform where startup meet capital</h2>
+
+            <div class="cards">
+                <template v-for="information in informations">
+                    <d-small-card background-color-class="bg-gray-200 dark:bg-gray-900" :information="information"/>
+                </template>
             </div>
         </d-section>
 
@@ -90,7 +82,7 @@
 <script lang="ts">
 import {Component, Vue} from 'vue-property-decorator'
 import DSection from "~/components/DSection.vue";
-import DSmallCard from "~/components/DSmallCard.vue";
+import DSmallCard, {Information} from "~/components/DSmallCard.vue";
 import DAppBar from "~/components/DAppBar.vue";
 import DRoadMap, {RoadMapEvent} from "~/components/DRoadMap.vue";
 import DCard, {Project} from "~/components/DCard.vue";
@@ -101,6 +93,31 @@ import DIcon from "~/components/DIcon.vue";
     components: {DIcon, DCard, DButton, DRoadMap, DAppBar, DSmallCard, DSection}
 })
 export default class IndexPage extends Vue {
+    readonly informations: Information[] = [{
+        title: 'Secure user data and transaction',
+        desc: 'Lorem ipsum dolor sit amet, consect adipiscing elit, sed do eiusmod tempor incidiunt ut labore et dolore',
+        icon: 'secure.png'
+    }, {
+        title: 'Most credibility cause exclusivity',
+        desc: 'Lorem ipsum dolor sit amet, consect adipiscing elit, sed do eiusmod tempor incidiunt ut labore et dolore',
+        icon: 'wall.png'
+    }, {
+        title: 'Grown your network',
+        desc: 'Lorem ipsum dolor sit amet, consect adipiscing elit, sed do eiusmod tempor incidiunt ut labore et dolore',
+        icon: 'analysis.png'
+    }, {
+        title: 'Invest in innovative projects',
+        desc: 'Lorem ipsum dolor sit amet, consect adipiscing elit, sed do eiusmod tempor incidiunt ut labore et dolore',
+        icon: 'invest.png'
+    }, {
+        title: 'Physical meeting',
+        desc: 'Lorem ipsum dolor sit amet, consect adipiscing elit, sed do eiusmod tempor incidiunt ut labore et dolore',
+        icon: 'secure.png'
+    }, {
+        title: '24/7 support',
+        desc: 'Lorem ipsum dolor sit amet, consect adipiscing elit, sed do eiusmod tempor incidiunt ut labore et dolore',
+        icon: 'secure.png'
+    },]
     readonly roadMapEvents: RoadMapEvent[] = [{
         date: "February 2, 2022",
         description: "Project is raising stars"
@@ -167,6 +184,10 @@ export default class IndexPage extends Vue {
         @apply bg-gray-200;
         @apply dark:bg-gray-900;
     }
+}
+
+.subtitle {
+    @apply dark:text-gray-400 text-center mb-8 mt-2
 }
 
 .project-cards {
@@ -239,7 +260,7 @@ export default class IndexPage extends Vue {
 
 .cards {
     @apply md:grid-rows-2 grow;
-    @apply grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8;
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8;
 
     & > * {
         @apply justify-self-center self-center;
@@ -263,7 +284,7 @@ export default class IndexPage extends Vue {
 }
 
 .main-title {
-    @apply text-center sm:text-left text-black dark:text-white
+    @apply text-6xl text-center sm:text-left text-black dark:text-white
 }
 </style>
 
@@ -280,7 +301,7 @@ html, body {
     /* Light theme */
     @apply bg-gray-100 text-gray-900;
     /* Dark theme */
-    @apply dark:bg-black dark:text-gray-100;
+    @apply dark:bg-sky-900 dark:text-gray-100;
 }
 
 #__nuxt, #__layout {

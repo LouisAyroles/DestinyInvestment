@@ -56,7 +56,7 @@ export default class DRoadMap extends Vue {
 }
 
 .main-container {
-    @apply bg-black w-full h-full p-10 grid content-center
+    @apply w-full h-full p-10 grid content-center
 }
 
 .sub-container {

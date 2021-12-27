@@ -1,10 +1,17 @@
 <template>
     <div class="gradient-border">
         <div class="card" :class="backgroundColorClass">
-            <d-icon v-if="icon" :icon="icon" class="text-5xl"/>
-            <p v-if="content" class="title-2 grow text-center">
-                {{ content }}
+            <img class="icon" :src="require(`@/assets/infography/${information.icon}`)" alt="">
+            <p v-if="information.title" class="title">
+                {{ information.title }}
             </p>
+            <p v-if="information.desc" class="desc">
+                {{ information.desc }}
+            </p>
+            <div>
+                <a href class="yellow mdi mdi-arrow-right">Read more </a>
+                <span class="yellow"></span>
+            </div>
         </div>
     </div>
 </template>
@@ -12,16 +19,19 @@
 <script lang="ts">
 import {Component, Prop, Vue} from "vue-property-decorator";
 
+export interface Information {
+    title: string,
+    desc: string,
+    icon: string
+}
+
 @Component
 export default class DSmallCard extends Vue {
     @Prop({required: true, type: String})
     backgroundColorClass!: string
 
-    @Prop({type: String})
-    icon!: string | undefined
-
-    @Prop({type: String})
-    content!: string | undefined
+    @Prop({type: Object as () => Information, required: true})
+    information!: Information
 }
 </script>
 
@@ -33,8 +43,24 @@ export default class DSmallCard extends Vue {
 }
 
 .card {
-    @apply w-56 h-32 md:w-56 md:h-36 lg:w-72 lg:h-32;
+    @apply w-[22rem] h-80 sm:w-64 md:w-[20rem] lg:w-[18rem] xl:w-[22rem];
     @apply p-5 rounded;
-    @apply flex items-center gap-1.5;
+    @apply flex flex-col items-center gap-1.5;
+}
+
+.title {
+    @apply text-2xl grow text-center
+}
+
+.desc {
+    @apply dark:text-gray-400 grow text-center
+}
+
+.icon {
+    @apply h-16 w-16
+}
+
+.yellow {
+    @apply text-yellow-400
 }
 </style>
