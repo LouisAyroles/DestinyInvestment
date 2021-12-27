@@ -5,10 +5,10 @@
             <div class="main-section-container">
                 <div class="main-left-panel">
                     <h1 class="main-title ">Smart and Secure way<br>to invest !</h1>
-                    <h3 class="mt-8 text-center text-2xl sm:text-left">Choose between<br>Currency or Crypto</h3>
+                    <h3 class="main-subtitle">Choose between<br>Currency or Crypto</h3>
                     <d-button class="mt-8" icon="arrow-right-thick">JOIN US</d-button>
                 </div>
-                <img class="main-right-panel rounded-lg lg:scale-125 md:mb-0 mb-16" src="@/assets/infography/main.png"
+                <img class="main-right-panel" src="@/assets/infography/main.png"
                      alt="destiny">
             </div>
         </d-section>
@@ -201,18 +201,17 @@ export default class IndexPage extends Vue {
 .raise-or-invest-section-container {
     @apply grow flex flex-col justify-center items-center gap-16;
     @apply sm:grid sm:grid-cols-2;
-}
+    .raise-or-invest-left-panel {
+        @apply grid justify-items-center
+    }
 
-.raise-or-invest-left-panel {
-    @apply grid justify-items-center
-}
+    .raise-or-invest-right-panel {
+        @apply grid justify-items-center
+    }
 
-.raise-or-invest-right-panel {
-    @apply grid justify-items-center
-}
-
-.raise-or-invest-button {
-    @apply sm:mt-20 mt-8
+    .raise-or-invest-button {
+        @apply sm:mt-20 mt-8
+    }
 }
 
 .dividers {
@@ -274,19 +273,24 @@ export default class IndexPage extends Vue {
 
 .main-section-container {
     @apply grow h-full grid grid-cols-1 grid-rows-1 md:grid-cols-2 place-items-center p-10;
+    .main-left-panel {
+        @apply order-2 md:order-1 grid justify-items-center md:justify-items-start
+    }
+
+    .main-right-panel {
+        @apply order-1 md:order-2 md:lg:scale-125 md:mb-0 mb-16
+    }
+
+    .main-title {
+        @apply text-3xl md:text-6xl text-center md:text-left text-black dark:text-white
+    }
+
+    .main-subtitle {
+        @apply mt-8 text-center md:text-2xl sm:text-left
+    }
 }
 
-.main-left-panel {
-    @apply order-2 md:order-1 grid justify-items-center md:justify-items-start
-}
 
-.main-right-panel {
-    @apply order-1 md:order-2
-}
-
-.main-title {
-    @apply text-6xl text-center md:text-left text-black dark:text-white
-}
 </style>
 
 <style>
