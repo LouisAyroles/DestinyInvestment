@@ -9,8 +9,8 @@
                 {{ information.desc }}
             </p>
             <div>
-                <a href class="yellow mdi mdi-arrow-right">Read more </a>
-                <span class="yellow"></span>
+                <span class="yellow">Read more </span>
+                <a href class="yellow mdi mdi-arrow-right"></a>
             </div>
         </div>
     </div>
