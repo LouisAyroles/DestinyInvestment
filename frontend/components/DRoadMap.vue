@@ -4,7 +4,8 @@
             <template v-for="(event, index) in eventsWithPosition">
                 <li :key="index" :class="{'left': event.left}">
                     <div class="card">
-                        <div :class="['background', {left: event.left}]">
+                        <div data-aos="zoom-in-up" data-aos-duration="1000" :data-aos-delay="200*index"
+                             data-aos-offset="200" :class="['background', {left: event.left}]">
                             <h3 class="title">{{ event.date }}</h3>
                             <p class="description">{{ event.description }}</p>
                         </div>

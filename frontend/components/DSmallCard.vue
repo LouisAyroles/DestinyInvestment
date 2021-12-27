@@ -1,5 +1,5 @@
 <template>
-    <div class="gradient-border">
+    <div data-aos="flip-right" data-aos-duration="1000" class="gradient-border">
         <div class="card" :class="backgroundColorClass">
             <img class="icon" :src="require(`@/assets/infography/${information.icon}`)" alt="">
             <p v-if="information.title" class="title">

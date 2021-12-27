@@ -3,29 +3,38 @@
         <d-app-bar class="fixed top-0 left-0 right-0"/>
         <d-section id="home" class="home-section">
             <div class="main-section-container">
-                <div class="main-left-panel">
-                    <h1 class="main-title ">Smart and Secure way<br>to invest !</h1>
+                <div data-aos="fade-right" data-aos-duration="1000" class="main-left-panel">
+                    <h1 class="main-title">Smart and Secure way<br>to invest !</h1>
                     <h3 class="main-subtitle">Choose between<br>Currency or Crypto</h3>
                     <d-button class="mt-8" icon="arrow-right-thick">JOIN US</d-button>
                 </div>
-                <img class="main-right-panel" src="@/assets/infography/main.png"
-                     alt="destiny">
+                <div class="main-right-panel">
+                    <img data-aos="fade-left" data-aos-duration="1000" src="@/assets/infography/main.png"
+                         alt="destiny">
+                </div>
+
             </div>
         </d-section>
 
         <d-section class="flex flex-col content-center">
             <div class="raise-or-invest-section-container">
                 <div class="raise-or-invest-left-panel">
-                    <h1 class="title-1 sm:max-w-md">Are you looking to raise capital for your startup?</h1>
-                    <d-button class="raise-or-invest-button" icon="arrow-right-thick">APPLY TO RAISE</d-button>
+                    <h1 data-aos="fade-down" data-aos-duration="1000" class="title-1 sm:max-w-md fade-in">Are you
+                        looking to raise capital for your startup?</h1>
+                    <d-button data-aos="zoom-in-up" data-aos-duration="2000" class="raise-or-invest-button"
+                              icon="arrow-right-thick">APPLY TO RAISE
+                    </d-button>
                 </div>
                 <div class="dividers">
                     <div class="demi-divider"></div>
                     <div class="demi-divider"></div>
                 </div>
                 <div class="raise-or-invest-right-panel">
-                    <h1 class="title-1 sm:max-w-md">Are you looking to invest in innovative projects?</h1>
-                    <d-button class="raise-or-invest-button" icon="arrow-right-thick">APPLY TO INVEST</d-button>
+                    <h1 data-aos="fade-down" data-aos-duration="1000" class="title-1 sm:max-w-md">Are you looking to
+                        invest in innovative projects?</h1>
+                    <d-button data-aos="zoom-in-up" data-aos-duration="2000" class="raise-or-invest-button"
+                              icon="arrow-right-thick">APPLY TO INVEST
+                    </d-button>
                 </div>
             </div>
         </d-section>
@@ -67,11 +76,11 @@
                 <h1 class="contact-title uppercase">contact</h1>
                 <div class="contact-container">
                     <div class="contact-size">
-                        <d-icon :icon="'phone-outline'"/>
+                        <d-icon class="text-primary" :icon="'phone-outline'"/>
                         06 06 06 06 06
                     </div>
                     <div class="contact-size">
-                        <d-icon :icon="'email'"/>
+                        <d-icon class="text-primary" :icon="'email'"/>
                         contact@destinyinvestment.com
                     </div>
                 </div>
@@ -82,7 +91,7 @@
 </template>
 
 <script lang="ts">
-import {Component, Vue} from 'vue-property-decorator'
+import {Component} from 'vue-property-decorator'
 import DSection from "~/components/DSection.vue";
 import DSmallCard, {Information} from "~/components/DSmallCard.vue";
 import DAppBar from "~/components/DAppBar.vue";
@@ -90,11 +99,13 @@ import DRoadMap, {RoadMapEvent} from "~/components/DRoadMap.vue";
 import DCard, {Project} from "~/components/DCard.vue";
 import DButton from "~/components/DButton.vue";
 import DIcon from "~/components/DIcon.vue";
+import aosMixin from '~/mixins/aos'
+import {mixins} from "vue-class-component";
 
 @Component({
     components: {DIcon, DCard, DButton, DRoadMap, DAppBar, DSmallCard, DSection}
 })
-export default class IndexPage extends Vue {
+export default class IndexPage extends mixins(aosMixin) {
     readonly informations: Information[] = [{
         title: 'Secure user data and transaction',
         desc: 'Lorem ipsum dolor sit amet, consect adipiscing elit, sed do eiusmod tempor incidiunt ut labore et dolore',
@@ -178,13 +189,14 @@ export default class IndexPage extends Vue {
     }
     ]
 }
+
 </script>
 
 <style lang="scss" scoped>
 .sections {
     .section:nth-child(odd) {
         @apply bg-gray-200;
-        @apply dark:bg-gray-900;
+        @apply dark:bg-[#05051b];
     }
 }
 
@@ -232,22 +244,22 @@ export default class IndexPage extends Vue {
 }
 
 .mail-container {
-    @apply grow grid content-around;
+    @apply grow flex flex-col justify-around items-center;
 
     .contact-title {
         @apply text-center text-3xl sm:underline-offset-[4rem] underline-offset-[2rem] underline mb-8
     }
 
     .button-mail-container {
-        @apply flex justify-center
+        @apply flex justify-center rounded-lg overflow-hidden w-fit
     }
 
     .input-mail {
-        @apply pl-3 pr-3 sm:w-96 w-52 h-14 rounded-lg rounded-r-none leading-none text-gray-800  border border-transparent focus:outline-none focus:border-gray-500
+        @apply pl-3 pr-3 sm:w-96 w-52 h-14 leading-none text-gray-800  border border-transparent focus:outline-none focus:border-gray-500
     }
 
     .button-mail {
-        @apply sm:w-24 w-20 h-14 rounded-l-none hover:bg-indigo-600 bg-indigo-700 rounded text-base font-medium leading-none text-white
+        @apply sm:w-24 w-20 h-14 hover:bg-indigo-600 bg-indigo-700 text-base font-medium leading-none text-white
     }
 
     .contact-container {
@@ -275,7 +287,8 @@ export default class IndexPage extends Vue {
 .main-section-container {
     @apply grow h-full grid grid-cols-1 grid-rows-1 md:grid-cols-2 place-items-center p-10;
     .main-left-panel {
-        @apply order-2 md:order-1 grid justify-items-center md:justify-items-start
+        @apply order-2 md:order-1 grid justify-items-center md:justify-items-start;
+
     }
 
     .main-right-panel {
