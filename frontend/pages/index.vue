@@ -9,8 +9,7 @@
                     <d-button class="mt-8" icon="arrow-right-thick">JOIN US</d-button>
                 </div>
                 <div class="main-right-panel">
-                    <img data-aos="fade-left" data-aos-duration="1000" src="@/assets/infography/main.png"
-                         alt="destiny">
+                    <img data-aos="fade-left" data-aos-duration="1000" src="@/assets/infography/main.png" alt="destiny">
                 </div>
 
             </div>
@@ -194,9 +193,14 @@ export default class IndexPage extends mixins(aosMixin) {
 
 <style lang="scss" scoped>
 .sections {
-    .section:nth-child(odd) {
-        @apply bg-gray-200;
-        @apply dark:bg-[#05051b];
+    section {
+        scroll-snap-align: start;   /* Section's scroll align    */
+        scroll-margin: 5em;         /* Scroll margin for app bar */
+
+        &:nth-child(odd) {
+            @apply bg-gray-200;
+            @apply dark:bg-[#05051b];
+        }
     }
 }
 
@@ -321,6 +325,10 @@ html, body {
     @apply bg-gray-100 text-gray-900;
     /* Dark theme */
     @apply dark:bg-sky-900 dark:text-gray-100;
+
+    /* Allows to scroll section by section */
+    scroll-snap-type: y mandatory;
+    /*scroll-padding: 5em;*/
 }
 
 #__nuxt, #__layout {
