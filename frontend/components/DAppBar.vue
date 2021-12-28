@@ -4,7 +4,7 @@
             <div class="content">
                 <div class="center">
                     <!-- Mobile menu button-->
-                    <button type="button" ref="mobile-toggle" class="center mobile-menu-button"
+                    <button @click="toggleMobileMenu" type="button" class="center mobile-menu-button"
                             aria-controls="mobile-menu" aria-expanded="false">
                         <span class="sr-only">Open main menu</span>
                         <!--Icon when menu is closed. -->
@@ -23,8 +23,8 @@
                 </div>
                 <div class="items">
                     <div class="logos">
-                        <img class="logo" src="@/assets/logos/destinylogo.png" alt="Destiny">
-                        <img class="full-logo" src="@/assets/logos/destinyfullLogo.png" alt="Destiny">
+                        <a href="/"><img class="logo" src="@/assets/logos/destinylogo.png" alt="Destiny"></a>
+                        <a href="/"><img class="full-logo" src="@/assets/logos/destinyfullLogo.png" alt="Destiny"></a>
                     </div>
                     <div class="menu-items">
                         <div class="flex space-x-4">
@@ -70,17 +70,11 @@ export default class DAppBar extends Vue {
     ]
 
     mounted() {
-        const button = this.$refs['mobile-toggle'] as HTMLElement
-        button.addEventListener('click', this.toggleMobileMenu)
         window.addEventListener('scroll', this.scrollListener)
-
         this.scrollListener()
-
     }
 
     beforeDestroy() {
-        const button = this.$refs['mobile-toggle'] as HTMLElement
-        button.removeEventListener('click', this.toggleMobileMenu)
         window.removeEventListener('scroll', this.scrollListener)
     }
 

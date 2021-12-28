@@ -1,5 +1,6 @@
 <template>
     <div class="sections h-full">
+        <!--Main section-->
         <d-app-bar class="fixed top-0 left-0 right-0"/>
         <d-section id="home" class="home-section">
             <div class="main-section-container overflow-x-hidden">
@@ -8,37 +9,41 @@
                     <h3 class="main-subtitle">Choose between<br>Currency or Crypto</h3>
                     <d-button class="mt-8" icon="arrow-right-thick">JOIN US</d-button>
                 </div>
+
                 <div class="main-right-panel">
                     <img data-aos="fade-left" data-aos-duration="1000" src="@/assets/infography/main.png" alt="destiny">
                 </div>
-
             </div>
         </d-section>
 
+
+        <!--Raise or invest section-->
         <d-section class="flex flex-col content-center">
             <div class="raise-or-invest-section-container">
                 <div class="raise-or-invest-left-panel">
-                    <h1 data-aos="fade-down" data-aos-duration="1000" class="title-1 sm:max-w-md fade-in">Are you
-                        looking to raise capital for your startup?</h1>
+                    <h1 data-aos="fade-down" data-aos-duration="1000" class="title-1 sm:max-w-md fade-in">
+                        Are you looking to raise capital for your startup ?
+                    </h1>
                     <d-button data-aos="zoom-in-up" data-aos-duration="2000" class="raise-or-invest-button"
-                              icon="arrow-right-thick">APPLY TO RAISE
+                              icon="arrow-right-thick">
+                        APPLY TO RAISE
                     </d-button>
                 </div>
-                <div class="dividers">
-                    <div class="demi-divider"></div>
-                    <div class="demi-divider"></div>
-                </div>
+                <div class="divider"></div>
                 <div class="raise-or-invest-right-panel">
-                    <h1 data-aos="fade-down" data-aos-duration="1000" class="title-1 sm:max-w-md">Are you looking to
-                        invest in innovative projects?</h1>
+                    <h1 data-aos="fade-down" data-aos-duration="1000" class="title-1 sm:max-w-md">
+                        Are you looking to invest in innovative projects?
+                    </h1>
                     <d-button data-aos="zoom-in-up" data-aos-duration="2000" class="raise-or-invest-button"
-                              icon="arrow-right-thick">APPLY TO INVEST
+                              icon="arrow-right-thick">
+                        APPLY TO INVEST
                     </d-button>
                 </div>
             </div>
         </d-section>
 
 
+        <!--Launching soon section-->
         <d-section class="flex flex-col">
             <h1 class="title-1 grow-0 m-6">Launching soon</h1>
             <div class="project-cards grow">
@@ -48,23 +53,30 @@
             </div>
         </d-section>
 
+
+        <!--Timeline section-->
         <d-section class="flex flex-col content-center">
             <h1 class="title-1 grow-0 uppercase">Roadmap</h1>
             <h2 class="subtitle">Our timelines details</h2>
             <d-road-map class="grow" :events="roadMapEvents"/>
         </d-section>
 
+
+        <!--Why choose us section-->
         <d-section class="flex flex-col content-around">
             <h1 class="title-1">Why choose us ?</h1>
             <h2 class="subtitle">We’ve built a platform where startup meet capital</h2>
 
             <div class="cards">
-                <template v-for="information in informations">
-                    <d-small-card background-color-class="bg-gray-200 dark:bg-gray-900" :information="information"/>
+                <template v-for="(info, index) in information">
+                    <d-small-card :information="info" :key="index"
+                                  background-color-class="bg-gray-200 dark:bg-gray-900"/>
                 </template>
             </div>
         </d-section>
 
+
+        <!--Mail section-->
         <d-section class="flex flex-col" id="contact">
             <div class="mail-container">
                 <h1 class="title-1">Are you on the list?</h1>
@@ -73,6 +85,7 @@
                     <button class="button-mail uppercase">join</button>
                 </div>
                 <h1 class="contact-title uppercase">contact</h1>
+                <div class="divider horizontal-only max-w-3xl"></div>
                 <div class="contact-container">
                     <div class="contact-size">
                         <d-icon class="text-primary" :icon="'phone-outline'"/>
@@ -83,7 +96,6 @@
                         contact@destinyinvestment.com
                     </div>
                 </div>
-
             </div>
         </d-section>
     </div>
@@ -105,7 +117,7 @@ import {mixins} from "vue-class-component";
     components: {DIcon, DCard, DButton, DRoadMap, DAppBar, DSmallCard, DSection}
 })
 export default class IndexPage extends mixins(aosMixin) {
-    readonly informations: Information[] = [{
+    readonly information: Information[] = [{
         title: 'Secure user data and transaction',
         desc: 'Lorem ipsum dolor sit amet, consect adipiscing elit, sed do eiusmod tempor incidiunt ut labore et dolore',
         icon: 'secure.png'
@@ -129,7 +141,8 @@ export default class IndexPage extends mixins(aosMixin) {
         title: '24/7 support',
         desc: 'Lorem ipsum dolor sit amet, consect adipiscing elit, sed do eiusmod tempor incidiunt ut labore et dolore',
         icon: 'support.png'
-    },]
+    }]
+
     readonly roadMapEvents: RoadMapEvent[] = [{
         date: "February 2, 2022",
         description: "Project is raising stars"
@@ -143,6 +156,7 @@ export default class IndexPage extends mixins(aosMixin) {
         date: "September 03, 2021",
         description: "First event in Barcelona"
     }]
+
     readonly projects: Project[] = [{
         id: 1,
         image: "first.jpg",
@@ -185,8 +199,7 @@ export default class IndexPage extends mixins(aosMixin) {
             'Afin de Boostrapper un rebilling intuitif',
             'Notre job: Fullstack transformation recruiter'
         ]
-    }
-    ]
+    }]
 }
 
 </script>
@@ -194,8 +207,8 @@ export default class IndexPage extends mixins(aosMixin) {
 <style lang="scss" scoped>
 .sections {
     section {
-        scroll-snap-align: start;   /* Section's scroll align    */
-        scroll-margin: 5em;         /* Scroll margin for app bar */
+        scroll-snap-align: start; /* Section's scroll align    */
+        scroll-margin: 5em; /* Scroll margin for app bar */
 
         &:nth-child(odd) {
             @apply bg-gray-200;
@@ -210,6 +223,7 @@ export default class IndexPage extends mixins(aosMixin) {
 
 .project-cards {
     @apply flex flex-wrap gap-x-8 gap-y-16 justify-around items-center;
+
     & > * {
         @apply justify-self-center self-center;
     }
@@ -218,6 +232,7 @@ export default class IndexPage extends mixins(aosMixin) {
 .raise-or-invest-section-container {
     @apply grow flex flex-col justify-center items-center gap-16;
     @apply sm:grid sm:grid-cols-2;
+
     .raise-or-invest-left-panel {
         @apply grid justify-items-center
     }
@@ -231,19 +246,13 @@ export default class IndexPage extends mixins(aosMixin) {
     }
 }
 
-.dividers {
+.divider {
     @apply w-3/5 h-[1px] flex;
-    @apply sm:absolute sm:left-2/4 sm:h-3/5 sm:w-[1px];
-    @apply sm:flex-col;
+    @apply bg-gradient-to-r from-transparent via-white to-transparent;
 
-    & > .demi-divider {
-        @apply w-1/2 h-[1px] bg-gradient-to-r from-transparent to-white;
-        @apply sm:w-[1px] sm:h-1/2 sm:bg-gradient-to-b;
-
-        &:last-child {
-            transform: rotateY(180deg);
-            @apply sm:rotate-180;
-        }
+    &:not(.horizontal-only) {
+        @apply sm:absolute sm:left-2/4 sm:h-3/5 sm:w-[1px];
+        @apply sm:bg-gradient-to-t;
     }
 }
 
@@ -251,7 +260,7 @@ export default class IndexPage extends mixins(aosMixin) {
     @apply grow flex flex-col justify-around items-center;
 
     .contact-title {
-        @apply text-center text-3xl sm:underline-offset-[4rem] underline-offset-[2rem] underline mb-8
+        @apply text-center text-3xl;
     }
 
     .button-mail-container {
