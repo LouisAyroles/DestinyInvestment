@@ -207,8 +207,10 @@ export default class IndexPage extends mixins(aosMixin) {
 <style lang="scss" scoped>
 .sections {
     section {
-        scroll-snap-align: start; /* Section's scroll align    */
-        scroll-margin: 5em; /* Scroll margin for app bar */
+        @media screen and (min-width: 1440px) {
+            scroll-snap-align: start; /* Section's scroll align    */
+            scroll-margin: 5em; /* Scroll margin for app bar */
+        }
 
         &:nth-child(odd) {
             @apply bg-gray-200;
