@@ -11,6 +11,14 @@ module.exports = {
             colors: {
                 'primary': '#8E97DF',
                 'secondary': '#DF8EC8'
+            },
+            lineClamp: {
+                7: '7',
+                8: '8',
+                9: '9',
+                10: '10',
+                11: '11',
+                12: '12',
             }
         },
     },
@@ -25,5 +33,8 @@ module.exports = {
         ],
         borderColor: ["dark", "dark-focus", "dark-focus-within"],
         textColor: ["dark", "dark-hover", "dark-active"]
-    }
+    },
+    plugins: [
+        require('@tailwindcss/line-clamp')
+    ]
 }
