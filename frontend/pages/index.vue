@@ -1,7 +1,7 @@
 <template>
     <div class="sections h-full">
         <!--App bar-->
-        <d-app-bar class="fixed top-0 left-0 right-0"/>
+        <d-app-bar current-page="Home" class="fixed top-0 left-0 right-0"/>
 
         <!--Main section-->
         <d-section id="home" class="home-section">
