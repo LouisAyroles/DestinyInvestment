@@ -1,17 +1,25 @@
 <template>
-    <div class="p-5">
-        <div class="mx-4 p-4">
-            <div class="flex items-center">
-                <div class="flex items-center relative justify-around grow">
-                    <div v-for="step in steps" class="step">
-                        <div class="flex items-center text-center rounded-full h-12 w-12 border-2 border-white">
-                            <d-icon class="grow rounded-full" :icon="step.icon"></d-icon>
-                        </div>
-                        <div class="absolute top-0 -ml-10 text-center mt-16 w-32 text-xs font-medium uppercase">
-                            {{ step.title }}
-                        </div>
+    <div class="md:mx-4 md:p-4">
+        <!-- Desktop stepper -->
+        <div class="hidden md:flex items-center">
+            <div class="flex items-center relative justify-around grow">
+                <div v-for="step in steps" class="step">
+                    <div class="flex items-center text-center rounded-full h-12 w-12 border-2 border-white">
+                        <d-icon class="grow rounded-full" :icon="step.icon"></d-icon>
+                    </div>
+                    <div class="absolute top-0 -ml-10 text-center mt-16 w-32 text-xs font-medium uppercase">
+                        {{ step.title }}
                     </div>
                 </div>
+            </div>
+        </div>
+        <!-- Mobile stepper -->
+        <div class="flex flex-col md:hidden items-center justify-center">
+            <div class="flex items-center text-center rounded-full h-12 w-12 border-2 border-white grow">
+                <d-icon class="grow rounded-full text-white" :icon="steps[currentStep].icon"></d-icon>
+            </div>
+            <div class=" text-center mt-4 w-32 text-xs text-white font-medium uppercase">
+                {{ steps[currentStep].title }}
             </div>
         </div>
     </div>
@@ -50,7 +58,7 @@ export default class DStepper extends Vue {
     min-width: calc(100% - 3rem);
     margin-left: 3rem;
     background: white;
-    height: 2px;
+    height: 3px;
     position: absolute;
     top: 50%;
 }
