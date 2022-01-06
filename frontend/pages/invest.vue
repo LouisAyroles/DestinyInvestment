@@ -1,10 +1,9 @@
 <template>
     <div class="pt-20 sections h-full">
         <d-app-bar currentPage="Invest" class="fixed top-0 left-0 right-0"/>
-        <d-section class="p-0 md:p-6">
+        <d-section class="invest-container">
             <d-stepper :steps="steps" :currentStep=1></d-stepper>
         </d-section>
-
     </div>
 </template>
 

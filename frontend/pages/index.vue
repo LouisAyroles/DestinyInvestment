@@ -20,7 +20,7 @@
 
 
         <!--Raise or invest section-->
-        <d-section class="flex flex-col content-center">
+        <d-section class="flex flex-col content-center p-6">
             <div class="raise-or-invest-section-container">
                 <div class="raise-or-invest-left-panel">
                     <h1 data-aos="fade-down" data-aos-duration="1000" class="title-1 sm:max-w-md fade-in">
@@ -46,7 +46,7 @@
 
 
         <!--Launching soon section-->
-        <d-section class="flex flex-col">
+        <d-section class="flex flex-col p-6">
             <h1 class="title-1 grow-0 m-6">Launching soon</h1>
             <div class="project-cards grow">
                 <template v-for="project in projects">
@@ -57,7 +57,7 @@
 
 
         <!--Timeline section-->
-        <d-section class="flex flex-col content-center">
+        <d-section class="flex flex-col content-center p-6">
             <h1 class="title-1 grow-0 uppercase">Roadmap</h1>
             <h2 class="subtitle">Our timelines details</h2>
             <d-road-map class="grow" :events="roadMapEvents"/>
@@ -65,7 +65,7 @@
 
 
         <!--Why choose us section-->
-        <d-section class="flex flex-col content-around">
+        <d-section class="flex flex-col content-around p-6">
             <h1 class="title-1">Why choose us ?</h1>
             <h2 class="subtitle">We’ve built a platform where startup meet capital</h2>
 
@@ -79,7 +79,7 @@
 
 
         <!--Mail section-->
-        <d-section class="flex flex-col" id="contact">
+        <d-section class="flex flex-col p-6" id="contact">
             <div class="mail-container">
                 <h1 class="title-1">Are you on the list?</h1>
                 <div class="button-mail-container">
@@ -298,7 +298,7 @@ export default class IndexPage extends mixins(aosMixin) {
 }
 
 .home-section {
-    @apply mt-20 flex flex-col content-center
+    @apply mt-20 flex flex-col content-center  p-6
 }
 
 .main-section-container {

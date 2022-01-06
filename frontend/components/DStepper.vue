@@ -15,6 +15,9 @@
         </div>
         <!-- Mobile stepper -->
         <div class="flex flex-col md:hidden items-center justify-center">
+            <div class="text-white mb-4">
+                Step {{ currentStep }} of {{ steps.length }}
+            </div>
             <div class="flex items-center text-center rounded-full h-12 w-12 border-2 border-white grow">
                 <d-icon class="grow rounded-full text-white" :icon="steps[currentStep].icon"></d-icon>
             </div>
