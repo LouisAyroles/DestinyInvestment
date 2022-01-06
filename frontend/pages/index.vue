@@ -1,7 +1,9 @@
 <template>
     <div class="sections h-full">
-        <!--Main section-->
+        <!--App bar-->
         <d-app-bar class="fixed top-0 left-0 right-0"/>
+
+        <!--Main section-->
         <d-section id="home" class="home-section">
             <div class="main-section-container overflow-x-hidden">
                 <div data-aos="fade-right" data-aos-duration="1000" class="main-left-panel">
