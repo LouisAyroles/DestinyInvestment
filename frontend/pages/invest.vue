@@ -2,7 +2,7 @@
     <div class="pt-20 sections h-full">
         <d-app-bar currentPage="Invest" class="fixed top-0 left-0 right-0"/>
         <d-section class="invest-container">
-            <d-stepper :steps="steps" :currentStep=1></d-stepper>
+            <d-stepper :steps="steps" :currentStep=2></d-stepper>
         </d-section>
     </div>
 </template>
@@ -32,5 +32,7 @@ export default class invest extends Vue {
 </script>
 
 <style lang="scss" scoped>
-
+.invest-container {
+    @apply p-0 md:py-6 md:px-20
+}
 </style>
