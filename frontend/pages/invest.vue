@@ -33,6 +33,6 @@ export default class invest extends Vue {
 
 <style lang="scss" scoped>
 .invest-container {
-    @apply p-0 md:py-6 md:px-20
+    @apply p-0 md:py-12 md:px-20 lg:px-32
 }
 </style>

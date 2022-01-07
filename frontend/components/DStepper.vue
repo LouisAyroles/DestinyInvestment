@@ -5,9 +5,9 @@
             <div class="flex items-center relative justify-around grow">
                 <div v-for="(step,index) in steps" class="step" :class="{'line-colored': index < currentStep}">
                     <div class="flex items-center text-center rounded-full h-12 w-12 border-2 border-white"
-                         :class="{'border-secondary': index <= currentStep}">
+                         :class="{'border-primary': index <= currentStep}">
                         <d-icon class="grow rounded-full" :icon="step.icon"
-                                :class="{'text-secondary': index <= currentStep}"></d-icon>
+                                :class="{'text-primary': index <= currentStep}"></d-icon>
                     </div>
                     <div class="absolute top-0 -ml-10 text-center mt-16 w-32 text-xs font-medium uppercase">
                         {{ step.title }}
@@ -72,7 +72,7 @@ export default class DStepper extends Vue {
     content: "";
     min-width: calc(100% - 3rem);
     margin-left: 3rem;
-    @apply bg-secondary;
+    @apply bg-primary;
     height: 3px;
     position: absolute;
     top: 50%;
