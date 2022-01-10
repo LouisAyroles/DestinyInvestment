@@ -1,5 +1,5 @@
 <template>
-    <nav ref="menu" class="backdrop-blur-sm z-50 animated bg-black">
+    <nav ref="menu" class="backdrop-blur-sm z-50 animated">
         <div class="margin z-30">
             <div class="content">
                 <div class="center">
@@ -144,7 +144,9 @@ export default class DAppBar extends Vue {
 }
 
 .logos {
-    @apply flex-shrink-0 flex items-center
+    filter: invert(100%);
+    -webkit-filter: invert(100%);
+    @apply flex-shrink-0 flex items-center scale-125
 }
 
 .logo {
