@@ -6,9 +6,11 @@
         <!--Main section-->
         <d-section id="home" class="home-section">
             <div class="main-section-container overflow-x-hidden">
-                <div data-aos="fade-right" data-aos-duration="1000" class="main-left-panel">
-                    <h1 class="main-title">Smart and Secure way to </h1>
-                    <h1 class="main-title w-30">invest in <span class="slider" ref="slider"> </span></h1>
+                <div data-aos="fade-right leading-loose" data-aos-duration="1000" class="main-left-panel">
+                    <h1 class="main-title">Smart and Secure</h1>
+                    <h1 class="main-title">way to invest <span class="inline sm:hidden"> in </span></h1>
+                    <h1 class="main-title2 "><span class="hidden sm:inline"> in </span> <span class="slider"
+                                                                                              ref="slider"> </span></h1>
                     <h3 class="main-subtitle">Reach now for the moon </h3>
                     <d-button class="mt-8 text-white" :gradient="false" icon="arrow-right-thick" link-to="/#raise">JOIN
                         US
@@ -67,7 +69,7 @@
             <div class="cards">
                 <template v-for="(info, index) in information">
                     <d-small-card :information="info" :key="index"
-                                  background-color-class="bg-gray-200 dark:bg-gray-900"/>
+                                  background-color-class="bg-white dark:bg-gray-900"/>
                 </template>
             </div>
         </d-section>
@@ -223,7 +225,6 @@ export default class IndexPage extends mixins(aosMixin) {
     }
 
     changeText(slider: HTMLElement) {
-
         slider.textContent = this.investIn[this.word];
         this.word = (this.word + 1) % this.investIn.length;
     }
@@ -271,13 +272,13 @@ export default class IndexPage extends mixins(aosMixin) {
     }
 
     .raise-or-invest-button {
-        @apply sm:mt-20 mt-8
+        @apply sm:mt-20 mt-8 dark:text-black text-white
     }
 }
 
 .divider {
     @apply w-3/5 h-[1px] flex;
-    @apply bg-gradient-to-r from-transparent via-white to-transparent;
+    @apply bg-gradient-to-r from-transparent via-black dark:via-white to-transparent;
 
     &:not(.horizontal-only) {
         @apply sm:absolute sm:left-2/4 sm:h-3/5 sm:w-[1px];
@@ -329,8 +330,7 @@ export default class IndexPage extends mixins(aosMixin) {
 .main-section-container {
     @apply grow h-full grid grid-cols-1 grid-rows-1 md:grid-cols-2 place-items-center p-10;
     .main-left-panel {
-        @apply order-2 md:order-1 grid justify-items-center md:justify-items-start;
-
+        @apply grid justify-items-center md:justify-items-start w-full xl:ml-40 2xl:ml-96;
     }
 
     .button {
@@ -340,15 +340,20 @@ export default class IndexPage extends mixins(aosMixin) {
     }
 
     .main-right-panel {
-        @apply order-1 md:order-2 md:lg:scale-125 md:mb-0 mb-16
+        @apply md:mb-0 mt-8
     }
 
     .main-title {
-        @apply text-3xl md:text-6xl text-center md:text-left text-black dark:text-white mt-8
+        @apply text-xl md:text-3xl xl:text-6xl text-center md:text-left text-black dark:text-white
+    }
+
+    .main-title2 {
+        @apply text-xl md:text-3xl xl:text-6xl text-center md:text-left text-black dark:text-white;
+        white-space: nowrap;
     }
 
     .slider {
-        @apply rounded-lg text-2xl md:text-5xl text-center md:text-left text-black dark:text-white bg-[#f9bd49];
+        @apply rounded-lg text-xl md:text-3xl xl:text-6xl text-center md:text-left text-[#f9bd49] font-bold w-[45rem];
         opacity: 1;
         transition: all 1s;
 
@@ -358,7 +363,7 @@ export default class IndexPage extends mixins(aosMixin) {
     }
 
     .main-subtitle {
-        @apply mt-8 text-center md:text-2xl sm:text-left
+        @apply mt-8 text-center text-xs md:text-lg xl:text-2xl sm:text-left
     }
 }
 

@@ -80,11 +80,11 @@ ul {
         content: '';
         width: 18px;
         height: 18px;
-        background-color: white;
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
         border-radius: 9999px;
+        @apply bg-black dark:bg-white
     }
 
     li {
@@ -101,7 +101,7 @@ ul {
 
     li:not(.left) {
         @apply sm:translate-x-[calc(50%-1px)];
-        border-left: 1px solid white;
+        @apply border-black dark:border-white border-solid border-l-[1px];
         padding-left: 32px;
 
         &:before {
@@ -112,7 +112,7 @@ ul {
 
     li.left {
         @apply sm:-translate-x-1/2;
-        @apply border-white border-solid border-l-[1px] pl-[32px];
+        @apply border-black dark:border-white border-solid border-l-[1px] pl-[32px];
         @apply sm:border-l-0 sm:border-r-[1px] sm:pl-[0px] sm:pl-[32px] sm:pr-[32px];
 
         &:after {
