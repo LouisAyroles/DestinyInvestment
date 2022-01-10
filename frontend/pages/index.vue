@@ -9,8 +9,10 @@
                 <div data-aos="fade-right" data-aos-duration="1000" class="main-left-panel">
                     <h1 class="main-title">Smart and Secure way to </h1>
                     <h1 class="main-title w-30">invest in <span class="slider" ref="slider"> </span></h1>
-                    <h3 class="main-subtitle">Reach now<br> for the moon </h3>
-                    <d-button class="mt-8 text-white" icon="arrow-right-thick" link-to="/#raise">JOIN US</d-button>
+                    <h3 class="main-subtitle">Reach now for the moon </h3>
+                    <d-button class="mt-8 text-white" :gradient="false" icon="arrow-right-thick" link-to="/#raise">JOIN
+                        US
+                    </d-button>
                 </div>
 
                 <div class="main-right-panel">
@@ -206,7 +208,7 @@ export default class IndexPage extends mixins(aosMixin) {
     word: number = 0;
 
     readonly investIn: string[] = [
-        "Greentech", "Sportech", "Fintech", "Blockchain", "E-commerce", "Edtech", "Cyber-security", "AI"
+        "Greentech", "Sportech", "Fintech", "Blockchain", "E-commerce", "Edtech", "Cyber-security", "Artifical Intelligence"
     ]
 
     mounted() {
@@ -331,16 +333,22 @@ export default class IndexPage extends mixins(aosMixin) {
 
     }
 
+    .button {
+        @apply rounded-full block w-fit;
+        @apply px-5 py-2 font-medium uppercase;
+        @apply transform transition duration-200 hover:scale-105;
+    }
+
     .main-right-panel {
         @apply order-1 md:order-2 md:lg:scale-125 md:mb-0 mb-16
     }
 
     .main-title {
-        @apply text-3xl md:text-6xl text-center md:text-left text-black dark:text-white
+        @apply text-3xl md:text-6xl text-center md:text-left text-black dark:text-white mt-8
     }
 
     .slider {
-        @apply rounded-lg text-3xl md:text-6xl text-center md:text-left text-black dark:text-white bg-[#f9bd49];
+        @apply rounded-lg text-2xl md:text-5xl text-center md:text-left text-black dark:text-white bg-[#f9bd49];
         opacity: 1;
         transition: all 1s;
 
@@ -365,6 +373,7 @@ export default class IndexPage extends mixins(aosMixin) {
 }
 
 html, body {
+    font-family: 'Poppins', sans-serif;
     /* Common theme */
     @apply p-0 min-w-full min-h-full h-full;
     /* Light theme */

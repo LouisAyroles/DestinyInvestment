@@ -6,7 +6,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
+import {Component, Prop, Vue} from 'vue-property-decorator'
 import DIcon from "~/components/DIcon.vue";
 
 @Component({
@@ -66,5 +66,13 @@ export default class DButton extends Vue {
 
 .gradient {
     @apply bg-gradient-to-r from-primary to-secondary;
+}
+
+:not(.gradient) {
+    .mdi {
+        @apply bg-transparent
+    }
+
+    @apply bg-[#5D1198]
 }
 </style>
