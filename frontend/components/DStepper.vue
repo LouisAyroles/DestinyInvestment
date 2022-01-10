@@ -81,11 +81,9 @@ export default class DStepper extends Vue {
 
 .step {
     transform: translateY(-50%);
-
     &.line-colored:not(:last-child)::after {
         @include line-secondary;
     }
-
     &:not(.line-colored):not(:last-child)::after {
         @include line;
     }

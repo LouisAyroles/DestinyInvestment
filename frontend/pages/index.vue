@@ -9,7 +9,7 @@
                 <div data-aos="fade-right" data-aos-duration="1000" class="main-left-panel">
                     <h1 class="main-title">Smart and Secure way<br>to invest !</h1>
                     <h3 class="main-subtitle">Choose between<br>Currency or Crypto</h3>
-                    <d-button class="mt-8" icon="arrow-right-thick">JOIN US</d-button>
+                    <d-button class="mt-8" icon="arrow-right-thick" link-to="/#raise">JOIN US</d-button>
                 </div>
 
                 <div class="main-right-panel">
@@ -20,14 +20,14 @@
 
 
         <!--Raise or invest section-->
-        <d-section class="flex flex-col content-center p-6">
+        <d-section class="flex flex-col content-center p-6" id="raise">
             <div class="raise-or-invest-section-container">
                 <div class="raise-or-invest-left-panel">
                     <h1 data-aos="fade-down" data-aos-duration="1000" class="title-1 sm:max-w-md fade-in">
                         Are you looking to raise capital for your startup ?
                     </h1>
                     <d-button data-aos="zoom-in-up" data-aos-duration="2000" class="raise-or-invest-button"
-                              icon="arrow-right-thick">
+                              link-to="/raise" icon="arrow-right-thick">
                         APPLY TO RAISE
                     </d-button>
                 </div>
@@ -37,7 +37,7 @@
                         Are you looking to invest in innovative projects?
                     </h1>
                     <d-button data-aos="zoom-in-up" data-aos-duration="2000" class="raise-or-invest-button"
-                              icon="arrow-right-thick">
+                              link-to="/invest" icon="arrow-right-thick">
                         APPLY TO INVEST
                     </d-button>
                 </div>
@@ -48,21 +48,13 @@
         <!--Launching soon section-->
         <d-section class="flex flex-col p-6">
             <h1 class="title-1 grow-0 m-6">Launching soon</h1>
+            <h2 class="subtitle">Discover our uncut diamonds</h2>
             <div class="project-cards grow">
                 <template v-for="project in projects">
                     <d-card :key="project.id" :project="project"/>
                 </template>
             </div>
         </d-section>
-
-
-        <!--Timeline section-->
-        <d-section class="flex flex-col content-center p-6">
-            <h1 class="title-1 grow-0 uppercase">Roadmap</h1>
-            <h2 class="subtitle">Our timelines details</h2>
-            <d-road-map class="grow" :events="roadMapEvents"/>
-        </d-section>
-
 
         <!--Why choose us section-->
         <d-section class="flex flex-col content-around p-6">
@@ -75,6 +67,13 @@
                                   background-color-class="bg-gray-200 dark:bg-gray-900"/>
                 </template>
             </div>
+        </d-section>
+
+        <!--Timeline section-->
+        <d-section class="flex flex-col content-center p-6">
+            <h1 class="title-1 grow-0 uppercase">Roadmap</h1>
+            <h2 class="subtitle">Our timelines details</h2>
+            <d-road-map class="grow" :events="roadMapEvents"/>
         </d-section>
 
 
