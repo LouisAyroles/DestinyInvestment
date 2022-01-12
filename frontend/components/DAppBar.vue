@@ -32,7 +32,8 @@
                                 v-for="(item, index) in menuItems"
                                 :key="index"
                                 :to="item.href"
-                                class="title">
+                                class="title"
+                                :class="{'text-primary': item.title === currentPage}">
                                 {{ item.title }}
                             </nuxt-link>
                         </div>
@@ -58,10 +59,13 @@
 
 <script lang="ts">
 
-import {Component, Vue} from 'vue-property-decorator'
+import {Component, Prop, Vue} from 'vue-property-decorator'
 
 @Component
 export default class DAppBar extends Vue {
+    @Prop({type: String, required: true})
+    currentPage!: string
+
     readonly menuItems = [
         {title: 'Home', href: '/'},
         {title: 'Raise', href: '/raise'},
@@ -128,7 +132,7 @@ export default class DAppBar extends Vue {
 }
 
 .title {
-    @apply text-gray-300 hover:text-secondary px-3 py-2 rounded-md text-lg font-medium
+    @apply hover:text-secondary px-3 py-2 rounded-md text-lg font-medium
 }
 
 .titleHome {
