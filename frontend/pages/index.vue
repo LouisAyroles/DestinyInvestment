@@ -5,8 +5,8 @@
 
         <!--Main section-->
         <d-section id="home" class="home-section">
-            <div class="main-section-container overflow-x-hidden">
-                <div data-aos="fade-right leading-loose" data-aos-duration="1000" class="main-left-panel">
+            <div class="main-section-container">
+                <div data-aos="fade-right" data-aos-duration="1000" class="main-left-panel">
                     <h1 class="main-title">Smart and Secure</h1>
                     <h1 class="main-title">way to invest <span class="inline sm:hidden"> in </span></h1>
                     <h1 class="main-title2 "><span class="hidden sm:inline"> in </span> <span class="slider"
@@ -18,7 +18,7 @@
                 </div>
 
                 <div class="main-right-panel">
-                    <img data-aos="fade-left" data-aos-duration="1000" src="@/assets/infography/main.png" alt="destiny">
+                    <img data-aos="fade-left" data-aos-offset="-200" src="@/assets/infography/main.png" alt="destiny">
                 </div>
             </div>
         </d-section>
@@ -29,7 +29,7 @@
             <div class="raise-or-invest-section-container">
                 <div class="raise-or-invest-left-panel">
                     <h1 data-aos="fade-down" data-aos-duration="1000" class="title-1 sm:max-w-md fade-in">
-                        Are you looking to raise capital for your startup ?
+                        Are you looking <b> to raise</b> capital for your startup ?
                     </h1>
                     <d-button data-aos="zoom-in-up" data-aos-duration="2000" class="raise-or-invest-button"
                               link-to="/raise" icon="arrow-right-thick">
@@ -39,7 +39,7 @@
                 <div class="divider"></div>
                 <div class="raise-or-invest-right-panel">
                     <h1 data-aos="fade-down" data-aos-duration="1000" class="title-1 sm:max-w-md">
-                        Are you looking to invest in innovative projects?
+                        Are you looking <b> to invest </b> in innovative projects?
                     </h1>
                     <d-button data-aos="zoom-in-up" data-aos-duration="2000" class="raise-or-invest-button"
                               link-to="/invest" icon="arrow-right-thick">
@@ -125,27 +125,27 @@ import {mixins} from "vue-class-component";
 export default class IndexPage extends mixins(aosMixin) {
     readonly information: Information[] = [{
         title: 'Secure user data and transaction',
-        desc: 'Lorem ipsum dolor sit amet, consect adipiscing elit, sed do eiusmod tempor incidiunt ut labore et dolore',
+        desc: 'We have created a system and an electronic protocol to ensure the integrity and security of transactions. The main objective is to protect the transactions of your investments.',
         icon: 'secure.png'
     }, {
         title: 'Most credibility cause exclusivity',
-        desc: 'Lorem ipsum dolor sit amet, consect adipiscing elit, sed do eiusmod tempor incidiunt ut labore et dolore',
+        desc: 'A chance to be part of an exclusive network, carefully selected according to the criteria and objectives of each member. The best thing to connect our members.',
         icon: 'wall.png'
     }, {
         title: 'Grown your network',
-        desc: 'Lorem ipsum dolor sit amet, consect adipiscing elit, sed do eiusmod tempor incidiunt ut labore et dolore',
+        desc: 'You are connected with hundreds of high-calibre investors and startups that you can discuss with in complete discretion on our platform.',
         icon: 'analysis.png'
     }, {
         title: 'Invest in innovative projects',
-        desc: 'Lorem ipsum dolor sit amet, consect adipiscing elit, sed do eiusmod tempor incidiunt ut labore et dolore',
+        desc: 'All the startups integrated in our platform required a detailed analysis and a deep research of the quality of the project in relation with your criteria.',
         icon: 'invest.png'
     }, {
         title: 'Physical meeting',
-        desc: 'Lorem ipsum dolor sit amet, consect adipiscing elit, sed do eiusmod tempor incidiunt ut labore et dolore',
+        desc: 'We regularly organise meetings to encourage our networks to meet. They will be held in your cities and countries.',
         icon: 'secure.png'
     }, {
         title: '24/7 support',
-        desc: 'Lorem ipsum dolor sit amet, consect adipiscing elit, sed do eiusmod tempor incidiunt ut labore et dolore',
+        desc: 'Wherever you are, we will reply to you by email or by calling the number in the contacts section. It will be a pleasure to talk to you in person.',
         icon: 'support.png'
     }]
 
@@ -165,7 +165,7 @@ export default class IndexPage extends mixins(aosMixin) {
 
     readonly projects: Project[] = [{
         id: 1,
-        image: "first.jpg",
+        video: "small.mp4",
         title: "Psst..!",
         short_desc: "Psst..! est une application indispensable pour vos futures découvertes",
         available_date: "20/01/2022",
@@ -178,7 +178,7 @@ export default class IndexPage extends mixins(aosMixin) {
         ]
     }, {
         id: 2,
-        image: "second.jpg",
+        video: "small.mp4",
         title: "Doggies in town",
         short_desc: "The only app you and your lovely dog will ever need.",
         available_date: "20/01/2022",
@@ -194,7 +194,7 @@ export default class IndexPage extends mixins(aosMixin) {
         ]
     }, {
         id: 3,
-        image: "third.jpg",
+        video: "small.mp4",
         title: "Towni",
         short_desc: "Towni is THE applicaiton that you need to find you dream appartment !",
         available_date: "20/01/2022",
@@ -248,7 +248,7 @@ export default class IndexPage extends mixins(aosMixin) {
 }
 
 .subtitle {
-    @apply dark:text-gray-400 text-center mb-8 mt-2
+    @apply dark:text-gray-400 text-gray-400 text-center mb-8 mt-2
 }
 
 .project-cards {
@@ -264,11 +264,11 @@ export default class IndexPage extends mixins(aosMixin) {
     @apply sm:grid sm:grid-cols-2;
 
     .raise-or-invest-left-panel {
-        @apply grid justify-items-center
+        @apply grid justify-items-center mb-10 sm:mb-0
     }
 
     .raise-or-invest-right-panel {
-        @apply grid justify-items-center
+        @apply grid justify-items-center mt-6 sm:mt-0
     }
 
     .raise-or-invest-button {
@@ -328,7 +328,7 @@ export default class IndexPage extends mixins(aosMixin) {
 }
 
 .main-section-container {
-    @apply grow h-full grid grid-cols-1 grid-rows-1 md:grid-cols-2 place-items-center p-10;
+    @apply grow h-full grid grid-cols-1 md:grid-cols-2 place-items-center px-10 md:px-0;
     .main-left-panel {
         @apply grid justify-items-center md:justify-items-start w-full xl:ml-40 2xl:ml-96;
     }
@@ -340,7 +340,7 @@ export default class IndexPage extends mixins(aosMixin) {
     }
 
     .main-right-panel {
-        @apply md:mb-0 mt-8
+        @apply md:mb-0 mt-8 scale-125 sm:scale-100
     }
 
     .main-title {

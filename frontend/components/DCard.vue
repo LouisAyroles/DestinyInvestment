@@ -1,44 +1,38 @@
 <template>
-    <div class="container">
-        <div class="flip-card">
-            <div class="inner">
-                <div class="card-front front">
-                    <img v-if="project.image"
-                         class="w-full"
-                         :src="require(`@/assets/projects/${project.image}`)"
-                         :alt="project.title">
-                    <div class="container-desc">
-                        <div class="container-title">
-                            <div>
-                                <div class="title-date">
-                                    <div class="title">{{ project.title }}</div>
-                                    <div class="date">{{ project.available_date }}</div>
-                                </div>
-                                <p class="desc">{{ project.short_desc }}</p>
-                            </div>
-                        </div>
-                        <div class="grow-0">
-                            <d-progress class="progress" :actual="project.money_raised" :goal="project.goal_raise"/>
-                            <div>
-                                <span class="money-raise">{{ project.money_raised }} € &nbsp</span>
-                                <span class="goal"> / {{ project.goal_raise }} €</span>
-                            </div>
-                        </div>
+    <div v-observe-visibility="playVideoOnMobile" @mouseover="playVideo" @mouseleave="pauseVideo" @blur="pauseVideo"
+         class="card-front front rounded-lg">
+        <video ref="video" loop muted>
+            <source
+                :src="require(`@/assets/projects/${project.video}`)"
+                type="video/mp4"/>
+        </video>
+        <div class="container-desc">
+            <div class="container-title">
+                <div>
+                    <div class="title-date">
+                        <div class="title">{{ project.title }}</div>
                     </div>
+                    <p class="desc">{{ project.short_desc }}</p>
                 </div>
-                <div class="card-back back max-h-full">
-                    <div class="grow-0">
-                        <h1 class="title text-center mb-2">{{ project.title }}</h1>
-                        <p class="info-list">
-                            <template v-for="(info, index) in project.information">
-                                <span>• </span><span class="mt-4" :key="index">{{ info }}</span><br>
-                            </template>
-                        </p>
+            </div>
+            <div class="grow-0">
+                <div>
+                    <span> Start in 30 days </span>
+                </div>
+                <d-progress class="progress" :actual="project.money_raised" :goal="project.goal_raise"/>
+                <div class="container-bottom">
+                    <div class="container-goal">
+                        <span class="money-raise">Target </span>
+                        <span class="goal">{{ project.goal_raise }} €</span>
                     </div>
-                    <div class="container-button">
-                        <d-button icon="chevron-right">See more</d-button>
+                    <div class="flex flex-col">
+                        <span class="money-raise">Investors </span>
+                        <span class="money-raise">waiting</span>
+                        <span>12 </span>
                     </div>
-
+                    <div class="flex items-end">
+                        <d-button icon="account-star"></d-button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -51,9 +45,10 @@ import {Component, Prop, Vue} from 'vue-property-decorator'
 import DButton from "~/components/DButton.vue";
 import DProgress from "~/components/DProgress.vue";
 
+
 export interface Project {
     id: number,
-    image: string,
+    video: string,
     title: string,
     short_desc: string,
     available_date: string,
@@ -68,48 +63,41 @@ export interface Project {
 export default class DCard extends Vue {
     @Prop({type: Object as () => Project, required: true})
     project!: Project
+
+    playVideoOnMobile(isVisible: boolean) {
+        if (screen.width < 1024) {
+            if (isVisible) {
+                console.log("isVisble")
+                this.playVideo()
+            } else {
+                this.pauseVideo()
+            }
+        }
+    }
+
+    playVideo() {
+        console.log("Play")
+        const video = this.$refs['video'] as HTMLVideoElement
+        video.play()
+    }
+
+    pauseVideo() {
+        console.log("Pause")
+        const video = this.$refs['video'] as HTMLVideoElement
+        video.pause()
+    }
+
+
 }
 </script>
 
 <style lang="scss" scoped>
-.container {
-    @apply flex justify-center w-fit;
-}
-
-.flip-card {
-    @apply w-full min-h-max;
-    @apply h-[24rem] sm:h-[28rem] sm:w-[24rem] w-[18rem];
-    perspective: 1000px;
-
-    .inner {
-        @apply w-full h-full relative transition-transform duration-700;
-        transform-style: preserve-3d;
-
-        .front, .back {
-            @apply h-full w-full absolute dark:bg-[#05051b] bg-[#05051b] justify-center rounded-lg text-white;
-            -webkit-backface-visibility: hidden;
-            backface-visibility: hidden;
-        }
-
-        .back {
-            @apply p-8 bg-black text-white;
-            transform: rotateY(180deg);
-        }
-    }
-
-    &:hover {
-        .inner {
-            transform: rotateY(180deg);
-        }
-    }
-}
 
 .card-front {
-    @apply flex flex-col overflow-hidden;
-}
-
-.card-back {
-    @apply flex flex-col overflow-hidden;
+    @apply flex flex-col overflow-hidden h-[28rem] sm:h-[34rem] sm:w-[24rem] w-[18rem] shadow-xl shadow-primary transform transition duration-500;
+    &:hover {
+        @apply md:shadow-2xl md:shadow-primary cursor-pointer  md:scale-110
+    }
 }
 
 .title-date {
@@ -124,12 +112,8 @@ export default class DCard extends Vue {
     @apply mb-2
 }
 
-.info-list {
-    @apply overflow-hidden text-ellipsis list-disc list-inside line-clamp-9;
-}
-
 .desc {
-    @apply text-gray-700 text-base dark:text-white flex justify-around overflow-hidden text-ellipsis line-clamp-3;
+    @apply text-gray-300 text-base dark:text-white flex justify-around overflow-hidden text-ellipsis line-clamp-3;
     display: -webkit-box;
     -webkit-box-orient: vertical;
 }
@@ -142,10 +126,6 @@ export default class DCard extends Vue {
     @apply flex grow justify-start
 }
 
-.container-button {
-    @apply grow flex flex-col items-end justify-end
-}
-
 .money-raise {
     @apply text-primary
 }
@@ -154,7 +134,15 @@ export default class DCard extends Vue {
     @apply mb-2
 }
 
+.container-bottom {
+    @apply flex flex-row justify-between
+}
+
+.container-goal {
+    @apply flex flex-col justify-between
+}
+
 .progress {
-    @apply mt-2 mb-2
+    @apply mt-2 mb-8
 }
 </style>
