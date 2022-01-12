@@ -84,7 +84,7 @@ ul {
         top: 50%;
         transform: translateY(-50%);
         border-radius: 9999px;
-        @apply bg-black dark:bg-white
+        @apply bg-slate-400 dark:bg-white
     }
 
     li {
@@ -101,7 +101,7 @@ ul {
 
     li:not(.left) {
         @apply sm:translate-x-[calc(50%-1px)];
-        @apply border-black dark:border-white border-solid border-l-[1px];
+        @apply border-slate-400 dark:border-white border-solid border-l-[1px];
         padding-left: 32px;
 
         &:before {
@@ -112,7 +112,7 @@ ul {
 
     li.left {
         @apply sm:-translate-x-1/2;
-        @apply border-black dark:border-white border-solid border-l-[1px] pl-[32px];
+        @apply border-slate-400 dark:border-white border-solid border-l-[1px] pl-[32px];
         @apply sm:border-l-0 sm:border-r-[1px] sm:pl-[0px] sm:pl-[32px] sm:pr-[32px];
 
         &:after {
