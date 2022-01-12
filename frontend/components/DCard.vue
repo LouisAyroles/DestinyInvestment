@@ -94,7 +94,7 @@ export default class DCard extends Vue {
 <style lang="scss" scoped>
 
 .card-front {
-    @apply flex flex-col overflow-hidden h-[28rem] sm:h-[34rem] sm:w-[24rem] w-[18rem] shadow-xl shadow-primary transform transition duration-500;
+    @apply flex flex-col overflow-hidden h-[28rem] sm:h-[31rem] sm:w-[24rem] w-[18rem] shadow-xl shadow-primary transform transition duration-500;
     &:hover {
         @apply md:shadow-2xl md:shadow-primary cursor-pointer  md:scale-110
     }
@@ -113,7 +113,7 @@ export default class DCard extends Vue {
 }
 
 .desc {
-    @apply text-gray-300 text-base dark:text-white flex justify-around overflow-hidden text-ellipsis line-clamp-3;
+    @apply text-gray-400 text-base dark:text-white flex justify-around overflow-hidden text-ellipsis line-clamp-3;
     display: -webkit-box;
     -webkit-box-orient: vertical;
 }

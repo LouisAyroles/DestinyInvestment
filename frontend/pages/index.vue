@@ -324,7 +324,8 @@ export default class IndexPage extends mixins(aosMixin) {
 }
 
 .home-section {
-    @apply mt-20 flex flex-col content-center  p-6
+    @apply mt-20 flex flex-col content-center  p-6 xl:bg-[url('@/assets/infography/bg.png')];
+    background-repeat: no-repeat;
 }
 
 .main-section-container {

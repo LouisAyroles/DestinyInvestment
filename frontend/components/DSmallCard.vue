@@ -53,7 +53,7 @@ export default class DSmallCard extends Vue {
 }
 
 .desc {
-    @apply dark:text-gray-400 text-gray-400 grow text-center
+    @apply dark:text-gray-400 text-gray-400 grow text-center text-sm xl:text-base text-justify
 }
 
 .icon {
