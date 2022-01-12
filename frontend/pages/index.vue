@@ -1,13 +1,15 @@
 <template>
     <div class="sections h-full">
+        <!--App bar-->
+        <d-app-bar current-page="Home" class="fixed top-0 left-0 right-0"/>
+
         <!--Main section-->
-        <d-app-bar class="fixed top-0 left-0 right-0"/>
         <d-section id="home" class="home-section">
             <div class="main-section-container overflow-x-hidden">
                 <div data-aos="fade-right" data-aos-duration="1000" class="main-left-panel">
                     <h1 class="main-title">Smart and Secure way<br>to invest !</h1>
                     <h3 class="main-subtitle">Choose between<br>Currency or Crypto</h3>
-                    <d-button class="mt-8" icon="arrow-right-thick">JOIN US</d-button>
+                    <d-button class="mt-8" icon="arrow-right-thick" link-to="/#raise">JOIN US</d-button>
                 </div>
 
                 <div class="main-right-panel">
@@ -18,14 +20,14 @@
 
 
         <!--Raise or invest section-->
-        <d-section class="flex flex-col content-center">
+        <d-section class="flex flex-col content-center p-6" id="raise">
             <div class="raise-or-invest-section-container">
                 <div class="raise-or-invest-left-panel">
                     <h1 data-aos="fade-down" data-aos-duration="1000" class="title-1 sm:max-w-md fade-in">
                         Are you looking to raise capital for your startup ?
                     </h1>
                     <d-button data-aos="zoom-in-up" data-aos-duration="2000" class="raise-or-invest-button"
-                              icon="arrow-right-thick">
+                              link-to="/raise" icon="arrow-right-thick">
                         APPLY TO RAISE
                     </d-button>
                 </div>
@@ -35,7 +37,7 @@
                         Are you looking to invest in innovative projects?
                     </h1>
                     <d-button data-aos="zoom-in-up" data-aos-duration="2000" class="raise-or-invest-button"
-                              icon="arrow-right-thick">
+                              link-to="/invest" icon="arrow-right-thick">
                         APPLY TO INVEST
                     </d-button>
                 </div>
@@ -44,8 +46,9 @@
 
 
         <!--Launching soon section-->
-        <d-section class="flex flex-col">
+        <d-section class="flex flex-col p-6">
             <h1 class="title-1 grow-0 m-6">Launching soon</h1>
+            <h2 class="subtitle">Discover our uncut diamonds</h2>
             <div class="project-cards grow">
                 <template v-for="project in projects">
                     <d-card :key="project.id" :project="project"/>
@@ -53,17 +56,8 @@
             </div>
         </d-section>
 
-
-        <!--Timeline section-->
-        <d-section class="flex flex-col content-center">
-            <h1 class="title-1 grow-0 uppercase">Roadmap</h1>
-            <h2 class="subtitle">Our timelines details</h2>
-            <d-road-map class="grow" :events="roadMapEvents"/>
-        </d-section>
-
-
         <!--Why choose us section-->
-        <d-section class="flex flex-col content-around">
+        <d-section class="flex flex-col content-around p-6">
             <h1 class="title-1">Why choose us ?</h1>
             <h2 class="subtitle">We’ve built a platform where startup meet capital</h2>
 
@@ -75,9 +69,16 @@
             </div>
         </d-section>
 
+        <!--Timeline section-->
+        <d-section class="flex flex-col content-center p-6">
+            <h1 class="title-1 grow-0 uppercase">Roadmap</h1>
+            <h2 class="subtitle">Our timelines details</h2>
+            <d-road-map class="grow" :events="roadMapEvents"/>
+        </d-section>
+
 
         <!--Mail section-->
-        <d-section class="flex flex-col" id="contact">
+        <d-section class="flex flex-col p-6" id="contact">
             <div class="mail-container">
                 <h1 class="title-1">Are you on the list?</h1>
                 <div class="button-mail-container">
@@ -296,7 +297,7 @@ export default class IndexPage extends mixins(aosMixin) {
 }
 
 .home-section {
-    @apply mt-20 flex flex-col content-center
+    @apply mt-20 flex flex-col content-center  p-6
 }
 
 .main-section-container {
