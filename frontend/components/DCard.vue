@@ -1,12 +1,15 @@
 <template>
     <div v-observe-visibility="playVideoOnMobile" @mouseover="playVideo" @mouseleave="pauseVideo" @blur="pauseVideo"
-         class="card-front front rounded-lg">
+         class="relative card-front front rounded-lg">
         <video ref="video" loop muted>
             <source
                 :src="require(`@/assets/projects/${project.video}`)"
                 type="video/mp4"/>
         </video>
-        <div class="container-desc">
+        <div class="logo-container">
+            <img class="logo" :alt="project.title" :src="require(`@/assets/projects/${project.logo}`)"/>
+        </div>
+        <div class=" container-desc">
             <div class="container-title">
                 <div>
                     <div class="title-date">
@@ -31,7 +34,7 @@
                         <span>12 </span>
                     </div>
                     <div class="flex items-end">
-                        <d-button icon="account-star"></d-button>
+                        <d-button link-to="/invest" icon="account-star"></d-button>
                     </div>
                 </div>
             </div>
@@ -50,6 +53,7 @@ export interface Project {
     id: number,
     video: string,
     title: string,
+    logo: string,
     short_desc: string,
     available_date: string,
     goal_raise: number,
@@ -67,7 +71,6 @@ export default class DCard extends Vue {
     playVideoOnMobile(isVisible: boolean) {
         if (screen.width < 1024) {
             if (isVisible) {
-                console.log("isVisble")
                 this.playVideo()
             } else {
                 this.pauseVideo()
@@ -76,13 +79,11 @@ export default class DCard extends Vue {
     }
 
     playVideo() {
-        console.log("Play")
         const video = this.$refs['video'] as HTMLVideoElement
         video.play()
     }
 
     pauseVideo() {
-        console.log("Pause")
         const video = this.$refs['video'] as HTMLVideoElement
         video.pause()
     }
@@ -94,10 +95,18 @@ export default class DCard extends Vue {
 <style lang="scss" scoped>
 
 .card-front {
-    @apply flex flex-col overflow-hidden h-[28rem] sm:h-[31rem] sm:w-[24rem] w-[18rem] shadow-xl shadow-primary transform transition duration-500;
+    @apply flex flex-col overflow-hidden h-[28rem]  w-[17rem] sm:h-[31rem] sm:w-[24rem] shadow-xl shadow-primary transform transition duration-500;
     &:hover {
         @apply md:shadow-2xl md:shadow-primary cursor-pointer  md:scale-110
     }
+}
+
+.logo-container {
+    @apply flex justify-center absolute rounded-full h-12 w-12 right-28 top-32 sm:right-44 sm:top-48 bg-slate-100 shadow-lg shadow-slate-500
+}
+
+.logo {
+    @apply h-8 w-8 place-self-center;
 }
 
 .title-date {
@@ -119,7 +128,7 @@ export default class DCard extends Vue {
 }
 
 .container-desc {
-    @apply flex flex-col justify-between grow p-3
+    @apply flex flex-col justify-between grow p-3 pt-8
 }
 
 .container-title {

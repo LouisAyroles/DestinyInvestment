@@ -12,7 +12,7 @@
                     <h1 class="main-title2 "><span class="hidden sm:inline"> in </span> <span class="slider"
                                                                                               ref="slider"> </span></h1>
                     <h3 class="main-subtitle">Reach now for the moon </h3>
-                    <d-button class="mt-8 text-white" background="$primary-dark" :gradient="false"
+                    <d-button class="mt-8 text-white" :gradient="false"
                               icon="arrow-right-thick" link-to="/#raise">JOIN
                         US
                     </d-button>
@@ -168,6 +168,7 @@ export default class IndexPage extends mixins(aosMixin) {
         id: 1,
         video: "small.mp4",
         title: "Psst..!",
+        logo: "psst.png",
         short_desc: "Psst..! est une application indispensable pour vos futures découvertes",
         available_date: "20/01/2022",
         money_raised: 20321,
@@ -181,6 +182,7 @@ export default class IndexPage extends mixins(aosMixin) {
         id: 2,
         video: "video2.mp4",
         title: "Doggies in town",
+        logo: "chien.png",
         short_desc: "The only app you and your lovely dog will ever need.",
         available_date: "20/01/2022",
         money_raised: 7500,
@@ -197,6 +199,7 @@ export default class IndexPage extends mixins(aosMixin) {
         id: 3,
         video: "video3.mp4",
         title: "Towni",
+        logo: "town.png",
         short_desc: "Towni is THE applicaiton that you need to find you dream appartment !",
         available_date: "20/01/2022",
         money_raised: 20321,
