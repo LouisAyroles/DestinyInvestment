@@ -108,7 +108,7 @@ export default class DAppBar extends Vue {
 
 <style lang="scss" scoped>
 .title-company {
-    @apply text-base lg:text-2xl text-black dark:text-white text-center;
+    @apply text-base lg:text-xl text-black dark:text-white text-center;
 }
 
 .margin {
@@ -138,7 +138,7 @@ export default class DAppBar extends Vue {
 }
 
 .title {
-    @apply hover:text-secondary px-3 py-2 md:text-2xl text-lg font-medium
+    @apply hover:text-secondary px-3 py-2 md:text-xl text-lg font-medium
 }
 
 .titleHome {

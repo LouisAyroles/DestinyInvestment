@@ -280,7 +280,7 @@ export default class IndexPage extends mixins(aosMixin) {
         @apply bg-gradient-to-r from-transparent via-black dark:via-white to-transparent;
 
         &:not(.horizontal-only) {
-            @apply sm:absolute sm:left-2/4 sm:h-3/5 sm:w-[2px];
+            @apply sm:absolute sm:left-2/4 sm:h-3/5 sm:w-[1px];
             @apply sm:bg-gradient-to-t;
         }
     }
