@@ -72,7 +72,6 @@ export default class DButton extends Vue {
     .mdi {
         @apply bg-transparent
     }
-
-    @apply bg-[#5D1198]
+    @apply bg-primary-dark;
 }
 </style>

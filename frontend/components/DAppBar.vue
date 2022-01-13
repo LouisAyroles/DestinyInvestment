@@ -35,7 +35,7 @@
                                 :key="index"
                                 :to="item.href"
                                 class="title"
-                                :class="{'text-primary': item.title === currentPage}">
+                                :class="{'text-primary-dark': item.title === currentPage}">
                                 {{ item.title }}
                             </nuxt-link>
                         </div>

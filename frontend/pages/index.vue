@@ -12,7 +12,8 @@
                     <h1 class="main-title2 "><span class="hidden sm:inline"> in </span> <span class="slider"
                                                                                               ref="slider"> </span></h1>
                     <h3 class="main-subtitle">Reach now for the moon </h3>
-                    <d-button class="mt-8 text-white" :gradient="false" icon="arrow-right-thick" link-to="/#raise">JOIN
+                    <d-button class="mt-8 text-white" background="$primary-dark" :gradient="false"
+                              icon="arrow-right-thick" link-to="/#raise">JOIN
                         US
                     </d-button>
                 </div>
@@ -29,7 +30,7 @@
             <div class="raise-or-invest-section-container">
                 <div class="raise-or-invest-left-panel">
                     <h1 data-aos="fade-down" data-aos-duration="1000" class="title-1 sm:max-w-md fade-in">
-                        Are you looking <b> to raise</b> capital for your startup ?
+                        Are you looking <span class="text-primary"> <b> to raise</b></span> capital for your startup ?
                     </h1>
                     <d-button data-aos="zoom-in-up" data-aos-duration="2000" class="raise-or-invest-button"
                               link-to="/raise" icon="arrow-right-thick">
@@ -39,7 +40,7 @@
                 <div class="divider"></div>
                 <div class="raise-or-invest-right-panel">
                     <h1 data-aos="fade-down" data-aos-duration="1000" class="title-1 sm:max-w-md">
-                        Are you looking <b> to invest </b> in innovative projects?
+                        Are you looking <span class="text-primary"> <b> to invest</b></span> in innovative projects?
                     </h1>
                     <d-button data-aos="zoom-in-up" data-aos-duration="2000" class="raise-or-invest-button"
                               link-to="/invest" icon="arrow-right-thick">
