@@ -178,7 +178,7 @@ export default class IndexPage extends mixins(aosMixin) {
         ]
     }, {
         id: 2,
-        video: "small.mp4",
+        video: "video2.mp4",
         title: "Doggies in town",
         short_desc: "The only app you and your lovely dog will ever need.",
         available_date: "20/01/2022",
@@ -194,7 +194,7 @@ export default class IndexPage extends mixins(aosMixin) {
         ]
     }, {
         id: 3,
-        video: "small.mp4",
+        video: "video3.mp4",
         title: "Towni",
         short_desc: "Towni is THE applicaiton that you need to find you dream appartment !",
         available_date: "20/01/2022",
