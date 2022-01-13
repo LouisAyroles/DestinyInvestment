@@ -18,7 +18,7 @@
                 </div>
 
                 <div class="main-right-panel">
-                    <img data-aos="fade-left" data-aos-offset="-200" src="@/assets/infography/main.png" alt="destiny">
+                    <img data-aos="fade-left" data-aos-offset="-200" src="@/assets/infography/main.svg" alt="destiny">
                 </div>
             </div>
         </d-section>
@@ -274,17 +274,18 @@ export default class IndexPage extends mixins(aosMixin) {
     .raise-or-invest-button {
         @apply sm:mt-20 mt-8 dark:text-black text-white
     }
-}
 
-.divider {
-    @apply w-3/5 h-[1px] flex;
-    @apply bg-gradient-to-r from-transparent via-black dark:via-white to-transparent;
+    .divider {
+        @apply w-3/5 h-[1px] flex;
+        @apply bg-gradient-to-r from-transparent via-black dark:via-white to-transparent;
 
-    &:not(.horizontal-only) {
-        @apply sm:absolute sm:left-2/4 sm:h-3/5 sm:w-[1px];
-        @apply sm:bg-gradient-to-t;
+        &:not(.horizontal-only) {
+            @apply sm:absolute sm:left-2/4 sm:h-3/5 sm:w-[2px];
+            @apply sm:bg-gradient-to-t;
+        }
     }
 }
+
 
 .mail-container {
     @apply grow flex flex-col justify-around items-center;
@@ -324,7 +325,7 @@ export default class IndexPage extends mixins(aosMixin) {
 }
 
 .home-section {
-    @apply mt-20 flex flex-col content-center  p-6 xl:bg-[url('@/assets/infography/bg.png')];
+    @apply mt-20 flex flex-col content-center  p-6 2xl:bg-[url('@/assets/infography/bg.svg')] md:bg-[url('@/assets/infography/bg-md.svg')];
     background-repeat: no-repeat;
 }
 
