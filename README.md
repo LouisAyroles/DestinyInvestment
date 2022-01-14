@@ -137,8 +137,8 @@ Distributed under the MIT License.
 <!-- CONTACT -->
 ## Contact
 
-Louis Ayroles - louis.ayroles@master-developpement-logiciel.fr
-Axel Laffite - axel.laffite@master-developpement-logiciel.fr
+* Louis Ayroles - louis.ayroles@master-developpement-logiciel.fr
+* Axel Laffite - axel.laffite@master-developpement-logiciel.fr
 
 Project Link: [Portfolio](https://louis-ayroles.herokuapp.com)
 
