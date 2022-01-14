@@ -278,15 +278,15 @@ export default class IndexPage extends mixins(aosMixin) {
     .raise-or-invest-button {
         @apply sm:mt-20 mt-8 dark:text-black text-white
     }
+}
 
-    .divider {
-        @apply w-3/5 h-[1px] flex;
-        @apply bg-gradient-to-r from-transparent via-black dark:via-white to-transparent;
+.divider {
+    @apply w-3/5 h-[1px] flex;
+    @apply bg-gradient-to-r from-transparent via-black dark:via-white to-transparent;
 
-        &:not(.horizontal-only) {
-            @apply sm:absolute sm:left-2/4 sm:h-3/5 sm:w-[1px];
-            @apply sm:bg-gradient-to-t;
-        }
+    &:not(.horizontal-only) {
+        @apply sm:absolute sm:left-2/4 sm:h-3/5 sm:w-[1px];
+        @apply sm:bg-gradient-to-t;
     }
 }
 
