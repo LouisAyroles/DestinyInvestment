@@ -146,7 +146,7 @@ export default class DAppBar extends Vue {
 }
 
 .mobile-title {
-    @apply text-gray-300 hover:text-secondary block px-3 py-2 rounded-md text-base font-medium
+    @apply text-slate-600 hover:text-secondary block px-3 py-2 rounded-md text-base font-medium
 }
 
 .menu-items {

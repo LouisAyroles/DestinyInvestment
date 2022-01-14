@@ -72,10 +72,6 @@ export default class DStepper extends Vue {
 
 .step {
     @apply flex items-center text-center rounded-full h-12 w-12 border-2 dark:border-white border-slate-300 shadow-md;
-    @apply transition duration-500;
-    &:hover {
-        @apply shadow-xl scale-110 cursor-pointer;
-    }
 }
 
 .icon {
@@ -91,11 +87,11 @@ export default class DStepper extends Vue {
 }
 
 .mobile {
-    @apply flex items-center text-center rounded-full m-4 h-12 w-12 border-2 border-white grow
+    @apply flex items-center text-center rounded-full m-4 h-12 w-12 border-2 dark:border-white border-slate-300 grow shadow-md
 }
 
 .icon-mobile {
-    @apply grow rounded-full text-white
+    @apply grow rounded-full dark:text-white text-primary-dark
 }
 
 .title-mobile {
@@ -103,7 +99,7 @@ export default class DStepper extends Vue {
 }
 
 .subtitle-mobile {
-    @apply text-center w-32 text-xs text-white font-medium uppercase
+    @apply text-center w-32 text-xs dark:text-white text-primary-dark font-medium uppercase
 }
 
 @mixin line {
