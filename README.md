@@ -155,4 +155,4 @@ Project Link: [Destiny Investment](https://destinyInvestment.com)
 
 <!-- MARKDOWN LINKS & IMAGES -->
 [linkedin-url]: https://www.linkedin.com/in/louis-ayroles-4123b9200/
-[product-screenshot]: https://github.com/LouisAyroles/DestinyInvestment/blob/small_changes/frontend/assets/infography/main.svg
+[product-screenshot]: frontend/assets/screens/screen.png
