@@ -30,6 +30,6 @@ export default class DProgress extends Vue {
 }
 
 .overall {
-    @apply overflow-hidden h-2 text-xs flex rounded dark:bg-white
+    @apply overflow-hidden h-2 text-xs flex rounded dark:bg-white bg-slate-200
 }
 </style>

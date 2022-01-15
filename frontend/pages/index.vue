@@ -5,15 +5,21 @@
 
         <!--Main section-->
         <d-section id="home" class="home-section">
-            <div class="main-section-container overflow-x-hidden">
+            <div class="main-section-container">
                 <div data-aos="fade-right" data-aos-duration="1000" class="main-left-panel">
-                    <h1 class="main-title">Smart and Secure way<br>to invest !</h1>
-                    <h3 class="main-subtitle">Choose between<br>Currency or Crypto</h3>
-                    <d-button class="mt-8" icon="arrow-right-thick" link-to="/#raise">JOIN US</d-button>
+                    <h1 class="main-title">Smart and Secure</h1>
+                    <h1 class="main-title">way to invest <span class="inline sm:hidden"> in </span></h1>
+                    <h1 class="main-title2 "><span class="hidden sm:inline"> in </span> <span class="slider"
+                                                                                              ref="slider"> </span></h1>
+                    <h3 class="main-subtitle">Reach now for the moon </h3>
+                    <d-button class="mt-8 text-white" :gradient="false"
+                              icon="arrow-right-thick" link-to="/#raise">JOIN
+                        US
+                    </d-button>
                 </div>
 
                 <div class="main-right-panel">
-                    <img data-aos="fade-left" data-aos-duration="1000" src="@/assets/infography/main.png" alt="destiny">
+                    <img data-aos="fade-left" data-aos-offset="-200" src="@/assets/infography/main.svg" alt="destiny">
                 </div>
             </div>
         </d-section>
@@ -24,7 +30,7 @@
             <div class="raise-or-invest-section-container">
                 <div class="raise-or-invest-left-panel">
                     <h1 data-aos="fade-down" data-aos-duration="1000" class="title-1 sm:max-w-md fade-in">
-                        Are you looking to raise capital for your startup ?
+                        Are you looking <span class="text-primary"> <b> to raise</b></span> capital for your startup ?
                     </h1>
                     <d-button data-aos="zoom-in-up" data-aos-duration="2000" class="raise-or-invest-button"
                               link-to="/raise" icon="arrow-right-thick">
@@ -34,7 +40,7 @@
                 <div class="divider"></div>
                 <div class="raise-or-invest-right-panel">
                     <h1 data-aos="fade-down" data-aos-duration="1000" class="title-1 sm:max-w-md">
-                        Are you looking to invest in innovative projects?
+                        Are you looking <span class="text-primary"> <b> to invest</b></span> in innovative projects?
                     </h1>
                     <d-button data-aos="zoom-in-up" data-aos-duration="2000" class="raise-or-invest-button"
                               link-to="/invest" icon="arrow-right-thick">
@@ -64,7 +70,7 @@
             <div class="cards">
                 <template v-for="(info, index) in information">
                     <d-small-card :information="info" :key="index"
-                                  background-color-class="bg-gray-200 dark:bg-gray-900"/>
+                                  background-color-class="bg-white dark:bg-gray-900"/>
                 </template>
             </div>
         </d-section>
@@ -120,27 +126,27 @@ import {mixins} from "vue-class-component";
 export default class IndexPage extends mixins(aosMixin) {
     readonly information: Information[] = [{
         title: 'Secure user data and transaction',
-        desc: 'Lorem ipsum dolor sit amet, consect adipiscing elit, sed do eiusmod tempor incidiunt ut labore et dolore',
+        desc: 'We have created a system and an electronic protocol to ensure the integrity and security of transactions. The main objective is to protect the transactions of your investments.',
         icon: 'secure.png'
     }, {
         title: 'Most credibility cause exclusivity',
-        desc: 'Lorem ipsum dolor sit amet, consect adipiscing elit, sed do eiusmod tempor incidiunt ut labore et dolore',
+        desc: 'A chance to be part of an exclusive network, carefully selected according to the criteria and objectives of each member. The best thing to connect our members.',
         icon: 'wall.png'
     }, {
         title: 'Grown your network',
-        desc: 'Lorem ipsum dolor sit amet, consect adipiscing elit, sed do eiusmod tempor incidiunt ut labore et dolore',
+        desc: 'You are connected with hundreds of high-calibre investors and startups that you can discuss with in complete discretion on our platform.',
         icon: 'analysis.png'
     }, {
         title: 'Invest in innovative projects',
-        desc: 'Lorem ipsum dolor sit amet, consect adipiscing elit, sed do eiusmod tempor incidiunt ut labore et dolore',
+        desc: 'All the startups integrated in our platform required a detailed analysis and a deep research of the quality of the project in relation with your criteria.',
         icon: 'invest.png'
     }, {
         title: 'Physical meeting',
-        desc: 'Lorem ipsum dolor sit amet, consect adipiscing elit, sed do eiusmod tempor incidiunt ut labore et dolore',
+        desc: 'We regularly organise meetings to encourage our networks to meet. They will be held in your cities and countries.',
         icon: 'secure.png'
     }, {
         title: '24/7 support',
-        desc: 'Lorem ipsum dolor sit amet, consect adipiscing elit, sed do eiusmod tempor incidiunt ut labore et dolore',
+        desc: 'Wherever you are, we will reply to you by email or by calling the number in the contacts section. It will be a pleasure to talk to you in person.',
         icon: 'support.png'
     }]
 
@@ -160,8 +166,9 @@ export default class IndexPage extends mixins(aosMixin) {
 
     readonly projects: Project[] = [{
         id: 1,
-        image: "first.jpg",
+        video: "small.mp4",
         title: "Psst..!",
+        logo: "psst.png",
         short_desc: "Psst..! est une application indispensable pour vos futures découvertes",
         available_date: "20/01/2022",
         money_raised: 20321,
@@ -173,8 +180,9 @@ export default class IndexPage extends mixins(aosMixin) {
         ]
     }, {
         id: 2,
-        image: "second.jpg",
+        video: "video2.mp4",
         title: "Doggies in town",
+        logo: "chien.png",
         short_desc: "The only app you and your lovely dog will ever need.",
         available_date: "20/01/2022",
         money_raised: 7500,
@@ -189,8 +197,9 @@ export default class IndexPage extends mixins(aosMixin) {
         ]
     }, {
         id: 3,
-        image: "third.jpg",
+        video: "video3.mp4",
         title: "Towni",
+        logo: "town.png",
         short_desc: "Towni is THE applicaiton that you need to find you dream appartment !",
         available_date: "20/01/2022",
         money_raised: 20321,
@@ -201,6 +210,28 @@ export default class IndexPage extends mixins(aosMixin) {
             'Notre job: Fullstack transformation recruiter'
         ]
     }]
+
+    word: number = 0;
+
+    readonly investIn: string[] = [
+        "Greentech", "Sportech", "Fintech", "Blockchain", "E-commerce", "Edtech", "Cyber-security", "Artifical Intelligence"
+    ]
+
+    mounted() {
+        this.next()
+    }
+
+    next() {
+        const slider = this.$refs['slider'] as HTMLElement
+        slider.classList.add('hide');
+        setInterval(() => this.changeText(slider), 2000)
+        setInterval(() => slider.classList.remove('hide'), 2000)
+    }
+
+    changeText(slider: HTMLElement) {
+        slider.textContent = this.investIn[this.word];
+        this.word = (this.word + 1) % this.investIn.length;
+    }
 }
 
 </script>
@@ -221,7 +252,7 @@ export default class IndexPage extends mixins(aosMixin) {
 }
 
 .subtitle {
-    @apply dark:text-gray-400 text-center mb-8 mt-2
+    @apply dark:text-gray-400 text-gray-400 text-center mb-8 mt-2
 }
 
 .project-cards {
@@ -237,27 +268,28 @@ export default class IndexPage extends mixins(aosMixin) {
     @apply sm:grid sm:grid-cols-2;
 
     .raise-or-invest-left-panel {
-        @apply grid justify-items-center
+        @apply grid justify-items-center mb-10 sm:mb-0
     }
 
     .raise-or-invest-right-panel {
-        @apply grid justify-items-center
+        @apply grid justify-items-center mt-6 sm:mt-0
     }
 
     .raise-or-invest-button {
-        @apply sm:mt-20 mt-8
+        @apply sm:mt-20 mt-8 dark:text-black text-white
     }
 }
 
 .divider {
     @apply w-3/5 h-[1px] flex;
-    @apply bg-gradient-to-r from-transparent via-white to-transparent;
+    @apply bg-gradient-to-r from-transparent via-black dark:via-white to-transparent;
 
     &:not(.horizontal-only) {
         @apply sm:absolute sm:left-2/4 sm:h-3/5 sm:w-[1px];
         @apply sm:bg-gradient-to-t;
     }
 }
+
 
 .mail-container {
     @apply grow flex flex-col justify-around items-center;
@@ -297,26 +329,47 @@ export default class IndexPage extends mixins(aosMixin) {
 }
 
 .home-section {
-    @apply mt-20 flex flex-col content-center  p-6
+    @apply mt-20 flex flex-col content-center  p-6 2xl:bg-[url('@/assets/infography/bg.svg')] md:bg-[url('@/assets/infography/bg-md.svg')];
+    background-repeat: no-repeat;
 }
 
 .main-section-container {
-    @apply grow h-full grid grid-cols-1 grid-rows-1 md:grid-cols-2 place-items-center p-10;
+    @apply grow h-full grid grid-cols-1 md:grid-cols-2 place-items-center px-10 md:px-0;
     .main-left-panel {
-        @apply order-2 md:order-1 grid justify-items-center md:justify-items-start;
+        @apply grid justify-items-center md:justify-items-start w-full xl:ml-40 2xl:ml-96;
+    }
 
+    .button {
+        @apply rounded-full block w-fit;
+        @apply px-5 py-2 font-medium uppercase;
+        @apply transform transition duration-200 hover:scale-105;
     }
 
     .main-right-panel {
-        @apply order-1 md:order-2 md:lg:scale-125 md:mb-0 mb-16
+        @apply md:mb-0 mt-8 scale-125 sm:scale-100
     }
 
     .main-title {
-        @apply text-3xl md:text-6xl text-center md:text-left text-black dark:text-white
+        @apply text-xl md:text-3xl xl:text-6xl text-center md:text-left text-black dark:text-white
+    }
+
+    .main-title2 {
+        @apply text-xl md:text-3xl xl:text-6xl text-center md:text-left text-black dark:text-white;
+        white-space: nowrap;
+    }
+
+    .slider {
+        @apply rounded-lg text-xl md:text-3xl xl:text-6xl text-center md:text-left text-[#f9bd49] font-bold w-[45rem];
+        opacity: 1;
+        transition: all 1s;
+
+        &.hide {
+            opacity: 0;
+        }
     }
 
     .main-subtitle {
-        @apply mt-8 text-center md:text-2xl sm:text-left
+        @apply mt-8 text-center text-xs md:text-lg xl:text-2xl sm:text-left
     }
 }
 
@@ -331,6 +384,7 @@ export default class IndexPage extends mixins(aosMixin) {
 }
 
 html, body {
+    font-family: 'Poppins', sans-serif;
     /* Common theme */
     @apply p-0 min-w-full min-h-full h-full;
     /* Light theme */

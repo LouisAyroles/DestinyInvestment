@@ -1,5 +1,5 @@
 <template>
-    <nav ref="menu" class="backdrop-blur-sm z-50 animated bg-black">
+    <nav ref="menu" class="backdrop-blur-sm z-50 animated">
         <div class="margin z-30">
             <div class="content">
                 <div class="center">
@@ -23,8 +23,10 @@
                 </div>
                 <div class="items">
                     <div class="logos">
-                        <a href="/"><img class="logo" src="@/assets/logos/destinylogo.png" alt="Destiny"></a>
-                        <a href="/"><img class="full-logo" src="@/assets/logos/destinyfullLogo.png" alt="Destiny"></a>
+                        <a href="/"><img class="logo" src="@/assets/logos/logo.svg" alt="Destiny"></a>
+                        <a class="hidden md:flex flex flex-row items-center md:ml-4 lg:ml-8 2xl:ml-0" href="/"><img
+                            class="full-logo" src="@/assets/logos/logo.svg" alt="Destiny">
+                            <span class="title-company"> Destiny Investment</span></a>
                     </div>
                     <div class="menu-items">
                         <div class="flex space-x-4">
@@ -33,7 +35,7 @@
                                 :key="index"
                                 :to="item.href"
                                 class="title"
-                                :class="{'text-primary': item.title === currentPage}">
+                                :class="{'text-primary-dark': item.title === currentPage}">
                                 {{ item.title }}
                             </nuxt-link>
                         </div>
@@ -105,6 +107,10 @@ export default class DAppBar extends Vue {
 </script>
 
 <style lang="scss" scoped>
+.title-company {
+    @apply text-base lg:text-xl text-black dark:text-white text-center;
+}
+
 .margin {
     @apply max-w-7xl mx-auto px-2 sm:px-6 lg:px-8;
 }
@@ -132,7 +138,7 @@ export default class DAppBar extends Vue {
 }
 
 .title {
-    @apply hover:text-secondary px-3 py-2 rounded-md text-lg font-medium
+    @apply hover:text-secondary px-3 py-2 md:text-xl text-lg font-medium
 }
 
 .titleHome {
@@ -140,7 +146,7 @@ export default class DAppBar extends Vue {
 }
 
 .mobile-title {
-    @apply text-gray-300 hover:text-secondary block px-3 py-2 rounded-md text-base font-medium
+    @apply text-slate-600 hover:text-secondary block px-3 py-2 rounded-md text-base font-medium
 }
 
 .menu-items {
@@ -148,15 +154,15 @@ export default class DAppBar extends Vue {
 }
 
 .logos {
-    @apply flex-shrink-0 flex items-center
+    @apply flex-shrink-0 flex items-center scale-125
 }
 
 .logo {
-    @apply block lg:hidden h-8 w-auto
+    @apply block md:hidden h-8 w-auto
 }
 
 .full-logo {
-    @apply hidden lg:block h-16 w-auto
+    @apply h-6 w-auto xl:h-10
 }
 
 .animated {
