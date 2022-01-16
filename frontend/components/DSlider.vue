@@ -1,10 +1,8 @@
 <template>
-    <div ref="cards" class="cards">
+    <div ref="cards" class="flex items-center">
+        <d-button @click.native="previousStep" class="h-12 text-white" icon="arrow-left"></d-button>
         <slot></slot>
-        <div class="flex flex-row justify-between">
-            <d-button icon="arrow-left"></d-button>
-            <d-button icon="arrow-right"></d-button>
-        </div>
+        <d-button @click.native="nextStep" class="h-12 text-white" icon="arrow-right"></d-button>
     </div>
 </template>
 
@@ -20,6 +18,71 @@ export default class DSlider extends Vue {
 
         return [cardToHide, cardToShow]
     }
+
+    nextStep() {
+        if (this.$parent.$parent.currentStep !== this.$parent.$parent.steps.length - 1) {
+            switch (this.$parent.$parent.currentStep) {
+                case 0: {
+                    this.$parent.$parent.$refs['first-card'].classList.add('hidden')
+                    this.$parent.$parent.$refs['second-card'].classList.remove('hidden')
+                    this.$parent.$parent.$refs['second-card'].classList.add('relative')
+                    break
+                }
+                case 1: {
+                    this.$parent.$parent.$refs['second-card'].classList.add('hidden')
+                    this.$parent.$parent.$refs['third-card'].classList.remove('hidden')
+                    this.$parent.$parent.$refs['third-card'].classList.add('relative')
+                    break
+                }
+                case 2: {
+                    this.$parent.$parent.$refs['third-card'].classList.add('hidden')
+                    this.$parent.$parent.$refs['fourth-card'].classList.remove('hidden')
+                    this.$parent.$parent.$refs['fourth-card'].classList.add('relative')
+                    break
+                }
+                case 3: {
+                    this.$parent.$parent.$refs['fourth-card'].classList.add('hidden')
+                    this.$parent.$parent.$refs['fifth-card'].classList.remove('hidden')
+                    this.$parent.$parent.$refs['fifth-card'].classList.add('relative')
+                    break
+                }
+            }
+            this.$parent.$parent.currentStep = (this.$parent.$parent.currentStep + 1) % this.$parent.$parent.steps.length
+        }
+    }
+
+    previousStep() {
+        if (this.$parent.$parent.currentStep !== 0) {
+            switch (this.$parent.$parent.currentStep) {
+                case 1: {
+                    this.$parent.$parent.$refs['second-card'].classList.add('hidden')
+                    this.$parent.$parent.$refs['first-card'].classList.remove('hidden')
+                    this.$parent.$parent.$refs['first-card'].classList.add('relative')
+                    break
+                }
+                case 2: {
+                    this.$parent.$parent.$refs['third-card'].classList.add('hidden')
+                    this.$parent.$parent.$refs['second-card'].classList.remove('hidden')
+                    this.$parent.$parent.$refs['second-card'].classList.add('relative')
+                    break
+                }
+                case 3: {
+                    this.$parent.$parent.$refs['fourth-card'].classList.add('hidden')
+                    this.$parent.$parent.$refs['third-card'].classList.remove('hidden')
+                    this.$parent.$parent.$refs['third-card'].classList.add('relative')
+                    break
+                }
+                case 4: {
+                    this.$parent.$parent.$refs['fifth-card'].classList.add('hidden')
+                    this.$parent.$parent.$refs['fourth-card'].classList.remove('hidden')
+                    this.$parent.$parent.$refs['fifth-card'].classList.add('relative')
+                    break
+                }
+            }
+            this.$parent.$parent.currentStep = (this.$parent.$parent.currentStep - 1) % this.$parent.$parent.steps.length
+        }
+    }
+
 
     showNextSlide(event: Event) {
         const el = (event.target as HTMLElement | null)?.parentElement
