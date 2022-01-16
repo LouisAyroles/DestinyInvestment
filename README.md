@@ -6,7 +6,7 @@
 <div>
 <div align="center">
   <a>
-    <img src="https://github.com/LouisAyroles/DestinyInvestment/blob/small_changes/frontend/assets/logos/logo.svg" alt="Logo" width="80" height="80">
+    <img src="https://github.com/LouisAyroles/DestinyInvestment/blob/master/frontend/assets/logos/logo.svg" alt="Logo" width="80" height="80">
   </a>
   </div>
 
@@ -78,9 +78,9 @@ Web application which aims to connect start-ups and investors.
    ```sh
    npm install
    ```
-3. Start Angular Server
+3. Start Nuxt Server
    ```sh
-   ng serve
+   ng run dev
    ```
 
 
