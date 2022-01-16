@@ -80,7 +80,7 @@ Web application which aims to connect start-ups and investors.
    ```
 3. Start Nuxt Server
    ```sh
-   ng run dev
+   npm run dev
    ```
 
 
