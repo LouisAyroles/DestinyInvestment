@@ -214,7 +214,7 @@ export default class IndexPage extends mixins(aosMixin) {
     word: number = 0;
 
     readonly investIn: string[] = [
-        "Greentech", "Sportech", "Fintech", "Blockchain", "E-commerce", "Edtech", "Cyber-security", "Artifical Intelligence"
+        "Greentech", "Sportech", "Fintech", "Blockchain", "E-commerce", "Edtech", "Cyber-security", "AI"
     ]
 
     mounted() {
@@ -334,19 +334,21 @@ export default class IndexPage extends mixins(aosMixin) {
 }
 
 .main-section-container {
-    @apply grow h-full grid grid-cols-1 md:grid-cols-2 place-items-center px-10 md:px-0;
+    @apply relative h-full grow grid grid-rows-2 lg:grid-rows-1 md:grid-cols-2 place-items-center md:px-0;
+
     .main-left-panel {
-        @apply grid justify-items-center md:justify-items-start w-full xl:ml-40 2xl:ml-96;
+        @apply flex flex-col grow items-center md:ml-20 md:mt-20 lg:ml-0 lg:mt-0 md:items-start lg:h-full lg:justify-center;
+        @apply z-30;
+    }
+
+    .main-right-panel {
+        @apply absolute bottom-0 right-0 max-w-[100%] sm:max-w-[80%] md:max-w-[60%] lg:max-w-[50%];
     }
 
     .button {
         @apply rounded-full block w-fit;
         @apply px-5 py-2 font-medium uppercase;
         @apply transform transition duration-200 hover:scale-105;
-    }
-
-    .main-right-panel {
-        @apply md:mb-0 mt-8 scale-125 sm:scale-100
     }
 
     .main-title {
