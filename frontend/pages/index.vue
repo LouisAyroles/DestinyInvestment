@@ -329,7 +329,7 @@ export default class IndexPage extends mixins(aosMixin) {
 }
 
 .home-section {
-    @apply mt-20 flex flex-col content-center  p-6 2xl:bg-[url('@/assets/infography/bg.svg')] md:bg-[url('@/assets/infography/bg-md.svg')];
+    @apply mt-20 flex flex-col 2xl:bg-[url('@/assets/infography/bg.svg')] md:bg-[url('@/assets/infography/bg-md.svg')];
     background-repeat: no-repeat;
 }
 
@@ -352,7 +352,7 @@ export default class IndexPage extends mixins(aosMixin) {
     }
 
     .main-title {
-        @apply text-xl md:text-3xl xl:text-6xl text-center md:text-left text-black dark:text-white
+        @apply text-3xl md:text-5xl xl:text-6xl text-center md:text-left text-black dark:text-white
     }
 
     .main-title2 {
@@ -361,7 +361,7 @@ export default class IndexPage extends mixins(aosMixin) {
     }
 
     .slider {
-        @apply rounded-lg text-xl md:text-3xl xl:text-6xl text-center md:text-left text-[#f9bd49] font-bold w-[45rem];
+        @apply rounded-lg text-3xl md:text-5xl xl:text-6xl text-center md:text-left text-[#f9bd49] font-bold w-[45rem];
         opacity: 1;
         transition: all 1s;
 

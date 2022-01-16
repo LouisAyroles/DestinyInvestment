@@ -95,9 +95,9 @@ export default class DCard extends Vue {
 <style lang="scss" scoped>
 
 .card-front {
-    @apply flex flex-col overflow-hidden h-[28rem]  w-[17rem] sm:h-[31rem] sm:w-[24rem] shadow-xl shadow-primary transform transition duration-500;
+    @apply flex flex-col overflow-hidden h-[28rem] w-[17rem] sm:h-[31rem] sm:w-[24rem] dark:shadow-none shadow-xl shadow-primary transform transition duration-500 dark:bg-[#05051b];
     &:hover {
-        @apply md:shadow-2xl md:shadow-primary cursor-pointer  md:scale-110
+        @apply dark:md:shadow-none md:shadow-2xl md:shadow-primary cursor-pointer  md:scale-110
     }
 }
 
