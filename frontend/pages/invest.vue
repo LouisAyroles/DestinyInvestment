@@ -192,11 +192,11 @@ export default class invest extends Vue {
 }
 
 .second-subcard {
-    @apply absolute inset-0 bg-gradient-to-r from-primary-dark to-primary shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl;
+    @apply absolute inset-0 bg-gradient-to-r from-primary-dark to-primary shadow-lg transform -rotate-6 sm:rounded-3xl;
 }
 
 .first-subcard {
-    @apply absolute inset-0 bg-gradient-to-r from-primary to-primary-dark shadow-lg transform -skew-y-12 sm:skew-y-0 sm:-rotate-12 sm:rounded-3xl;
+    @apply absolute inset-0 bg-gradient-to-r from-primary to-primary-dark shadow-lg transform -rotate-12 sm:rounded-3xl;
 }
 
 .slider {
@@ -208,7 +208,7 @@ export default class invest extends Vue {
 }
 
 .card-container {
-    @apply relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-20 h-[20rem] w-[40rem];
+    @apply relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-20 h-[20rem] w-[12rem] md:h-[20rem] md:w-[40rem];
 }
 
 .card-container-checkbox {

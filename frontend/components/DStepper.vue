@@ -21,7 +21,7 @@
                 <d-icon class="icon-mobile" :icon="steps[currentStep].icon"></d-icon>
             </div>
             <div class="">
-                Step {{ currentStep }} of {{ steps.length }}
+                Step {{ currentStep + 1 }} of {{ steps.length }}
             </div>
             <div class="subtitle-mobile">
                 {{ steps[currentStep].title }}

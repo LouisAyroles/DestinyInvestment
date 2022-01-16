@@ -159,10 +159,10 @@ export default class raise extends Vue {
     @apply p-0 md:py-12 md:px-20 lg:px-32
 }
 .second-subcard{
-    @apply absolute inset-0 bg-gradient-to-r from-primary-dark to-primary shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl;
+    @apply absolute inset-0 bg-gradient-to-r from-primary-dark to-primary shadow-lg transform -rotate-6 rounded-3xl;
 }
 .first-subcard{
-    @apply absolute inset-0 bg-gradient-to-r from-primary to-primary-dark shadow-lg transform -skew-y-12 sm:skew-y-0 sm:-rotate-12 sm:rounded-3xl;
+    @apply absolute inset-0 bg-gradient-to-r from-primary to-primary-dark shadow-lg transform -rotate-12 rounded-3xl;
 }
 .slider {
     margin-top: 10em;
@@ -173,7 +173,7 @@ export default class raise extends Vue {
 }
 
 .card-container {
-    @apply relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-20 h-[20rem] w-[35rem];
+    @apply relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-20 h-[20rem] w-[12rem] md:h-[20rem] md:w-[40rem];
 }
 
 .title {

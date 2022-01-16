@@ -1,5 +1,5 @@
 <template>
-    <div ref="cards" class="flex items-center">
+    <div ref="cards" class="flex justify-center items-center">
         <d-button @click.native="previousStep" class="h-12 text-white" icon="arrow-left"></d-button>
         <slot></slot>
         <d-button @click.native="nextStep" class="h-12 text-white" icon="arrow-right"></d-button>
@@ -20,66 +20,68 @@ export default class DSlider extends Vue {
     }
 
     nextStep() {
-        if (this.$parent.$parent.currentStep !== this.$parent.$parent.steps.length - 1) {
-            switch (this.$parent.$parent.currentStep) {
+        const parent = this.$parent.$parent as any
+        if (parent.currentStep !== parent.steps.length - 1) {
+            switch (parent.currentStep) {
                 case 0: {
-                    this.$parent.$parent.$refs['first-card'].classList.add('hidden')
-                    this.$parent.$parent.$refs['second-card'].classList.remove('hidden')
-                    this.$parent.$parent.$refs['second-card'].classList.add('relative')
+                    parent.$refs['first-card'].classList.add('hidden')
+                    parent.$refs['second-card'].classList.remove('hidden')
+                    parent.$refs['second-card'].classList.add('relative')
                     break
                 }
                 case 1: {
-                    this.$parent.$parent.$refs['second-card'].classList.add('hidden')
-                    this.$parent.$parent.$refs['third-card'].classList.remove('hidden')
-                    this.$parent.$parent.$refs['third-card'].classList.add('relative')
+                    parent.$refs['second-card'].classList.add('hidden')
+                    parent.$refs['third-card'].classList.remove('hidden')
+                    parent.$refs['third-card'].classList.add('relative')
                     break
                 }
                 case 2: {
-                    this.$parent.$parent.$refs['third-card'].classList.add('hidden')
-                    this.$parent.$parent.$refs['fourth-card'].classList.remove('hidden')
-                    this.$parent.$parent.$refs['fourth-card'].classList.add('relative')
+                    parent.$refs['third-card'].classList.add('hidden')
+                    parent.$refs['fourth-card'].classList.remove('hidden')
+                    parent.$refs['fourth-card'].classList.add('relative')
                     break
                 }
                 case 3: {
-                    this.$parent.$parent.$refs['fourth-card'].classList.add('hidden')
-                    this.$parent.$parent.$refs['fifth-card'].classList.remove('hidden')
-                    this.$parent.$parent.$refs['fifth-card'].classList.add('relative')
+                    parent.$refs['fourth-card'].classList.add('hidden')
+                    parent.$refs['fifth-card'].classList.remove('hidden')
+                    parent.$refs['fifth-card'].classList.add('relative')
                     break
                 }
             }
-            this.$parent.$parent.currentStep = (this.$parent.$parent.currentStep + 1) % this.$parent.$parent.steps.length
+            parent.currentStep = parent.currentStep + 1
         }
     }
 
     previousStep() {
-        if (this.$parent.$parent.currentStep !== 0) {
-            switch (this.$parent.$parent.currentStep) {
+        const parent = this.$parent.$parent as any
+        if (parent.currentStep !== 0) {
+            switch (parent.currentStep) {
                 case 1: {
-                    this.$parent.$parent.$refs['second-card'].classList.add('hidden')
-                    this.$parent.$parent.$refs['first-card'].classList.remove('hidden')
-                    this.$parent.$parent.$refs['first-card'].classList.add('relative')
+                    parent.$refs['second-card'].classList.add('hidden')
+                    parent.$refs['first-card'].classList.remove('hidden')
+                    parent.$refs['first-card'].classList.add('relative')
                     break
                 }
                 case 2: {
-                    this.$parent.$parent.$refs['third-card'].classList.add('hidden')
-                    this.$parent.$parent.$refs['second-card'].classList.remove('hidden')
-                    this.$parent.$parent.$refs['second-card'].classList.add('relative')
+                    parent.$refs['third-card'].classList.add('hidden')
+                    parent.$refs['second-card'].classList.remove('hidden')
+                    parent.$refs['second-card'].classList.add('relative')
                     break
                 }
                 case 3: {
-                    this.$parent.$parent.$refs['fourth-card'].classList.add('hidden')
-                    this.$parent.$parent.$refs['third-card'].classList.remove('hidden')
-                    this.$parent.$parent.$refs['third-card'].classList.add('relative')
+                    parent.$refs['fourth-card'].classList.add('hidden')
+                    parent.$refs['third-card'].classList.remove('hidden')
+                    parent.$refs['third-card'].classList.add('relative')
                     break
                 }
                 case 4: {
-                    this.$parent.$parent.$refs['fifth-card'].classList.add('hidden')
-                    this.$parent.$parent.$refs['fourth-card'].classList.remove('hidden')
-                    this.$parent.$parent.$refs['fifth-card'].classList.add('relative')
+                    parent.$refs['fifth-card'].classList.add('hidden')
+                    parent.$refs['fourth-card'].classList.remove('hidden')
+                    parent.$refs['fifth-card'].classList.add('relative')
                     break
                 }
             }
-            this.$parent.$parent.currentStep = (this.$parent.$parent.currentStep - 1) % this.$parent.$parent.steps.length
+            parent.currentStep = parent.currentStep - 1
         }
     }
 
