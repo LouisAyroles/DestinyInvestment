@@ -4,17 +4,16 @@
         <d-section class="raise-container">
             <d-stepper :steps="steps" :currentStep=currentStep></d-stepper>
 
-            <d-slider class="slider">
-
-                <div class="container-form">
+            <div class="container-form min-w-full">
+                <div class="flex justify-center min-w-full">
                     <div class="first-subcard"></div>
                     <div class="second-subcard"></div>
+                </div>
 
-                    <div class="main-cards">
-
-                        <!-- First Card -->
-                        <div ref="first-card" class="card-container">
-                            <div class="">
+                <swiper ref="mySwiper" :options="swiperOptions">
+                    <swiper-slide ref="first-card">
+                        <div class="flex justify-center ">
+                            <div class="card-container flex flex-col">
                                 <div>
                                     <h1 class="title"> Personal details </h1>
                                 </div>
@@ -39,31 +38,45 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-
-                        <!-- Second Card -->
-                        <div ref="second-card" class="hidden card-container">
-                            <div>
-                                <h1 class="title"> Company Details</h1>
-                            </div>
-                            <div class="input-container">
-                                <div class="inputs">
-                                    <div class="relative">
-                                        <input autocomplete="off" id="email" name="email" type="text"
-                                               class="peer placeholder-transparent h-10 w-full border-2 rounded-lg border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600"
-                                               placeholder="Email address"/>
-                                        <label for="email"
-                                               class="absolute ml-2 left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-5 peer-focus:text-gray-600 peer-focus:text-sm">Company
-                                            Name</label>
-                                    </div>
+                                <div class="flex justify-end items-center gap-3">
+                                    <d-button @click.native="next" icon="arrow-right-thick" class="button"/>
                                 </div>
                             </div>
                         </div>
+                    </swiper-slide>
 
-                        <!-- Third Card -->
-                        <div ref="third-card" class="hidden card-container">
-                            <div class="max-w-md mx-auto">
+                    <!-- Second Card -->
+                    <swiper-slide ref="second-card">
+                        <div class="flex justify-center">
+                            <div class="card-container flex flex-col">
+                                <div>
+                                    <h1 class="title"> Company Details</h1>
+                                </div>
+                                <div class="input-container grow">
+                                    <div class="inputs">
+                                        <div class="relative">
+                                            <input autocomplete="off" name="email" type="text"
+                                                   class="peer placeholder-transparent h-10 w-full border-2 rounded-lg border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600"
+                                                   placeholder="Email address"/>
+                                            <label for="email"
+                                                   class="absolute ml-2 left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-5 peer-focus:text-gray-600 peer-focus:text-sm">Company
+                                                Name</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="flex justify-end items-center gap-3">
+                                    <d-button @click.native="prev" icon="arrow-left-thick" class="button"/>
+                                    <d-button @click.native="next" icon="arrow-right-thick" class="button"/>
+                                </div>
+                            </div>
+                        </div>
+                    </swiper-slide>
+
+                    <!-- Third Card -->
+                    <swiper-slide ref="third-card" >
+                        <div class="flex justify-center">
+                            <div class="card-container flex flex-col">
                                 <div>
                                     <h1 class="title"> Pitch Deck </h1>
                                 </div>
@@ -83,45 +96,56 @@
                                         </div>
                                     </div>
                                 </div>
+
+                                <div class="flex justify-end items-center gap-3">
+                                    <d-button @click.native="prev" icon="arrow-left-thick" class="button"/>
+                                    <d-button @click.native="next" icon="arrow-right-thick" class="button"/>
+                                </div>
                             </div>
                         </div>
+                    </swiper-slide>
 
-                        <!-- Fourth Card -->
-                        <div ref="fourth-card" class="hidden card-container">
-                            <div class="max-w-md mx-auto">
-                                <div>
-                                    <h1 class="title"> Confirmation </h1>
-                                </div>
-                                <div class="input-container">
-                                    <div class="inputs">
-                                        <div class="relative">
-                                            <div class="flex flex-col">
-                                                <div class="flex flex-row">
-                                                    <span> Name : </span>
-                                                    <span> Bonjour</span>
-                                                </div>
-                                                <div class="flex flex-row">
-                                                    <span> Email : </span>
-                                                    <span> Bonjour</span>
-                                                </div>
-                                                <div class="flex flex-row">
-                                                    <span> Company name : </span>
-                                                    <span> Bonjour</span>
-                                                </div>
-                                                <div class="flex flex-row">
-                                                    <span> Pitch deck : </span>
-                                                    <span> Bonjour</span>
+                    <!-- Fourth Card -->
+                    <swiper-slide ref="fourth-card">
+                        <div class="flex justify-center">
+                            <div class="card-container flex flex-col">
+                                <div class="max-w-md mx-auto">
+                                    <div>
+                                        <h1 class="title"> Confirmation </h1>
+                                    </div>
+                                    <div class="input-container grow">
+                                        <div class="inputs">
+                                            <div class="relative">
+                                                <div class="flex flex-col">
+                                                    <div class="flex flex-row">
+                                                        <span> Name : </span>
+                                                        <span> Bonjour</span>
+                                                    </div>
+                                                    <div class="flex flex-row">
+                                                        <span> Email : </span>
+                                                        <span> Bonjour</span>
+                                                    </div>
+                                                    <div class="flex flex-row">
+                                                        <span> Company name : </span>
+                                                        <span> Bonjour</span>
+                                                    </div>
+                                                    <div class="flex flex-row">
+                                                        <span> Pitch deck : </span>
+                                                        <span> Bonjour</span>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="flex justify-end items-center gap-3">
+                                        <d-button @click.native="prev" icon="arrow-left-thick" class="button"/>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-
-                    </div>
-            </d-slider>
+                    </swiper-slide>
+                </swiper>
+            </div>
         </d-section>
 
 
@@ -151,18 +175,43 @@ export default class raise extends Vue {
         icon: "check"
     }]
 
+    readonly swiperOptions = {
+        allowTouchMove: false,
+        slidesPerView: 1,
+        spaceBetween: 10,
+        centeredSlides: true,
+        centerInsufficientSlides: true
+    }
+
+    get swiper() {
+        return (this as any).$refs.mySwiper.$swiper
+    }
+
+    next() {
+        this.swiper.slideTo(++this.currentStep, 1000, false)
+    }
+
+    prev() {
+        this.swiper.slideTo(--this.currentStep, 1000, false)
+    }
+
 }
 </script>
 
 <style lang="scss" scoped>
+@mixin card {
+    @apply min-h-[20rem] w-[12rem] md:h-[24rem] md:w-[40rem] sm:rounded-3xl shadow-lg;
+}
 .raise-container {
     @apply p-0 md:py-12 md:px-20 lg:px-32
 }
-.second-subcard{
-    @apply absolute inset-0 bg-gradient-to-r from-primary-dark to-primary shadow-lg transform -rotate-6 rounded-3xl;
+.second-subcard {
+    @include card;
+    @apply absolute inset-0 bg-gradient-to-r from-primary-dark to-primary shadow-lg transform mx-auto -rotate-6 sm:rounded-3xl;
 }
-.first-subcard{
-    @apply absolute inset-0 bg-gradient-to-r from-primary to-primary-dark shadow-lg transform -rotate-12 rounded-3xl;
+.first-subcard {
+    @include card;
+    @apply absolute inset-0 bg-gradient-to-r from-primary to-primary-dark shadow-lg transform mx-auto -rotate-12 sm:rounded-3xl;
 }
 .slider {
     margin-top: 10em;
@@ -173,7 +222,8 @@ export default class raise extends Vue {
 }
 
 .card-container {
-    @apply relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-20 h-[20rem] w-[12rem] md:h-[20rem] md:w-[40rem];
+    @include card;
+    @apply relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-20;
 }
 
 .title {

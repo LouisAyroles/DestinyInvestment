@@ -251,23 +251,21 @@ export default class invest extends Vue {
 @mixin card {
     @apply min-h-[20rem] w-[12rem] md:h-[24rem] md:w-[40rem] sm:rounded-3xl shadow-lg;
 }
-
 .second-subcard {
-    @apply absolute inset-0 bg-gradient-to-r from-primary-dark to-primary shadow-lg transform -rotate-6 sm:rounded-3xl;
+    @include card;
+    @apply absolute inset-0 bg-gradient-to-r from-primary-dark to-primary shadow-lg transform mx-auto -rotate-6 sm:rounded-3xl;
 }
-
 .first-subcard {
-    @apply absolute inset-0 bg-gradient-to-r from-primary to-primary-dark shadow-lg transform -rotate-12 sm:rounded-3xl;
+    @include card;
+    @apply absolute inset-0 bg-gradient-to-r from-primary to-primary-dark shadow-lg transform mx-auto -rotate-12 sm:rounded-3xl;
 }
-
 .slider {
     margin-top: 10em;
+    @apply min-h-full
 }
-
 .container-form {
     @apply relative py-3 sm:max-w-xl sm:mx-auto;
 }
-
 .card-container {
     @include card;
     @apply relative px-4 py-10 bg-white sm:p-20 ;
