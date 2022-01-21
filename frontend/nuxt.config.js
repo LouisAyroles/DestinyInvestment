@@ -36,6 +36,10 @@ export default {
         {
             src: '~/plugins/observer.ts',
             ssr: true
+        },
+        {
+            src: '~/plugins/swiper.ts',
+            ssr: false
         }
     ],
 

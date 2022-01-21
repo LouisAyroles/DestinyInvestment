@@ -18,7 +18,7 @@
                                 <div>
                                     <h1 class="title"> Personal details </h1>
                                 </div>
-                                <div class="input-container">
+                                <div class="input-container grow">
                                     <div class="inputs">
                                         <div class="relative">
                                             <div class="relative">
@@ -67,7 +67,7 @@
                                 <div>
                                     <h1 class="title"> Pitch Deck </h1>
                                 </div>
-                                <div class="input-container">
+                                <div class="input-container grow">
                                     <div class="inputs">
                                         <div class="flex items-center justify-center bg-grey-lighter">
                                             <label

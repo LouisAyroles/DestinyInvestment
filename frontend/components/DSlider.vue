@@ -1,8 +1,6 @@
 <template>
     <div ref="cards" class="flex justify-center items-center">
-        <d-button @click.native="previousStep" class="h-12 text-white" icon="arrow-left"></d-button>
         <slot></slot>
-        <d-button @click.native="nextStep" class="h-12 text-white" icon="arrow-right"></d-button>
     </div>
 </template>
 

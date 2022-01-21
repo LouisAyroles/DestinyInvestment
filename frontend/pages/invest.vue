@@ -1,23 +1,25 @@
 <template>
     <div class="pt-20 sections h-full">
         <d-app-bar currentPage="Invest" class="fixed top-0 left-0 right-0"/>
-        <d-section class="invest-container">
-            <d-stepper :steps="steps" :currentStep=currentStep></d-stepper>
+        <d-section>
+            <div class="p-0 md:py-12 md:px-20 lg:px-32">
+                <d-stepper :steps="steps" :currentStep=currentStep></d-stepper>
+            </div>
 
-            <d-slider class="slider">
-
-                <div class="container-form">
+            <div class="container-form min-w-full">
+                <div class="flex justify-center min-w-full">
                     <div class="first-subcard"></div>
                     <div class="second-subcard"></div>
+                </div>
 
-                    <div class="main-cards">
-
-                        <!-- First Card -->
-                        <div ref="first-card" class="card-container">
-                            <div class="">
+                <swiper ref="mySwiper" :options="swiperOptions">
+                    <swiper-slide ref="first-card">
+                        <div class="flex justify-center ">
+                            <div class="card-container flex flex-col">
                                 <div>
-                                    <h1 class="title"> Personal details </h1>
+                                    <h1 class="title">Personal details</h1>
                                 </div>
+
                                 <div class="input-container">
                                     <div class="inputs">
                                         <div class="relative">
@@ -39,118 +41,153 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-
-                        <!-- Second Card -->
-                        <div ref="second-card" class="hidden card-container-checkbox">
-                            <div>
-                                <h1 class="title">Investment field</h1>
-                            </div>
-                            <span class="text-slate-500"> What are your areas of Investment?</span>
-                            <div class="input-container">
-                                <div class="checkboxs">
-                                    <div class="flex flex-col items-center justify-center">
-                                        <div class="grid grid-cols-3">
-                                            <div v-for="invest in investmentFields">
-                                                <label class="inline-flex items-center mt-3">
-                                                    <input type="checkbox"
-                                                           class="form-checkbox h-5 w-5 text-gray-600"><span
-                                                    class="ml-2 text-gray-700">{{ invest }}</span>
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
+                                <div class="flex justify-end items-center gap-3">
+                                    <d-button @click.native="next" icon="arrow-right-thick" class="button"/>
                                 </div>
                             </div>
                         </div>
+                    </swiper-slide>
 
-                        <!-- Third Card -->
-                        <div ref="third-card" class="hidden card-container-checkbox">
-                            <div>
-                                <h1 class="title">Investment field</h1>
-                            </div>
-                            <span class="text-slate-500"> Which company stage is more interesting for you?</span>
-                            <div class="mt-10">
-                                <label class="inline-flex items-center mt-3">
-                                    <input type="checkbox"
-                                           class="form-checkbox h-5 w-5 text-gray-600"><span
-                                    class="ml-2 text-gray-700">Earlier stage with higher return potential</span>
-                                </label>
-                                <label class="inline-flex items-center mt-3">
-                                    <input type="checkbox"
-                                           class="form-checkbox h-5 w-5 text-gray-600"><span
-                                    class="ml-2 text-gray-700">Later stage growth companies with market traction</span>
-                                </label>
-                            </div>
-                        </div>
-
-                        <!-- Fourth Card -->
-                        <div ref="fourth-card" class="hidden card-container-checkbox">
-                            <div>
-                                <h1 class="title">Portfolio size</h1>
-                            </div>
-                            <span class="text-slate-500">What is your investment portfolio size?</span>
-                            <div class="mt-10 flex flex-col">
-                                <label class="inline-flex items-center mt-3">
-                                    <input type="checkbox"
-                                           class="form-checkbox h-5 w-5 text-gray-600"><span
-                                    class="ml-2 text-gray-700"> Less than 500 000€</span>
-                                </label>
-                                <label class="inline-flex items-center mt-3">
-                                    <input type="checkbox"
-                                           class="form-checkbox h-5 w-5 text-gray-600"><span
-                                    class="ml-2 text-gray-700">500 000€ to 1 000 000€</span>
-                                </label>
-                                <label class="inline-flex items-center mt-3">
-                                    <input type="checkbox"
-                                           class="form-checkbox h-5 w-5 text-gray-600"><span
-                                    class="ml-2 text-gray-700">1 000 000 to 5 000 000€</span>
-                                </label>
-                                <label class="inline-flex items-center mt-3">
-                                    <input type="checkbox"
-                                           class="form-checkbox h-5 w-5 text-gray-600"><span
-                                    class="ml-2 text-gray-700">more than 5M</span>
-                                </label>
-                            </div>
-                        </div>
-
-                        <!-- Fifth Card -->
-                        <div ref="fifth-card" class="hidden card-container">
-                            <div class="max-w-md mx-auto">
+                    <!-- Second Card -->
+                    <swiper-slide ref="second-card">
+                        <div class="flex justify-center">
+                            <div class="card-container-checkbox flex flex-col">
                                 <div>
-                                    <h1 class="title"> Confirmation </h1>
+                                    <h1 class="title">Investment field</h1>
                                 </div>
-                                <div class="input-container">
-                                    <div class="inputs">
-                                        <div class="relative">
-                                            <div class="flex flex-col">
-                                                <div class="flex flex-row">
-                                                    <span> Name : </span>
-                                                    <span> Bonjour</span>
-                                                </div>
-                                                <div class="flex flex-row">
-                                                    <span> Email : </span>
-                                                    <span> Bonjour</span>
-                                                </div>
-                                                <div class="flex flex-row">
-                                                    <span> Company name : </span>
-                                                    <span> Bonjour</span>
-                                                </div>
-                                                <div class="flex flex-row">
-                                                    <span> Pitch deck : </span>
-                                                    <span> Bonjour</span>
+                                <span class="text-slate-500"> What are your areas of Investment?</span>
+                                <div class="input-container grow">
+                                    <div class="checkboxs">
+                                        <div class="flex flex-col items-center justify-center">
+                                            <div class="grid grid-cols-3">
+                                                <div v-for="invest in investmentFields">
+                                                    <label class="inline-flex items-center mt-3">
+                                                        <input type="checkbox"
+                                                               class="form-checkbox h-5 w-5 text-gray-600"><span
+                                                        class="ml-2 text-gray-700">{{ invest }}</span>
+                                                    </label>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+
+                                <div class="flex justify-end items-center gap-3">
+                                    <d-button @click.native="prev" icon="arrow-left-thick" class="button"/>
+                                    <d-button @click.native="next" icon="arrow-right-thick" class="button"/>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </swiper-slide>
 
-                </div>
-            </d-slider>
+                    <!-- Third Card -->
+                    <swiper-slide ref="third-card" >
+                        <div class="flex justify-center">
+                            <div class="card-container-checkbox flex flex-col">
+                                <div>
+                                    <h1 class="title">Investment field</h1>
+                                </div>
+                                <span class="text-slate-500">Which company stage is more interesting for you?</span>
+                                <div class="mt-10 grow">
+                                    <label class="inline-flex items-center mt-3">
+                                        <input type="checkbox"
+                                               class="form-checkbox h-5 w-5 text-gray-600"><span
+                                        class="ml-2 text-gray-700">Earlier stage with higher return potential</span>
+                                    </label>
+                                    <label class="inline-flex items-center mt-3">
+                                        <input type="checkbox"
+                                               class="form-checkbox h-5 w-5 text-gray-600"><span
+                                        class="ml-2 text-gray-700">Later stage growth companies with market traction</span>
+                                    </label>
+                                </div>
+
+                                <div class="flex justify-end items-center gap-3">
+                                    <d-button @click.native="prev" icon="arrow-left-thick" class="button"/>
+                                    <d-button @click.native="next" icon="arrow-right-thick" class="button"/>
+                                </div>
+                            </div>
+                        </div>
+                    </swiper-slide>
+
+                    <!-- Fourth Card -->
+                    <swiper-slide ref="fourth-card" >
+                        <div class="flex justify-center">
+                            <div class="card-container-checkbox flex flex-col">
+                                <div>
+                                    <h1 class="title">Portfolio size</h1>
+                                </div>
+                                <span class="text-slate-500">What is your investment portfolio size?</span>
+                                <div class="mt-10 grow">
+                                    <label class="inline-flex items-center mt-3">
+                                        <input type="checkbox"
+                                               class="form-checkbox h-5 w-5 text-gray-600"><span
+                                        class="ml-2 text-gray-700"> Less than 500 000€</span>
+                                    </label>
+                                    <label class="inline-flex items-center mt-3">
+                                        <input type="checkbox"
+                                               class="form-checkbox h-5 w-5 text-gray-600"><span
+                                        class="ml-2 text-gray-700">500 000€ to 1 000 000€</span>
+                                    </label>
+                                    <label class="inline-flex items-center mt-3">
+                                        <input type="checkbox"
+                                               class="form-checkbox h-5 w-5 text-gray-600"><span
+                                        class="ml-2 text-gray-700">1 000 000 to 5 000 000€</span>
+                                    </label>
+                                    <label class="inline-flex items-center mt-3">
+                                        <input type="checkbox"
+                                               class="form-checkbox h-5 w-5 text-gray-600"><span
+                                        class="ml-2 text-gray-700">more than 5M</span>
+                                    </label>
+                                </div>
+                                <div class="flex justify-end items-center gap-3">
+                                    <d-button @click.native="prev" icon="arrow-left-thick" class="button"/>
+                                    <d-button @click.native="next" icon="arrow-right-thick" class="button"/>
+                                </div>
+                            </div>
+                        </div>
+                    </swiper-slide>
+
+                    <!-- Fifth Card -->
+                    <swiper-slide ref="fifth-card">
+                        <div class="flex justify-center">
+                            <div class="card-container flex flex-col">
+                                <div class="max-w-md mx-auto">
+                                    <div>
+                                        <h1 class="title"> Confirmation </h1>
+                                    </div>
+                                    <div class="input-container grow">
+                                        <div class="inputs">
+                                            <div class="relative">
+                                                <div class="flex flex-col">
+                                                    <div class="flex flex-row">
+                                                        <span> Name : </span>
+                                                        <span> Bonjour</span>
+                                                    </div>
+                                                    <div class="flex flex-row">
+                                                        <span> Email : </span>
+                                                        <span> Bonjour</span>
+                                                    </div>
+                                                    <div class="flex flex-row">
+                                                        <span> Company name : </span>
+                                                        <span> Bonjour</span>
+                                                    </div>
+                                                    <div class="flex flex-row">
+                                                        <span> Pitch deck : </span>
+                                                        <span> Bonjour</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="flex justify-end items-center gap-3">
+                                        <d-button @click.native="prev" icon="arrow-left-thick" class="button"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </swiper-slide>
+                </swiper>
+            </div>
         </d-section>
     </div>
 </template>
@@ -162,7 +199,8 @@ import {Step} from "~/components/DStepper.vue";
 
 @Component
 export default class invest extends Vue {
-    currentStep = 0;
+    currentStep = 0
+
     readonly steps: Step[] = [{
         title: "Personal details",
         icon: "account"
@@ -181,14 +219,37 @@ export default class invest extends Vue {
     }]
 
     readonly investmentFields: string[] = [
-        "Sportech", "Greentech", "Fintech", "Blockchain", "Biotech", "E-commerce", "Edtech", "Cybersécurité", "Others", "Artificial Intelligence"]
+        "Sportech", "Greentech", "Fintech", "Blockchain", "Biotech", "E-commerce", "Edtech", "Cybersécurité", "Others", "Artificial Intelligence"
+    ]
+
+    readonly swiperOptions = {
+        allowTouchMove: false,
+        slidesPerView: 1,
+        spaceBetween: 10,
+        centeredSlides: true,
+        centerInsufficientSlides: true
+    }
+
+    get swiper() {
+        return (this as any).$refs.mySwiper.$swiper
+    }
+
+    next() {
+        this.swiper.slideTo(++this.currentStep, 1000, false)
+    }
+
+    prev() {
+        this.swiper.slideTo(--this.currentStep, 1000, false)
+    }
+
 
 }
 </script>
 
 <style lang="scss" scoped>
-.invest-container {
-    @apply p-0 md:py-12 md:px-20 lg:px-32
+
+@mixin card {
+    @apply min-h-[20rem] w-[12rem] md:h-[24rem] md:w-[40rem] sm:rounded-3xl shadow-lg;
 }
 
 .second-subcard {
@@ -208,11 +269,13 @@ export default class invest extends Vue {
 }
 
 .card-container {
-    @apply relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-20 h-[20rem] w-[12rem] md:h-[20rem] md:w-[40rem];
+    @include card;
+    @apply relative px-4 py-10 bg-white sm:p-20 ;
 }
 
 .card-container-checkbox {
-    @apply relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl h-[20rem] w-[40rem];
+    @include card;
+    @apply relative px-4 py-10 bg-white ;
 }
 
 .title {
