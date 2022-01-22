@@ -257,7 +257,14 @@ export default class invest extends Vue {
         spaceBetween: 10,
         centeredSlides: true,
         centerInsufficientSlides: true,
-        autoHeight: true
+        autoHeight: true,
+        breakpoints: {
+            768:
+                {
+                    autoHeight: false
+                }
+        }
+
     }
 
     currentStep = 0
@@ -347,7 +354,7 @@ export default class invest extends Vue {
 }
 
 .container-form {
-    @apply relative py-3;
+    @apply relative py-3 sm:max-w-xl sm:mx-auto;
 }
 
 .card-container {
