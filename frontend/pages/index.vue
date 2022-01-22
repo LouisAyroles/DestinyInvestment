@@ -42,7 +42,8 @@
                     <h1 data-aos="fade-down" data-aos-duration="1000" class="title-1 sm:max-w-md">
                         Are you looking <span class="text-primary"> <b> to invest</b></span> in innovative projects?
                     </h1>
-                    <d-button data-aos="zoom-in-up" data-aos-duration="2000" class="raise-or-invest-button"
+                    <d-button data-aos="zoom-in-up" data-aos-duration="2000" data-aos-offset="-200"
+                              class="raise-or-invest-button"
                               link-to="/invest" icon="arrow-right-thick">
                         APPLY TO INVEST
                     </d-button>
@@ -360,6 +361,11 @@ export default class IndexPage extends mixins(aosMixin) {
         white-space: nowrap;
     }
 
+    #raise {
+        padding-top: 5rem;
+        margin-top: -5rem;
+    }
+
     .slider {
         @apply rounded-lg text-3xl md:text-5xl xl:text-6xl text-center md:text-left text-[#f9bd49] font-bold w-[45rem];
         opacity: 1;
@@ -388,7 +394,7 @@ export default class IndexPage extends mixins(aosMixin) {
 html, body {
     font-family: 'Poppins', sans-serif;
     /* Common theme */
-    @apply p-0 min-w-full min-h-full h-full;
+    @apply p-0 min-w-full min-h-full h-full scroll-pt-20 xl:scroll-pt-0;
     /* Light theme */
     @apply bg-gray-100 text-gray-900;
     /* Dark theme */
