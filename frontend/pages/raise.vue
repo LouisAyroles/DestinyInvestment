@@ -120,8 +120,8 @@
                     <!-- Fourth Card -->
                     <swiper-slide ref="fifth-card">
                         <div class="flex justify-center">
-                            <div class="confirmation-card-container self-center flex flex-col min-w-full md:min-w-0">
-                                <div class="max-w-md mx-auto">
+                            <div class="confirmation-card-container flex flex-col min-w-full md:min-w-0">
+                                <div class="min-w-full min-h-full p-10">
                                     <div class="hidden md:block">
                                         <h1 class="title"> Confirmation </h1>
                                     </div>
@@ -129,22 +129,22 @@
                                         <div class="inputs">
                                             <div class="relative">
                                                 <div class="flex flex-col">
-                                                    <div class="flex flex-row my-2 md:my-0">
+                                                    <div class="flex flex-row my-2 ">
                                                         <span class="text-primary-dark md:text-gray-700"><b> Name : </b><span
                                                             class="text-black">&nbsp {{ name }}</span></span>
 
                                                     </div>
-                                                    <div class="flex flex-row my-2 md:my-0">
+                                                    <div class="flex flex-row my-2">
                                                         <span class="text-primary-dark md:text-gray-700"> <b>Email :</b> <span
                                                             class="text-black">&nbsp {{ mail }}</span> </span>
 
                                                     </div>
-                                                    <div class="flex flex-row my-2 md:my-0">
+                                                    <div class="flex flex-row my-2 ">
                                                         <span class="text-primary-dark md:text-gray-700"> <b>Company name :</b> <span
                                                             class="text-black">&nbsp {{ companyName }}</span> </span>
 
                                                     </div>
-                                                    <div class="flex flex-row my-2 md:my-0">
+                                                    <div class="flex flex-row my-2 ">
                                                             <span class="text-primary-dark md:text-gray-700"> <b>Pitch deck : </b> <span
                                                                 class="text-black">&nbsp {{
                                                                     pitchDeck.name
@@ -303,7 +303,7 @@ export default class raise extends Vue {
 
 .card-container {
     @include card;
-    @apply relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-20;
+    @apply relative px-4 py-10 shadow-lg sm:rounded-3xl sm:p-20;
 }
 
 .title {
