@@ -10,7 +10,7 @@
                     <div class="second-subcard"></div>
                 </div>
 
-                <swiper ref="mySwiper" :options="swiperOptions">
+                <swiper @slide-change="console.log('bonjour')" ref="mySwiper" :options="swiperOptions">
                     <swiper-slide ref="first-card">
                         <div class="flex justify-center ">
                             <div class="card-container flex flex-col">
@@ -200,7 +200,7 @@ export default class raise extends Vue {
 
 <style lang="scss" scoped>
 @mixin card {
-    @apply min-h-[20rem] w-[12rem] md:h-[24rem] md:w-[40rem] sm:rounded-3xl shadow-lg;
+    @apply min-h-full w-[12rem] md:h-[24rem] md:w-[40rem] sm:rounded-3xl shadow-lg;
 }
 .raise-container {
     @apply p-0 md:py-12 md:px-20 lg:px-32

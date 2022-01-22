@@ -40,6 +40,10 @@ export default {
         {
             src: '~/plugins/swiper.ts',
             ssr: false
+        },
+        {
+            src: '~/plugins/notifier.ts',
+            ssr: false
         }
     ],
 
