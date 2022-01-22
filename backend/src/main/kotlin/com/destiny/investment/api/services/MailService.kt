@@ -1,6 +1,6 @@
 package com.destiny.investment.api.services
 
-import com.destiny.investment.api.configuration.ServerConfiguration
+import com.destiny.investment.api.configuration.IConfiguration
 import com.destiny.investment.api.dto.mails.IMailContent
 import com.destiny.investment.api.exceptions.DestinyException
 import com.destiny.investment.api.exceptions.ExceptionCause
@@ -13,9 +13,20 @@ import javax.mail.MessagingException
 @Service
 class MailService(
     private val mailSender: JavaMailSender,
-    private val configuration: ServerConfiguration
+    private val configuration: IConfiguration
 ) {
 
+    /**
+     * Sends a mail with the information provided by the [content].
+     * Configuration to send mail is fetched from the global application's configuration.
+     * For more information, see the
+     * [default configuration][com.destiny.investment.api.configuration.BeanConfiguration.configuration].
+     *
+     * If it's impossible to send the mail, an exception will be thrown.
+     * It should be handled by the global Exception handler though.
+     *
+     * @param content content to send in this mail.
+     */
     fun sendMail(content: IMailContent) {
         val message = mailSender.createMimeMessage()
         try {

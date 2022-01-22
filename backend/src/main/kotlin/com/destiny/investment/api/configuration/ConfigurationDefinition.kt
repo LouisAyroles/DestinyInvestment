@@ -4,7 +4,7 @@ interface IConfiguration {
     val mail: Mail
 }
 
-data class ServerConfigurationProperties(override val mail: Mail): IConfiguration
+data class ServerConfiguration(override val mail: Mail): IConfiguration
 
 data class Credentials(
     val username: String,
