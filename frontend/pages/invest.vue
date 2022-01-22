@@ -121,22 +121,22 @@
                                 <span class="text-slate-500 text-center md:text-left">What is your investment portfolio size?</span>
                                 <div class="mt-10 grow flex flex-col">
                                     <label class="inline-flex items-center mt-3">
-                                        <input type="radio" value="A" v-model="portfolioSize"
+                                        <input type="radio" value="GradeA" v-model="portfolioSize"
                                                class="form-checkbox h-5 w-5 text-gray-600"><span
                                         class="ml-2 text-gray-700"> Less than 500 000€</span>
                                     </label>
                                     <label class="inline-flex items-center mt-3">
-                                        <input type="radio" value="B" v-model="portfolioSize"
+                                        <input type="radio" value="GradeB" v-model="portfolioSize"
                                                class="form-checkbox h-5 w-5 text-gray-600"><span
                                         class="ml-2 text-gray-700">500 000€ to 1 000 000€</span>
                                     </label>
                                     <label class="inline-flex items-center mt-3">
-                                        <input type="radio" value="C" v-model="portfolioSize"
+                                        <input type="radio" value="GradeC" v-model="portfolioSize"
                                                class="form-checkbox h-5 w-5 text-gray-600"><span
                                         class="ml-2 text-gray-700">1 000 000 to 5 000 000€</span>
                                     </label>
                                     <label class="inline-flex items-center mt-3">
-                                        <input type="radio" value="D" v-model="portfolioSize"
+                                        <input type="radio" value="GradeD" v-model="portfolioSize"
                                                class="form-checkbox h-5 w-5 text-gray-600"><span
                                         class="ml-2 text-gray-700">more than 5M</span>
                                     </label>
@@ -236,10 +236,10 @@ export default class invest extends Vue {
     }]
 
     readonly gradeToPortfolioSize = new Map<string, string>([
-        ["A", "Less than 500 000€"],
-        ["B", "500 000€ to 1 000 000€"],
-        ["C", "1 000 000 to 5 000 000€"],
-        ["D", "more than 5M"]
+        ["GradeA", "Less than 500 000€"],
+        ["GradeB", "500 000€ to 1 000 000€"],
+        ["GradeC", "1 000 000 to 5 000 000€"],
+        ["GradeD", "more than 5M"]
     ]);
 
     readonly mapGrade = new Map<string, string>([
@@ -301,13 +301,13 @@ export default class invest extends Vue {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                mail: this.mail,
+                email: this.mail,
                 name: this.name,
-                checkedInvestments: this.checkedInvestments,
-                investmentChoice: this.investmentChoice,
-                portfolioSize: this.portfolioSize
+                investmentAreas: this.checkedInvestments,
+                companyStage: this.investmentChoice,
+                portfolioSize: this.portfolioSize,
             })
-        }).then(() => {
+        }).then(res => {
             this.$router.push({
                 path: '/'
             })

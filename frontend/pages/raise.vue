@@ -218,7 +218,6 @@ export default class raise extends Vue {
     }
 
     next() {
-        console.log(this.pitchDeck)
         this.swiper.slideTo(++this.currentStep, 1000, false)
     }
 
@@ -236,21 +235,18 @@ export default class raise extends Vue {
 
     submit() {
         const formData = new FormData();
-        formData.append("file", this.pitchDeck)
-        formData.append('properties', new Blob([JSON.stringify({
+        formData.append("pitchDeck", this.pitchDeck)
+        formData.append('raiseForm', new Blob([JSON.stringify({
             "name": this.name,
             "email": this.mail,
-            "company name": this.companyName
+            "companyName": this.companyName
         })], {
             type: "application/json"
         }));
         fetch('api/raise/apply', {
             method: 'POST',
-            headers: {
-                'Content-Type': 'undefined'
-            },
             body: formData
-        }).then(() => {
+        }).then(res => {
             this.$router.push({
                 path: '/'
             })
