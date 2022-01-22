@@ -11,7 +11,7 @@
                     <div class="second-subcard"></div>
                 </div>
 
-                <swiper @slide-change="test" ref="mySwiper" :options="swiperOptions">
+                <swiper @slide-change="scrollToTheTop" ref="mySwiper" :options="swiperOptions">
                     <swiper-slide ref="first-card">
                         <div class="flex justify-center">
                             <div class="card-container self-center flex flex-col min-w-full md:min-w-0">
@@ -282,8 +282,8 @@ export default class invest extends Vue {
         this.swiper.slideTo(--this.currentStep, 1000, false)
     }
 
-    test() {
-        console.log('slide changed');
+    scrollToTheTop() {
+        window.scrollTo({top: 0, behavior: 'smooth'})
     }
 
     submit() {
