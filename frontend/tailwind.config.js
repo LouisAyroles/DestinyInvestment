@@ -10,6 +10,7 @@ module.exports = {
         extend: {
             colors: {
                 'primary': '#8E97DF',
+                'primary-dark': '#5D1198',
                 'secondary': '#DF8EC8'
             },
             lineClamp: {
@@ -22,7 +23,6 @@ module.exports = {
             }
         },
     },
-    darkMode: "class",
     variants: {
         backgroundColor: [
             "dark",

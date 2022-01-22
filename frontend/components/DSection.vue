@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
+import {Component, Vue} from 'vue-property-decorator'
 
 @Component
 export default class DSection extends Vue {
@@ -14,8 +14,8 @@ export default class DSection extends Vue {
 
 <style lang="scss" scoped>
 .section {
-    @apply p-6 min-w-full;
-    @apply bg-white dark:bg-black;
+    @apply min-w-full;
+    @apply bg-white dark:bg-[#030a2d];
 
     min-height: calc(100vh - 5rem)
 }

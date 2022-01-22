@@ -4,7 +4,8 @@
             <template v-for="(event, index) in eventsWithPosition">
                 <li :key="index" :class="{'left': event.left}">
                     <div class="card">
-                        <div :class="['background', {left: event.left}]">
+                        <div data-aos="zoom-in-up" data-aos-duration="1000" :data-aos-delay="200*index"
+                             data-aos-offset="200" :class="['background', {left: event.left}]">
                             <h3 class="title">{{ event.date }}</h3>
                             <p class="description">{{ event.description }}</p>
                         </div>
@@ -56,7 +57,7 @@ export default class DRoadMap extends Vue {
 }
 
 .main-container {
-    @apply bg-black w-full h-full p-10 grid content-center
+    @apply w-full h-full p-10 grid content-center
 }
 
 .sub-container {
@@ -79,11 +80,11 @@ ul {
         content: '';
         width: 18px;
         height: 18px;
-        background-color: white;
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
         border-radius: 9999px;
+        @apply bg-slate-400 dark:bg-white
     }
 
     li {
@@ -100,7 +101,7 @@ ul {
 
     li:not(.left) {
         @apply sm:translate-x-[calc(50%-1px)];
-        border-left: 1px solid white;
+        @apply border-slate-400 dark:border-white border-solid border-l-[1px];
         padding-left: 32px;
 
         &:before {
@@ -111,7 +112,7 @@ ul {
 
     li.left {
         @apply sm:-translate-x-1/2;
-        @apply border-white border-solid border-l-[1px] pl-[32px];
+        @apply border-slate-400 dark:border-white border-solid border-l-[1px] pl-[32px];
         @apply sm:border-l-0 sm:border-r-[1px] sm:pl-[0px] sm:pl-[32px] sm:pr-[32px];
 
         &:after {

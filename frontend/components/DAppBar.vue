@@ -1,10 +1,10 @@
 <template>
-    <nav ref="menu" class="backdrop-blur-sm z-50 animated bg-black">
+    <nav ref="menu" class="backdrop-blur-sm z-50 animated">
         <div class="margin z-30">
             <div class="content">
                 <div class="center">
                     <!-- Mobile menu button-->
-                    <button type="button" ref="mobile-toggle" class="center mobile-menu-button"
+                    <button @click="toggleMobileMenu" type="button" class="center mobile-menu-button"
                             aria-controls="mobile-menu" aria-expanded="false">
                         <span class="sr-only">Open main menu</span>
                         <!--Icon when menu is closed. -->
@@ -23,8 +23,10 @@
                 </div>
                 <div class="items">
                     <div class="logos">
-                        <img class="logo" src="@/assets/logos/destinylogo.png" alt="Destiny">
-                        <img class="full-logo" src="@/assets/logos/destinyfullLogo.png" alt="Destiny">
+                        <a href="/"><img class="logo" src="@/assets/logos/logo.svg" alt="Destiny"></a>
+                        <a class="hidden md:flex flex flex-row items-center md:ml-4 lg:ml-8 2xl:ml-0" href="/"><img
+                            class="full-logo" src="@/assets/logos/logo.svg" alt="Destiny">
+                            <span class="title-company"> Destiny Investment</span></a>
                     </div>
                     <div class="menu-items">
                         <div class="flex space-x-4">
@@ -32,7 +34,8 @@
                                 v-for="(item, index) in menuItems"
                                 :key="index"
                                 :to="item.href"
-                                class="title">
+                                class="title"
+                                :class="{'text-primary-dark': item.title === currentPage}">
                                 {{ item.title }}
                             </nuxt-link>
                         </div>
@@ -58,30 +61,26 @@
 
 <script lang="ts">
 
-import {Component, Vue} from 'vue-property-decorator'
+import {Component, Prop, Vue} from 'vue-property-decorator'
 
 @Component
 export default class DAppBar extends Vue {
+    @Prop({type: String, required: true})
+    currentPage!: string
+
     readonly menuItems = [
         {title: 'Home', href: '/'},
         {title: 'Raise', href: '/raise'},
         {title: 'Invest', href: '/invest'},
-        {title: 'Blog', href: '/blog'},
         {title: 'Contact', href: '/#contact'},
     ]
 
     mounted() {
-        const button = this.$refs['mobile-toggle'] as HTMLElement
-        button.addEventListener('click', this.toggleMobileMenu)
         window.addEventListener('scroll', this.scrollListener)
-
         this.scrollListener()
-
     }
 
     beforeDestroy() {
-        const button = this.$refs['mobile-toggle'] as HTMLElement
-        button.removeEventListener('click', this.toggleMobileMenu)
         window.removeEventListener('scroll', this.scrollListener)
     }
 
@@ -108,6 +107,10 @@ export default class DAppBar extends Vue {
 </script>
 
 <style lang="scss" scoped>
+.title-company {
+    @apply text-base lg:text-xl text-black dark:text-white text-center;
+}
+
 .margin {
     @apply max-w-7xl mx-auto px-2 sm:px-6 lg:px-8;
 }
@@ -135,15 +138,15 @@ export default class DAppBar extends Vue {
 }
 
 .title {
-    @apply text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-lg font-medium
+    @apply hover:text-secondary px-3 py-2 md:text-xl text-lg font-medium
 }
 
 .titleHome {
-    @apply text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 dark:text-primary rounded-md text-lg font-medium
+    @apply text-gray-300 hover:text-secondary px-3 py-2 dark:text-primary rounded-md text-lg font-medium
 }
 
 .mobile-title {
-    @apply text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium
+    @apply text-slate-600 hover:text-secondary block px-3 py-2 rounded-md text-base font-medium
 }
 
 .menu-items {
@@ -151,15 +154,15 @@ export default class DAppBar extends Vue {
 }
 
 .logos {
-    @apply flex-shrink-0 flex items-center
+    @apply flex-shrink-0 flex items-center scale-125
 }
 
 .logo {
-    @apply block lg:hidden h-8 w-auto
+    @apply block md:hidden h-8 w-auto
 }
 
 .full-logo {
-    @apply hidden lg:block h-16 w-auto
+    @apply h-6 w-auto xl:h-10
 }
 
 .animated {
