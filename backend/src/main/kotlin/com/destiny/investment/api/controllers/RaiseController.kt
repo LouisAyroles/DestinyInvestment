@@ -6,14 +6,14 @@ import com.destiny.investment.api.dto.toMailContent
 import com.destiny.investment.api.services.MailService
 import com.destiny.investment.api.services.SecurityService
 import org.springframework.http.MediaType
-import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestPart
+import org.springframework.web.bind.annotation.RestController
 import org.springframework.web.multipart.MultipartFile
 
-@Controller
-@RequestMapping("api/raise")
+@RestController
+@RequestMapping("api/raise", produces = [MediaType.APPLICATION_JSON_VALUE])
 class RaiseController(
     private val mailService: MailService,
     private val securityService: SecurityService
