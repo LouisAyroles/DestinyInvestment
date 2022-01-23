@@ -23,11 +23,11 @@
                                 <div class="input-container">
                                     <div class="inputs">
                                         <div class="relative">
-                                            <input autocomplete="off" v-model="name" name="name" type="text"
+                                            <input autocomplete="off" v-model="name" id="name" type="text"
                                                    :class="{'border-primary-dark' :!isNameValid && this.tryToNext}"
                                                    class="peer placeholder-transparent px-2 h-10 w-full border-2 rounded-lg text-gray-900 focus:outline-none focus:borer-rose-600"
                                                    placeholder="Name"/>
-                                            <label for="email"
+                                            <label for="name"
                                                    class="absolute ml-2 left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-5 peer-focus:text-gray-600 peer-focus:text-sm">Name</label>
                                             <span class="text-sm text-primary"
                                                   v-if="!isNameValid && this.tryToNext">Please fill your name </span>
@@ -35,14 +35,16 @@
                                                   v-if="!(!isNameValid && this.tryToNext)">&nbsp</span>
                                         </div>
                                         <div class="relative">
-                                            <input autocomplete="off" v-model="mail" name="email" type="text"
+                                            <input autocomplete="off" v-model="mail" id="email" type="text"
                                                    :class="{'border-primary-dark' :!isMailValid && this.tryToNext}"
                                                    class="peer placeholder-transparent px-2 h-10 w-full border-2 rounded-lg text-gray-900 focus:outline-none focus:borer-rose-600"
                                                    placeholder="Email address"/>
                                             <label for="email"
                                                    class="absolute ml-2 left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-5 peer-focus:text-gray-600 peer-focus:text-sm">Email
                                                 Address</label>
-                                            <span class="text-sm text-primary" v-if="!isMailValid && this.tryToNext">Please fill your email </span>
+                                            <span class="text-sm text-primary" v-if="!isMailNotEmpty && this.tryToNext">Please fill your email </span>
+                                            <span class="text-sm text-primary"
+                                                  v-if="!isMailValid && isMailNotEmpty && this.tryToNext">This is not a valid email </span>
                                             <span class="text-sm" v-if="!(!isMailValid && this.tryToNext)">&nbsp</span>
                                         </div>
                                     </div>
@@ -66,12 +68,12 @@
                                     <div class="inputs">
                                         <div class="relative">
                                             <div class="relative">
-                                                <input autocomplete="off" v-model="companyName" name="companyName"
+                                                <input autocomplete="off" v-model="companyName" id="companyName"
                                                        type="text"
                                                        :class="{'border-primary-dark' :!isValidCard2 && this.tryToNext}"
                                                        class="peer placeholder-transparent px-2 h-10 w-full border-2 rounded-lg text-gray-900 focus:outline-none focus:borer-rose-600"
                                                        placeholder="Company name"/>
-                                                <label for="email"
+                                                <label for="companyName"
                                                        class="absolute ml-2 left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-5 peer-focus:text-gray-600 peer-focus:text-sm">Name</label>
                                                 <span class="error text-center md:text-left"
                                                       v-if="!isValidCard2 && this.tryToNext">Please fill your company name</span>
@@ -246,12 +248,20 @@ export default class raise extends Vue {
         return !!this.name && this.name.length > 0
     }
 
-    get isMailValid() {
+    get isMailNotEmpty() {
         return !!this.mail && this.mail.length > 0
     }
 
+    get isMailValid() {
+        return !!this.mail && this.validEmail(this.mail)
+    }
+
+    get isMailOk() {
+        return this.isMailNotEmpty && this.isMailValid
+    }
+
     get isValidCard1() {
-        return this.isNameValid && this.isMailValid
+        return this.isNameValid && this.isMailOk
     }
 
     get isValidCard2() {
@@ -335,6 +345,11 @@ export default class raise extends Vue {
 
     scrollToTheTop() {
         window.scrollTo({top: 0, behavior: 'smooth'})
+    }
+
+    validEmail(email: string) {
+        const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(email);
     }
 
 }
