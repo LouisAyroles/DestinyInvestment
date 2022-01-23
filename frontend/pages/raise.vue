@@ -311,23 +311,24 @@ export default class raise extends Vue {
         })], {
             type: "application/json"
         }));
-        fetch('api/raise/apply', {
-            method: 'POST',
-            body: formData
+        this.$axios.post('api/raise/apply', formData, {
+            headers: {'content-type': 'multipart/form-data'}
         }).then(res => {
-            this.$router.push({
-                path: '/'
-            })
             Vue.swal({
                 icon: 'success',
                 title: 'Perfect',
                 text: 'Thank you for your interest !',
+                didClose: () => {
+                    this.$router.push({
+                        path: '/'
+                    })
+                }
             })
         })
             .catch(err => Vue.swal({
                 icon: 'error',
                 title: 'Oops...',
-                text: err.error,
+                text: err.response.data.error,
             }));
     }
 

@@ -360,33 +360,29 @@ export default class invest extends Vue {
     }
 
     submit() {
-        fetch('api/invest/apply', {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json, text/plain, */*',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                email: this.mail,
-                name: this.name,
-                investmentAreas: this.checkedInvestments,
-                companyStage: this.investmentChoice,
-                portfolioSize: this.portfolioSize,
-            })
-        }).then(res => {
-            this.$router.push({
-                path: '/'
-            })
-            Vue.swal({
-                icon: 'success',
-                title: 'Perfect',
-                text: 'Thank you for your interest !',
-            })
+        this.$axios.post('api/invest/apply', {
+            email: this.mail,
+            name: this.name,
+            investmentAreas: this.checkedInvestments,
+            companyStage: this.investmentChoice,
+            portfolioSize: this.portfolioSize,
         })
+            .then(res => {
+                Vue.swal({
+                    icon: 'success',
+                    title: 'Perfect',
+                    text: 'Thank you for your interest !',
+                    didClose: () => {
+                        this.$router.push({
+                            path: '/'
+                        })
+                    }
+                })
+            })
             .catch(err => Vue.swal({
                 icon: 'error',
                 title: 'Oops...',
-                text: err.error,
+                text: err.response.data.error,
             }));
     }
 

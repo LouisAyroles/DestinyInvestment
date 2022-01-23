@@ -225,8 +225,8 @@ export default class IndexPage extends mixins(aosMixin) {
     next() {
         const slider = this.$refs['slider'] as HTMLElement
         slider.classList.add('hide');
-        setInterval(() => this.changeText(slider), 2000)
-        setInterval(() => slider.classList.remove('hide'), 2000)
+        setInterval(() => this.changeText(slider), 1500)
+        setInterval(() => slider.classList.remove('hide'), 1500)
     }
 
     changeText(slider: HTMLElement) {
