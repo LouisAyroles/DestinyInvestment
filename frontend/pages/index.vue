@@ -101,7 +101,7 @@
                     </div>
                     <div class="contact-size">
                         <d-icon class="text-primary" :icon="'email'"/>
-                        contact@destinyinvestment.com
+                        contact@destinyconnexion.com
                     </div>
                 </div>
             </div>
