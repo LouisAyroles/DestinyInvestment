@@ -24,19 +24,27 @@
                                         <div class="relative">
                                             <div class="relative">
                                                 <input autocomplete="off" v-model="name" name="name" type="text"
-                                                       class="peer placeholder-transparent px-2 h-10 w-full border-2 rounded-lg border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600"
+                                                       :class="{'border-primary-dark' :!isNameValid && this.tryToNext}"
+                                                       class="peer placeholder-transparent px-2 h-10 w-full border-2 rounded-lg text-gray-900 focus:outline-none focus:borer-rose-600"
                                                        placeholder="Email address"/>
                                                 <label for="email"
                                                        class="absolute ml-2 left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-5 peer-focus:text-gray-600 peer-focus:text-sm">Name</label>
+                                                <span class="text-sm text-primary"
+                                                      v-if="!isNameValid && this.tryToNext">Please fill your name </span>
+                                                <span class="text-sm"
+                                                      v-if="!(!isNameValid && this.tryToNext)">&nbsp</span>
                                             </div>
                                         </div>
                                         <div class="relative">
                                             <input autocomplete="off" v-model="mail" name="email" type="text"
-                                                   class="peer placeholder-transparent px-2 h-10 w-full border-2 rounded-lg border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600"
+                                                   :class="{'border-primary-dark' :!isMailValid && this.tryToNext}"
+                                                   class="peer placeholder-transparent px-2 h-10 w-full border-2 rounded-lg text-gray-900 focus:outline-none focus:borer-rose-600"
                                                    placeholder="Email address"/>
                                             <label for="email"
                                                    class="absolute ml-2 left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-5 peer-focus:text-gray-600 peer-focus:text-sm">Email
                                                 Address</label>
+                                            <span class="text-sm text-primary" v-if="!isMailValid && this.tryToNext">Please fill your email </span>
+                                            <span class="text-sm" v-if="!(!isMailValid && this.tryToNext)">&nbsp</span>
                                         </div>
                                     </div>
                                 </div>
@@ -55,6 +63,8 @@
                                     <h1 class="title">Investment field</h1>
                                 </div>
                                 <span class="text-slate-500 text-center md:text-left"> What are your areas of Investment?</span>
+                                <span class="error text-center md:text-left" v-if="!isValidCard2 && this.tryToNext">Please choose one item at list </span>
+                                <span class="error" v-if="!(!isValidCard2 && this.tryToNext)">&nbsp</span>
                                 <div class="input-container grow">
                                     <div class="checkboxs">
                                         <div class="flex flex-col items-center justify-center">
@@ -88,6 +98,8 @@
                                     <h1 class="title">Investment field</h1>
                                 </div>
                                 <span class="text-slate-500 text-center md:text-left">Which company stage is more interesting for you?</span>
+                                <span class=" error text-center md:text-left" v-if="!isValidCard3 && this.tryToNext">Please let us know what your preference is. </span>
+                                <span class="error" v-if="!(!isValidCard3 && this.tryToNext)">&nbsp</span>
                                 <div class="mt-10 grow">
                                     <label class="inline-flex items-center mt-3">
                                         <input type="radio" value="EarlierWithHigherReturn"
@@ -119,6 +131,8 @@
                                     <h1 class="title">Portfolio size</h1>
                                 </div>
                                 <span class="text-slate-500 text-center md:text-left">What is your investment portfolio size?</span>
+                                <span class="error text-center md:text-left" v-if="!isValidCard4 && this.tryToNext">Please let us know what your portfolio size is. </span>
+                                <span class="error" v-if="!(!isValidCard4 && this.tryToNext)">&nbsp</span>
                                 <div class="mt-10 grow flex flex-col">
                                     <label class="inline-flex items-center mt-3">
                                         <input type="radio" value="GradeA" v-model="portfolioSize"
@@ -275,6 +289,35 @@ export default class invest extends Vue {
     checkedInvestments = [];
     investmentChoice = ""
     portfolioSize = ""
+    tryToNext = false
+
+    get isNameValid() {
+        return !!this.name && this.name.length > 0
+    }
+
+    get isMailValid() {
+        return !!this.mail && this.mail.length > 0
+    }
+
+    get isValidCard1() {
+        return this.isNameValid && this.isMailValid
+    }
+
+    get isValidCard2() {
+        return !!this.checkedInvestments && this.checkedInvestments.length > 0
+    }
+
+    get isValidCard3() {
+        return !!this.investmentChoice && this.investmentChoice.length > 0
+    }
+
+    get isValidCard4() {
+        return !!this.portfolioSize && this.portfolioSize.length > 0
+    }
+
+    get isFormValid() {
+        return [this.isValidCard1, this.isValidCard2, this.isValidCard3, this.isValidCard4]
+    }
 
 
     get swiper() {
@@ -282,6 +325,11 @@ export default class invest extends Vue {
     }
 
     next() {
+        if (!this.isFormValid[this.currentStep]) {
+            this.tryToNext = true
+            return
+        }
+        this.tryToNext = false
         this.swiper.slideTo(++this.currentStep, 1000, false)
     }
 
@@ -382,6 +430,10 @@ export default class invest extends Vue {
 }
 
 .checkboxs {
-    @apply py-4 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7;
+    @apply text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7;
+}
+
+.error {
+    @apply text-sm text-primary-dark
 }
 </style>
