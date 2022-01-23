@@ -1,12 +1,12 @@
 <template>
     <div class="pt-20 sections h-full">
-        <d-app-bar currentPage="Raise" class="fixed top-0 left-0 right-0"/>
+        <d-app-bar currentPage="Raise" class="appbar"/>
         <d-section class="flex flex-col">
-            <div class="p-0 md:py-12 md:px-20 lg:px-32">
+            <div class="stepper-container">
                 <d-stepper :steps="steps" :currentStep=currentStep></d-stepper>
             </div>
 
-            <div class="flex container-form grow items-center min-w-full">
+            <div class="container-form">
                 <div class="flex justify-center">
                     <div class="first-subcard"></div>
                     <div class="second-subcard"></div>
@@ -15,7 +15,7 @@
                 <swiper @slide-change="scrollToTheTop" ref="mySwiper" :options="swiperOptions">
                     <swiper-slide ref="first-card">
                         <div class="flex justify-center">
-                            <div class="card-container self-center flex flex-col min-w-full md:min-w-0">
+                            <div class="card-container ">
                                 <div class="hidden md:block">
                                     <h1 class="title">Personal details</h1>
                                 </div>
@@ -23,25 +23,31 @@
                                 <div class="input-container">
                                     <div class="inputs">
                                         <div class="relative">
-                                            <div class="relative">
-                                                <input autocomplete="off" v-model="name" name="name" type="text"
-                                                       class="peer placeholder-transparent px-2 h-10 w-full border-2 rounded-lg border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600"
-                                                       placeholder="Email address"/>
-                                                <label for="email"
-                                                       class="absolute ml-2 left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-5 peer-focus:text-gray-600 peer-focus:text-sm">Name</label>
-                                            </div>
+                                            <input autocomplete="off" v-model="name" name="name" type="text"
+                                                   :class="{'border-primary-dark' :!isNameValid && this.tryToNext}"
+                                                   class="peer placeholder-transparent px-2 h-10 w-full border-2 rounded-lg text-gray-900 focus:outline-none focus:borer-rose-600"
+                                                   placeholder="Name"/>
+                                            <label for="email"
+                                                   class="absolute ml-2 left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-5 peer-focus:text-gray-600 peer-focus:text-sm">Name</label>
+                                            <span class="text-sm text-primary"
+                                                  v-if="!isNameValid && this.tryToNext">Please fill your name </span>
+                                            <span class="text-sm"
+                                                  v-if="!(!isNameValid && this.tryToNext)">&nbsp</span>
                                         </div>
                                         <div class="relative">
                                             <input autocomplete="off" v-model="mail" name="email" type="text"
-                                                   class="peer placeholder-transparent px-2 h-10 w-full border-2 rounded-lg border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600"
+                                                   :class="{'border-primary-dark' :!isMailValid && this.tryToNext}"
+                                                   class="peer placeholder-transparent px-2 h-10 w-full border-2 rounded-lg text-gray-900 focus:outline-none focus:borer-rose-600"
                                                    placeholder="Email address"/>
                                             <label for="email"
                                                    class="absolute ml-2 left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-5 peer-focus:text-gray-600 peer-focus:text-sm">Email
                                                 Address</label>
+                                            <span class="text-sm text-primary" v-if="!isMailValid && this.tryToNext">Please fill your email </span>
+                                            <span class="text-sm" v-if="!(!isMailValid && this.tryToNext)">&nbsp</span>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="flex justify-end items-center gap-3">
+                                <div class="button-container">
                                     <d-button @click.native="next" icon="arrow-right-thick" class="text-white"/>
                                 </div>
                             </div>
@@ -51,26 +57,32 @@
                     <!-- Second Card -->
                     <swiper-slide ref="second-card">
                         <div class="flex justify-center">
-                            <div class="card-container self-center flex flex-col min-w-full md:min-w-0">
+                            <div class="card-container">
                                 <div class="hidden md:block">
                                     <h1 class="title">Company details</h1>
                                 </div>
-                                <span class="text-slate-500 text-center md:text-left"> What are your areas of Investment?</span>
+                                <span class="question">What is the name of your company?</span>
                                 <div class="input-container">
                                     <div class="inputs">
                                         <div class="relative">
                                             <div class="relative">
-                                                <input autocomplete="off" v-model="companyName" name="name" type="text"
-                                                       class="peer placeholder-transparent px-2 h-10 w-full border-2 rounded-lg border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600"
-                                                       placeholder="Email address"/>
+                                                <input autocomplete="off" v-model="companyName" name="companyName"
+                                                       type="text"
+                                                       :class="{'border-primary-dark' :!isValidCard2 && this.tryToNext}"
+                                                       class="peer placeholder-transparent px-2 h-10 w-full border-2 rounded-lg text-gray-900 focus:outline-none focus:borer-rose-600"
+                                                       placeholder="Company name"/>
                                                 <label for="email"
                                                        class="absolute ml-2 left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-5 peer-focus:text-gray-600 peer-focus:text-sm">Name</label>
+                                                <span class="error text-center md:text-left"
+                                                      v-if="!isValidCard2 && this.tryToNext">Please fill your company name</span>
+                                                <span class="error"
+                                                      v-if="!(!isValidCard2 && this.tryToNext)">&nbsp</span>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="flex justify-end items-center gap-3">
+                                <div class="button-container">
                                     <d-button @click.native="prev" icon="arrow-left-thick" class="text-white"/>
                                     <d-button @click.native="next" icon="arrow-right-thick" class="text-white"/>
                                 </div>
@@ -81,10 +93,12 @@
                     <!-- Third Card -->
                     <swiper-slide ref="third-card">
                         <div class="flex justify-center">
-                            <div class="card-container self-center flex flex-col min-w-full md:min-w-0">
+                            <div class="card-container">
                                 <div class="hidden md:block">
                                     <h1 class="title">Pitch Deck</h1>
                                 </div>
+                                <span class="error text-center md:text-left" v-if="!isValidCard3 && this.tryToNext">Please upload your pitch deck. </span>
+                                <span class="error" v-if="!(!isValidCard3 && this.tryToNext)">&nbsp</span>
                                 <div class="input-container grow">
                                     <div class="inputs">
                                         <div class="flex items-center justify-center bg-grey-lighter">
@@ -109,7 +123,7 @@
                                     </div>
                                 </div>
 
-                                <div class="flex justify-end items-center gap-3">
+                                <div class="button-container">
                                     <d-button @click.native="prev" icon="arrow-left-thick" class="text-white"/>
                                     <d-button @click.native="next" icon="arrow-right-thick" class="text-white"/>
                                 </div>
@@ -120,7 +134,7 @@
                     <!-- Fourth Card -->
                     <swiper-slide ref="fifth-card">
                         <div class="flex justify-center">
-                            <div class="confirmation-card-container flex flex-col min-w-full md:min-w-0">
+                            <div class="confirmation-card-container ">
                                 <div class="min-w-full min-h-full p-10">
                                     <div class="hidden md:block">
                                         <h1 class="title"> Confirmation </h1>
@@ -154,7 +168,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="flex justify-end items-center gap-3">
+                                    <div class="button-container">
                                         <d-button @click.native="prev" icon="arrow-left-thick" class="text-white"/>
                                         <d-button @click.native="submit" icon="check" class="text-white"/>
                                     </div>
@@ -176,7 +190,13 @@ import {Step} from "~/components/DStepper.vue";
 
 @Component
 export default class raise extends Vue {
-    currentStep = 0;
+
+
+    /**************************************************
+     *
+     *              STEPPER & SWIPER OPTIONS
+     *
+     ***************************************************/
 
     readonly steps: Step[] = [{
         title: "Personal details",
@@ -207,17 +227,62 @@ export default class raise extends Vue {
         }
     }
 
-    //Form value
+    currentStep = 0;
+
+    /**************************************************
+     *
+     *                   FORM HANDLER
+     *
+     ***************************************************/
+
+        //Form value
     name: string = "";
     mail: string = "";
     companyName = "";
     pitchDeck = ""
+    tryToNext = false
+
+    get isNameValid() {
+        return !!this.name && this.name.length > 0
+    }
+
+    get isMailValid() {
+        return !!this.mail && this.mail.length > 0
+    }
+
+    get isValidCard1() {
+        return this.isNameValid && this.isMailValid
+    }
+
+    get isValidCard2() {
+        return !!this.companyName && this.companyName.length > 0
+    }
+
+    get isValidCard3() {
+        return !!this.pitchDeck && this.pitchDeck !== ''
+    }
+
+    get isFormValid() {
+        return [this.isValidCard1, this.isValidCard2, this.isValidCard3]
+    }
+
+
+    /**************************************************
+     *
+     *            NAVIGATION HANDLER
+     *
+     ***************************************************/
 
     get swiper() {
         return (this as any).$refs.mySwiper.$swiper
     }
 
     next() {
+        if (!this.isFormValid[this.currentStep]) {
+            this.tryToNext = true
+            return
+        }
+        this.tryToNext = false
         this.swiper.slideTo(++this.currentStep, 1000, false)
     }
 
@@ -225,13 +290,6 @@ export default class raise extends Vue {
         this.swiper.slideTo(--this.currentStep, 1000, false)
     }
 
-    handleFileUpload(event: any) {
-        this.pitchDeck = event.target.files[0];
-    }
-
-    scrollToTheTop() {
-        window.scrollTo({top: 0, behavior: 'smooth'})
-    }
 
     submit() {
         const formData = new FormData();
@@ -262,6 +320,23 @@ export default class raise extends Vue {
                 text: err.error,
             }));
     }
+
+
+    /**************************************************
+     *
+     *            UTILS METHODS
+     *
+     ***************************************************/
+
+
+    handleFileUpload(event: any) {
+        this.pitchDeck = event.target.files[0];
+    }
+
+    scrollToTheTop() {
+        window.scrollTo({top: 0, behavior: 'smooth'})
+    }
+
 }
 </script>
 
@@ -294,12 +369,12 @@ export default class raise extends Vue {
 }
 
 .container-form {
-    @apply relative py-3 sm:max-w-xl sm:mx-auto;
+    @apply relative py-3 sm:max-w-xl sm:mx-auto flex  grow items-center min-w-full;
 }
 
 .card-container {
     @include card;
-    @apply relative px-4 py-10 shadow-lg sm:rounded-3xl sm:p-20;
+    @apply relative px-4 py-10 shadow-lg sm:rounded-3xl sm:p-20 self-center flex flex-col min-w-full md:min-w-0;
 }
 
 .title {
@@ -308,14 +383,30 @@ export default class raise extends Vue {
 
 .confirmation-card-container {
     @include card;
-    @apply relative md:shadow-lg p-4;
-}
-
-.input-container {
-    @apply divide-y divide-gray-200;
+    @apply relative md:shadow-lg p-4 flex flex-col min-w-full md:min-w-0;
 }
 
 .inputs {
     @apply py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7;
+}
+
+.error {
+    @apply text-sm text-primary-dark
+}
+
+.appbar {
+    @apply fixed top-0 left-0 right-0
+}
+
+.stepper-container {
+    @apply p-0 md:py-12 md:px-20 lg:px-32
+}
+
+.button-container {
+    @apply flex justify-end items-center gap-3
+}
+
+.question {
+    @apply text-slate-500 text-center md:text-left
 }
 </style>
