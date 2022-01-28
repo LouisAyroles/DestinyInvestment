@@ -8,9 +8,13 @@
             <div class="main-section-container">
                 <div data-aos="fade-right" data-aos-duration="1000" class="main-left-panel">
                     <h1 class="main-title">Smart and Secure</h1>
-                    <h1 class="main-title">way to invest <span class="inline sm:hidden"> in </span></h1>
-                    <h1 class="main-title2 "><span class="hidden sm:inline"> in </span> <span class="slider"
-                                                                                              ref="slider"> </span></h1>
+                    <h1 class="main-title">way to invest in <span class="inline sm:hidden"> in </span></h1>
+                    <h1 class="main-title2 ">
+                        <span class="slider" ref="slider">
+                            <span class="slider-size-keeper" ref="slider-size-keeper"></span>
+                            <span v-for="keyword in investIn" :key="keyword" class="keyword">{{ keyword }}</span>
+                        </span>
+                    </h1>
                     <h3 class="main-subtitle">Reach now for the moon </h3>
                     <d-button class="mt-8 text-white" :gradient="false"
                               icon="arrow-right-thick" link-to="/#raise">JOIN
@@ -216,23 +220,33 @@ export default class IndexPage extends mixins(aosMixin) {
     word: number = 0;
 
     readonly investIn: string[] = [
-        "Greentech", "Sportech", "Fintech", "Blockchain", "E-commerce", "Edtech", "Cyber-security", "AI"
+        "Greentech", "Sportech", "Fintech", "Blockchain", "E-commerce", "Edtech", "Cyber-security", "Artificial Intelligence"
     ]
 
     mounted() {
+        const slider = this.$refs['slider'] as HTMLElement
+        const keywords = Array.from(slider.querySelectorAll(".keyword")) as HTMLElement[]
+        const sizeKeeper = this.$refs['slider-size-keeper'] as HTMLElement
+        sizeKeeper.innerText = this.investIn.reduce((prev, curr) => prev.length > curr.length ? prev : curr, this.investIn[0] ?? "")
+
+        keywords[0]?.classList.add("visible")
+        keywords.splice(1).forEach(it => it.classList.add("hide"))
         this.next()
     }
 
     next() {
         const slider = this.$refs['slider'] as HTMLElement
-        slider.classList.add('hide');
-        setInterval(() => this.changeText(slider), 1500)
-        setInterval(() => slider.classList.remove('hide'), 1500)
+        setInterval(() => this.changeText(Array.from(slider.querySelectorAll(".keyword")) as HTMLElement[]), 1500)
     }
 
-    changeText(slider: HTMLElement) {
-        slider.textContent = this.investIn[this.word];
-        this.word = (this.word + 1) % this.investIn.length;
+    changeText(keywords: HTMLElement[]) {
+        keywords[this.word].classList.remove('visible')
+        keywords[this.word].classList.add('hide')
+
+        this.word = (this.word + 1) % this.investIn.length
+
+        keywords[this.word].classList.remove('hide')
+        keywords[this.word].classList.add('visible')
     }
 }
 
@@ -368,12 +382,41 @@ export default class IndexPage extends mixins(aosMixin) {
     }
 
     .slider {
-        @apply rounded-lg text-3xl md:text-5xl xl:text-6xl text-center md:text-left text-[#f9bd49] font-bold w-[45rem];
-        opacity: 1;
-        transition: all 1s;
+        @apply relative rounded-lg text-3xl md:text-5xl xl:text-6xl text-center md:text-left text-[#f9bd49] font-bold w-[45rem];
 
-        &.hide {
+        .slider-size-keeper {
+            opacity: 0 !important;
+        }
+
+        .keyword {
+            @apply absolute top-2/4 left-0;
+            @media (max-width: 767px) {
+                transform: translate(-50%, -50%);
+                left: 50%;
+            }
+            transform: translateY(-50%);
+            transition: all 1s;
+            opacity: 1;
+        }
+
+        @keyframes hide-keys {
+            0% { transform: translateY(-50%) }
+            50% { opacity: 1 }
+            100% { transform: translateY(40%); opacity: 0 }
+        }
+
+        @keyframes hide-keys-centered {
+            0% { transform: translate(-50%, -50%) }
+            50% { opacity: 1 }
+            100% { transform: translate(-50%, 40%); opacity: 0 }
+        }
+
+        .hide {
             opacity: 0;
+            @media (max-width: 767px) {
+                animation: 1s hide-keys-centered;
+            }
+            animation: 1s hide-keys;
         }
     }
 
