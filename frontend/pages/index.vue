@@ -158,12 +158,13 @@ export default class IndexPage extends mixins(aosMixin) {
         date: "May 01, 2022",
         description: "Projects available"
     }, {
-        date: "November 01, 2021",
+        date: "September 03, 2022",
         description: "You will be able to invest"
-    }, {
-        date: "September 03, 2021",
-        description: "First event in Barcelona"
-    }]
+    },
+        {
+            date: "November 01, 2022",
+            description: "First event in Barcelona"
+        }]
 
     readonly projects: Project[] = [{
         id: 1,
