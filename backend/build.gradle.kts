@@ -9,6 +9,10 @@ plugins {
     kotlin("plugin.spring") version "1.6.0"
 }
 
+application {
+    mainClass.set("com.destiny.investment.DestinyInvestmentApplication")
+}
+
 group = "com.destiny"
 version = "1.0.0"
 java.sourceCompatibility = JavaVersion.VERSION_11
@@ -21,6 +25,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-mustache")
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
+    implementation("org.springframework.boot:spring-boot-starter-tomcat:2.6.3")
     implementation("org.flywaydb:flyway-core")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
