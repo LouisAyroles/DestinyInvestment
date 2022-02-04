@@ -174,7 +174,7 @@ export default class IndexPage extends mixins(aosMixin) {
 
     readonly projects: Project[] = [{
         id: 1,
-        video: "small.mp4",
+        video: "psst.mp4",
         title: "Psst..!",
         logo: "psst.png",
         short_desc: "Psst..! est une application indispensable pour vos futures découvertes",
