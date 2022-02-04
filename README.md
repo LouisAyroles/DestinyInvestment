@@ -6,7 +6,7 @@
 <div>
 <div align="center">
   <a>
-    <img src="https://github.com/LouisAyroles/DestinyInvestment/blob/master/frontend/assets/logos/logo.svg" alt="Logo" width="80" height="80">
+    <img src="https://github.com/LouisAyroles/DestinyInvestment/blob/master/frontend/assets/logos/logopc.png" alt="Logo" width="80" height="80">
   </a>
   </div>
 
