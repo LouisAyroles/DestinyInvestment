@@ -180,29 +180,16 @@ export default class IndexPage extends mixins(aosMixin) {
         short_desc: "Psst..! est une application indispensable pour vos futures découvertes",
         available_date: "20/01/2022",
         money_raised: 20321,
-        goal_raise: 51100,
-        information: [
-            'Après de nombreux Congrès de pilotage en one-to-one',
-            'Nous avons décider de créer un Diagramme des best practices conceptuel',
-            'Afin de Concrétiser les tendances interoperables'
-        ]
+        goal_raise: 51100
     }, {
         id: 2,
-        video: "video2.mp4",
-        title: "Doggies in town",
-        logo: "chien.png",
-        short_desc: "The only app you and your lovely dog will ever need.",
+        video: "plug-heur.mp4",
+        title: "PLUG'HEUR",
+        logo: "plug-heur.png",
+        short_desc: "Self-service external battery stations to recharge your customers' phones. Improve your customer reception to generate a positive and memorable experience.",
         available_date: "20/01/2022",
         money_raised: 7500,
-        goal_raise: 12500,
-        information: [
-            'Notre but: Dématérialser les key-learnings pérennes',
-            'Pourquoi faire ? Prospecter un chemin de conversion composite',
-            "L'avenir appartient aux personnes qui savent Boostrapper une overview à iso-périmètre",
-            "L'avenir appartient aux personnes qui savent Boostrapper une overview à iso-périmètre",
-            "L'avenir appartient aux personnes qui savent Boostrapper une overview à iso-périmètre",
-            "L'avenir appartient aux personnes qui savent Boostrapper une overview à iso-périmètre"
-        ]
+        goal_raise: 12500
     }, {
         id: 3,
         video: "video3.mp4",
@@ -211,12 +198,7 @@ export default class IndexPage extends mixins(aosMixin) {
         short_desc: "Towni is THE applicaiton that you need to find you dream appartment !",
         available_date: "20/01/2022",
         money_raised: 20321,
-        goal_raise: 51100,
-        information: [
-            'Nous cherchons à Dynamiser les feedbacks appétants',
-            'Afin de Boostrapper un rebilling intuitif',
-            'Notre job: Fullstack transformation recruiter'
-        ]
+        goal_raise: 51100
     }]
 
     word: number = 0;

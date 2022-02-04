@@ -23,9 +23,9 @@
                 </div>
                 <div class="items">
                     <div class="logos">
-                        <a href="/"><img class="logo" src="@/assets/logos/logo.svg" alt="Destiny"></a>
+                        <a href="/"><img class="logo" src="@/assets/logos/logo.png" alt="Destiny"></a>
                         <a class="hidden md:flex flex flex-row items-center md:ml-4 lg:ml-8 2xl:ml-0" href="/"><img
-                            class="full-logo" src="@/assets/logos/logo.svg" alt="Destiny">
+                            class="full-logo" src="@/assets/logos/logopc.png" alt="Destiny">
                             <span class="title-company"> Destiny Connexion</span></a>
                     </div>
                     <div class="menu-items">
