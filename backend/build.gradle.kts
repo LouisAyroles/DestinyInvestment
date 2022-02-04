@@ -1,11 +1,12 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
+    application
+    kotlin("jvm") version "1.6.0"
+    id("de.comahe.i18n4k") version "0.2.0"
     id("org.springframework.boot") version "2.6.1"
     id("io.spring.dependency-management") version "1.0.11.RELEASE"
-    kotlin("jvm") version "1.6.0"
     kotlin("plugin.spring") version "1.6.0"
-    id("de.comahe.i18n4k") version "0.2.0"
 }
 
 group = "com.destiny"
@@ -14,10 +15,6 @@ java.sourceCompatibility = JavaVersion.VERSION_11
 
 i18n4k {
     sourceCodeLocales = listOf("en", "fr")
-}
-
-repositories {
-    mavenCentral()
 }
 
 dependencies {

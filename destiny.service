@@ -1,0 +1,14 @@
+[Unit]
+Description=DESTINY_SERVICE
+
+Wants=network.target
+After=syslog.target network-online.target
+
+[Service]
+Type=simple
+ExecStart=sh /opt/destiny/backend/bin/backend
+Restart=on-failure
+KillMode=process
+
+[Install]
+WantedBy=multi-user.target
