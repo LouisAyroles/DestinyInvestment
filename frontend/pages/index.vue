@@ -12,7 +12,9 @@
                     <h1 class="main-title2 ">
                         <span class="slider" ref="slider">
                             <span class="slider-size-keeper" ref="slider-size-keeper"></span>
-                            <span v-for="keyword in investIn" :key="keyword" class="keyword">{{ keyword }}</span>
+                            <span v-for="keyword in investIn" :key="keyword" class="keyword first-hide">{{
+                                    keyword
+                                }}</span>
                         </span>
                     </h1>
                     <h3 class="main-subtitle">Reach now for the moon </h3>
@@ -218,6 +220,7 @@ export default class IndexPage extends mixins(aosMixin) {
     }]
 
     word: number = 0;
+    firstHide = true
 
     readonly investIn: string[] = [
         "Greentech", "Sportech", "Fintech", "Blockchain", "E-commerce", "Edtech", "Cyber-security", "Artificial Intelligence"
@@ -230,7 +233,6 @@ export default class IndexPage extends mixins(aosMixin) {
         sizeKeeper.innerText = this.investIn.reduce((prev, curr) => prev.length > curr.length ? prev : curr, this.investIn[0] ?? "")
 
         keywords[0]?.classList.add("visible")
-        keywords.splice(1).forEach(it => it.classList.add("hide"))
         this.next()
     }
 
@@ -240,6 +242,7 @@ export default class IndexPage extends mixins(aosMixin) {
     }
 
     changeText(keywords: HTMLElement[]) {
+
         keywords[this.word].classList.remove('visible')
         keywords[this.word].classList.add('hide')
 
@@ -247,6 +250,12 @@ export default class IndexPage extends mixins(aosMixin) {
 
         keywords[this.word].classList.remove('hide')
         keywords[this.word].classList.add('visible')
+        if (this.firstHide) {
+            keywords[this.word].classList.remove('first-hide')
+        }
+        if (this.word === 0 && this.firstHide) {
+            this.firstHide = false;
+        }
     }
 }
 
@@ -395,20 +404,41 @@ export default class IndexPage extends mixins(aosMixin) {
                 left: 50%;
             }
             transform: translateY(-50%);
-            transition: all 1s;
             opacity: 1;
+            transition: all 1s;
         }
 
+
         @keyframes hide-keys {
-            0% { transform: translateY(-50%) }
-            50% { opacity: 1 }
-            100% { transform: translateY(40%); opacity: 0 }
+            0% {
+                transform: translateY(-50%);
+                opacity: 1
+            }
+            50% {
+                opacity: 1
+            }
+            100% {
+                transform: translateY(40%);
+                opacity: 0
+            }
         }
 
         @keyframes hide-keys-centered {
-            0% { transform: translate(-50%, -50%) }
-            50% { opacity: 1 }
-            100% { transform: translate(-50%, 40%); opacity: 0 }
+            0% {
+                transform: translate(-50%, -50%);
+                opacity: 1
+            }
+            50% {
+                opacity: 1
+            }
+            100% {
+                transform: translate(-50%, 40%);
+                opacity: 0
+            }
+        }
+
+        .first-hide {
+            opacity: 0;
         }
 
         .hide {
