@@ -9,7 +9,7 @@ plugins {
 }
 
 group = "com.destiny"
-version = "0.0.1-SNAPSHOT"
+version = "1.0.0"
 java.sourceCompatibility = JavaVersion.VERSION_11
 
 i18n4k {
@@ -51,3 +51,4 @@ tasks.withType<Copy> {
 tasks.withType<Test> {
     useJUnitPlatform()
 }
+
