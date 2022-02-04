@@ -58,7 +58,6 @@ export interface Project {
     available_date: string,
     goal_raise: number,
     money_raised: number
-    information: string[]
 }
 
 @Component({
@@ -95,9 +94,9 @@ export default class DCard extends Vue {
 <style lang="scss" scoped>
 
 .card-front {
-    @apply flex flex-col overflow-hidden h-[28rem]  w-[17rem] sm:h-[31rem] sm:w-[24rem] shadow-xl shadow-primary transform transition duration-500;
+    @apply flex flex-col overflow-hidden h-[28rem] w-[17rem] sm:h-[32rem] xl:h-[33rem] sm:w-[24rem] dark:shadow-none shadow-xl shadow-primary transform transition duration-500 dark:bg-[#05051b];
     &:hover {
-        @apply md:shadow-2xl md:shadow-primary cursor-pointer  md:scale-110
+        @apply dark:md:shadow-none md:shadow-2xl md:shadow-primary cursor-pointer  md:scale-110
     }
 }
 
@@ -122,7 +121,7 @@ export default class DCard extends Vue {
 }
 
 .desc {
-    @apply text-gray-400 text-base dark:text-white flex justify-around overflow-hidden text-ellipsis line-clamp-3;
+    @apply text-gray-400 text-xs sm:text-sm xl:text-base dark:text-white flex justify-around overflow-hidden text-ellipsis line-clamp-5;
     display: -webkit-box;
     -webkit-box-orient: vertical;
 }

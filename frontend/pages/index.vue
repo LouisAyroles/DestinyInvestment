@@ -8,9 +8,15 @@
             <div class="main-section-container">
                 <div data-aos="fade-right" data-aos-duration="1000" class="main-left-panel">
                     <h1 class="main-title">Smart and Secure</h1>
-                    <h1 class="main-title">way to invest <span class="inline sm:hidden"> in </span></h1>
-                    <h1 class="main-title2 "><span class="hidden sm:inline"> in </span> <span class="slider"
-                                                                                              ref="slider"> </span></h1>
+                    <h1 class="main-title">way to invest in <span class="inline sm:hidden"> in </span></h1>
+                    <h1 class="main-title2 ">
+                        <span class="slider" ref="slider">
+                            <span class="slider-size-keeper" ref="slider-size-keeper"></span>
+                            <span v-for="keyword in investIn" :key="keyword" class="keyword first-hide">{{
+                                    keyword
+                                }}</span>
+                        </span>
+                    </h1>
                     <h3 class="main-subtitle">Reach now for the moon </h3>
                     <d-button class="mt-8 text-white" :gradient="false"
                               icon="arrow-right-thick" link-to="/#raise">JOIN
@@ -42,7 +48,8 @@
                     <h1 data-aos="fade-down" data-aos-duration="1000" class="title-1 sm:max-w-md">
                         Are you looking <span class="text-primary"> <b> to invest</b></span> in innovative projects?
                     </h1>
-                    <d-button data-aos="zoom-in-up" data-aos-duration="2000" class="raise-or-invest-button"
+                    <d-button data-aos="zoom-in-up" data-aos-duration="2000" data-aos-offset="-200"
+                              class="raise-or-invest-button"
                               link-to="/invest" icon="arrow-right-thick">
                         APPLY TO INVEST
                     </d-button>
@@ -100,7 +107,7 @@
                     </div>
                     <div class="contact-size">
                         <d-icon class="text-primary" :icon="'email'"/>
-                        contact@destinyinvestment.com
+                        contact@destinyconnexion.com
                     </div>
                 </div>
             </div>
@@ -157,44 +164,32 @@ export default class IndexPage extends mixins(aosMixin) {
         date: "May 01, 2022",
         description: "Projects available"
     }, {
-        date: "November 01, 2021",
+        date: "September 03, 2022",
         description: "You will be able to invest"
-    }, {
-        date: "September 03, 2021",
-        description: "First event in Barcelona"
-    }]
+    },
+        {
+            date: "November 01, 2022",
+            description: "First event in Barcelona"
+        }]
 
     readonly projects: Project[] = [{
         id: 1,
-        video: "small.mp4",
+        video: "psst.mp4",
         title: "Psst..!",
         logo: "psst.png",
         short_desc: "Psst..! est une application indispensable pour vos futures découvertes",
         available_date: "20/01/2022",
         money_raised: 20321,
-        goal_raise: 51100,
-        information: [
-            'Après de nombreux Congrès de pilotage en one-to-one',
-            'Nous avons décider de créer un Diagramme des best practices conceptuel',
-            'Afin de Concrétiser les tendances interoperables'
-        ]
+        goal_raise: 51100
     }, {
         id: 2,
-        video: "video2.mp4",
-        title: "Doggies in town",
-        logo: "chien.png",
-        short_desc: "The only app you and your lovely dog will ever need.",
+        video: "plug-heur.mp4",
+        title: "PLUG'HEUR",
+        logo: "plug-heur.png",
+        short_desc: "Self-service external battery stations to recharge your customers' phones. Improve your customer reception to generate a positive and memorable experience.",
         available_date: "20/01/2022",
         money_raised: 7500,
-        goal_raise: 12500,
-        information: [
-            'Notre but: Dématérialser les key-learnings pérennes',
-            'Pourquoi faire ? Prospecter un chemin de conversion composite',
-            "L'avenir appartient aux personnes qui savent Boostrapper une overview à iso-périmètre",
-            "L'avenir appartient aux personnes qui savent Boostrapper une overview à iso-périmètre",
-            "L'avenir appartient aux personnes qui savent Boostrapper une overview à iso-périmètre",
-            "L'avenir appartient aux personnes qui savent Boostrapper une overview à iso-périmètre"
-        ]
+        goal_raise: 12500
     }, {
         id: 3,
         video: "video3.mp4",
@@ -203,34 +198,46 @@ export default class IndexPage extends mixins(aosMixin) {
         short_desc: "Towni is THE applicaiton that you need to find you dream appartment !",
         available_date: "20/01/2022",
         money_raised: 20321,
-        goal_raise: 51100,
-        information: [
-            'Nous cherchons à Dynamiser les feedbacks appétants',
-            'Afin de Boostrapper un rebilling intuitif',
-            'Notre job: Fullstack transformation recruiter'
-        ]
+        goal_raise: 51100
     }]
 
     word: number = 0;
+    firstHide = true
 
     readonly investIn: string[] = [
-        "Greentech", "Sportech", "Fintech", "Blockchain", "E-commerce", "Edtech", "Cyber-security", "Artifical Intelligence"
+        "Greentech", "Sportech", "Fintech", "Blockchain", "E-commerce", "Edtech", "Cyber-security", "Artificial Intelligence"
     ]
 
     mounted() {
+        const slider = this.$refs['slider'] as HTMLElement
+        const keywords = Array.from(slider.querySelectorAll(".keyword")) as HTMLElement[]
+        const sizeKeeper = this.$refs['slider-size-keeper'] as HTMLElement
+        sizeKeeper.innerText = this.investIn.reduce((prev, curr) => prev.length > curr.length ? prev : curr, this.investIn[0] ?? "")
+
+        keywords[0]?.classList.add("visible")
         this.next()
     }
 
     next() {
         const slider = this.$refs['slider'] as HTMLElement
-        slider.classList.add('hide');
-        setInterval(() => this.changeText(slider), 2000)
-        setInterval(() => slider.classList.remove('hide'), 2000)
+        setInterval(() => this.changeText(Array.from(slider.querySelectorAll(".keyword")) as HTMLElement[]), 1500)
     }
 
-    changeText(slider: HTMLElement) {
-        slider.textContent = this.investIn[this.word];
-        this.word = (this.word + 1) % this.investIn.length;
+    changeText(keywords: HTMLElement[]) {
+
+        keywords[this.word].classList.remove('visible')
+        keywords[this.word].classList.add('hide')
+
+        this.word = (this.word + 1) % this.investIn.length
+
+        keywords[this.word].classList.remove('hide')
+        keywords[this.word].classList.add('visible')
+        if (this.firstHide) {
+            keywords[this.word].classList.remove('first-hide')
+        }
+        if (this.word === 0 && this.firstHide) {
+            this.firstHide = false;
+        }
     }
 }
 
@@ -329,14 +336,20 @@ export default class IndexPage extends mixins(aosMixin) {
 }
 
 .home-section {
-    @apply mt-20 flex flex-col content-center  p-6 2xl:bg-[url('@/assets/infography/bg.svg')] md:bg-[url('@/assets/infography/bg-md.svg')];
+    @apply mt-20 flex flex-col 2xl:bg-[url('@/assets/infography/bg.svg')] md:bg-[url('@/assets/infography/bg-md.svg')];
     background-repeat: no-repeat;
 }
 
 .main-section-container {
-    @apply grow h-full grid grid-cols-1 md:grid-cols-2 place-items-center px-10 md:px-0;
+    @apply relative h-full grow grid grid-rows-2 lg:grid-rows-1 md:grid-cols-2 place-items-center md:px-0;
+
     .main-left-panel {
-        @apply grid justify-items-center md:justify-items-start w-full xl:ml-40 2xl:ml-96;
+        @apply flex flex-col grow items-center md:ml-20 md:mt-20 lg:ml-0 lg:mt-0 md:items-start lg:h-full lg:justify-center;
+        @apply z-30;
+    }
+
+    .main-right-panel {
+        @apply absolute bottom-0 right-0 max-w-[100%] sm:max-w-[80%] md:max-w-[60%] lg:max-w-[50%];
     }
 
     .button {
@@ -345,12 +358,8 @@ export default class IndexPage extends mixins(aosMixin) {
         @apply transform transition duration-200 hover:scale-105;
     }
 
-    .main-right-panel {
-        @apply md:mb-0 mt-8 scale-125 sm:scale-100
-    }
-
     .main-title {
-        @apply text-xl md:text-3xl xl:text-6xl text-center md:text-left text-black dark:text-white
+        @apply text-3xl md:text-5xl xl:text-6xl text-center md:text-left text-black dark:text-white
     }
 
     .main-title2 {
@@ -358,13 +367,68 @@ export default class IndexPage extends mixins(aosMixin) {
         white-space: nowrap;
     }
 
-    .slider {
-        @apply rounded-lg text-xl md:text-3xl xl:text-6xl text-center md:text-left text-[#f9bd49] font-bold w-[45rem];
-        opacity: 1;
-        transition: all 1s;
+    #raise {
+        padding-top: 5rem;
+        margin-top: -5rem;
+    }
 
-        &.hide {
+    .slider {
+        @apply relative rounded-lg text-3xl md:text-5xl xl:text-6xl text-center md:text-left text-[#f9bd49] font-bold w-[45rem];
+
+        .slider-size-keeper {
+            opacity: 0 !important;
+        }
+
+        .keyword {
+            @apply absolute top-2/4 left-0;
+            @media (max-width: 767px) {
+                transform: translate(-50%, -50%);
+                left: 50%;
+            }
+            transform: translateY(-50%);
+            opacity: 1;
+            transition: all 1s;
+        }
+
+
+        @keyframes hide-keys {
+            0% {
+                transform: translateY(-50%);
+                opacity: 1
+            }
+            50% {
+                opacity: 1
+            }
+            100% {
+                transform: translateY(40%);
+                opacity: 0
+            }
+        }
+
+        @keyframes hide-keys-centered {
+            0% {
+                transform: translate(-50%, -50%);
+                opacity: 1
+            }
+            50% {
+                opacity: 1
+            }
+            100% {
+                transform: translate(-50%, 40%);
+                opacity: 0
+            }
+        }
+
+        .first-hide {
             opacity: 0;
+        }
+
+        .hide {
+            opacity: 0;
+            @media (max-width: 767px) {
+                animation: 1s hide-keys-centered;
+            }
+            animation: 1s hide-keys;
         }
     }
 
@@ -386,7 +450,7 @@ export default class IndexPage extends mixins(aosMixin) {
 html, body {
     font-family: 'Poppins', sans-serif;
     /* Common theme */
-    @apply p-0 min-w-full min-h-full h-full;
+    @apply p-0 min-w-full min-h-full h-full scroll-pt-20 xl:scroll-pt-0;
     /* Light theme */
     @apply bg-gray-100 text-gray-900;
     /* Dark theme */

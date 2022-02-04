@@ -4,7 +4,7 @@
             <div class="content">
                 <div class="center">
                     <!-- Mobile menu button-->
-                    <button @click="toggleMobileMenu" type="button" class="center mobile-menu-button"
+                    <button @click="toggleMobileMenu()" type="button" class="center mobile-menu-button"
                             aria-controls="mobile-menu" aria-expanded="false">
                         <span class="sr-only">Open main menu</span>
                         <!--Icon when menu is closed. -->
@@ -23,10 +23,10 @@
                 </div>
                 <div class="items">
                     <div class="logos">
-                        <a href="/"><img class="logo" src="@/assets/logos/logo.svg" alt="Destiny"></a>
+                        <a href="/"><img class="logo" src="@/assets/logos/logo.png" alt="Destiny"></a>
                         <a class="hidden md:flex flex flex-row items-center md:ml-4 lg:ml-8 2xl:ml-0" href="/"><img
-                            class="full-logo" src="@/assets/logos/logo.svg" alt="Destiny">
-                            <span class="title-company"> Destiny Investment</span></a>
+                            class="full-logo" src="@/assets/logos/logopc.png" alt="Destiny">
+                            <span class="title-company"> Destiny Connexion</span></a>
                     </div>
                     <div class="menu-items">
                         <div class="flex space-x-4">
@@ -47,11 +47,11 @@
         <!-- Mobile menu, show/hide based on menu state. -->
         <div ref="mobile-menu" class="hidden sm:hidden mobile-menu">
             <div class="px-2 pt-2 pb-3 space-y-1 ">
-                <nuxt-link
-                    v-for="(item, index) in menuItems"
-                    :key="index"
-                    :to="item.href"
-                    class="mobile-title">
+                <nuxt-link @click.native="toggleMobileMenu(true)"
+                           v-for="(item, index) in menuItems"
+                           :key="index"
+                           :to="item.href"
+                           class="mobile-title">
                     {{ item.title }}
                 </nuxt-link>
             </div>
@@ -84,9 +84,13 @@ export default class DAppBar extends Vue {
         window.removeEventListener('scroll', this.scrollListener)
     }
 
-    toggleMobileMenu() {
-        const menu = this.$refs['mobile-menu'] as HTMLElement
-        menu.classList.toggle('hidden')
+    toggleMobileMenu(force = false) {
+        const menu = this.$refs['mobile-menu'] as HTMLElement | undefined
+        if (force) {
+            menu?.classList.add('hidden')
+            return
+        }
+        menu?.classList.toggle('hidden')
     }
 
     scrollListener() {

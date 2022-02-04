@@ -36,6 +36,14 @@ export default {
         {
             src: '~/plugins/observer.ts',
             ssr: true
+        },
+        {
+            src: '~/plugins/swiper.ts',
+            ssr: false
+        },
+        {
+            src: '~/plugins/notifier.ts',
+            ssr: false
         }
     ],
 
@@ -62,9 +70,13 @@ export default {
     // Modules: https://go.nuxtjs.dev/config-modules
     modules: [
         // https://go.nuxtjs.dev/axios
+        '@nuxtjs/proxy',
         '@nuxtjs/axios',
     ],
 
+    proxy: {
+        '/api': 'http://localhost:8080',
+    },
     // Axios module configuration: https://go.nuxtjs.dev/config-axios
     axios: {
         // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
