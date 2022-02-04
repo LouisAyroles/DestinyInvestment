@@ -5,6 +5,7 @@ plugins {
 }
 
 tasks.create<NpmTask>("deploy") {
+    dependsOn(tasks.getByName("npmInstall"))
     args.set(listOf("run", "generate"))
 }
 
