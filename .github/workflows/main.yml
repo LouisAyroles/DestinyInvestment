@@ -29,12 +29,19 @@ jobs:
       - name: Setup Java JDK
         uses: actions/setup-java@v2.5.0
         with:
+          distribution: adopt
           java-version: 11
       
-      - name: build sources
-        run: ./gradlew buildForDeployment
+      - name: Make gradlew file executable
+        run: chmod +x gradlew
       
-      - name: send compiled files
+      - name: Build application
+        run: ./gradlew buildForDeployment
+        
+      - name: Make application executable
+        run: chmod +x build/backend/bin/backend
+      
+      - name: Send built application to server
         uses: appleboy/scp-action@master
         with:
           host: ${{ secrets.SSH_HOST }}
@@ -44,7 +51,7 @@ jobs:
           source: "build/frontend,build/backend"
           target: "/opt/destiny/"
           
-      - name: setup service file
+      - name: Send service file to server
         uses: appleboy/scp-action@master
         with:
           host: ${{ secrets.SSH_HOST }}
@@ -54,7 +61,7 @@ jobs:
           source: "destiny.service"
           target: "/etc/systemd/system/destiny.service"
       
-      - name: run server
+      - name: Run server
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.SSH_HOST }}
