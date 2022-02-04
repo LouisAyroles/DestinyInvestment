@@ -69,6 +69,10 @@ jobs:
           password: ${{ secrets.SSH_PASSWORD }}
           port: ${{ secrets.SSH_PORT }}
           script: |
-            sudo mv /tmp/destiny /opt/destiny
+            sudo apt install openjdk-11-jre
+            sudo rm -R /tmp/destiny
+            sudo mkdir -p /tmp/destiny
+            sudo mv /tmp/destiny/* /opt/destiny
+            sudo rm /etc/systemd/system/destiny.service
             sudo mv /tmp/destiny.service /etc/systemd/system/destiny.service
-            sudo systemclt restart destiny
+            sudo systemctl restart destiny
