@@ -4,12 +4,10 @@ import java.nio.file.Path
 
 interface IConfiguration {
     val mail: Mail
-    val server: Server
 }
 
 data class ServerConfiguration(
     override val mail: Mail,
-    override val server: Server
 ): IConfiguration
 
 data class Credentials(
@@ -22,9 +20,4 @@ data class Mail(
     val mainMail: String,
     val credentials: Credentials,
     val auth: Map<String, String>
-)
-
-data class Server(
-    val staticFilesLocation: String,
-    val staticFilesUrlBase: String
 )

@@ -4,7 +4,7 @@ plugins {
     id("com.github.node-gradle.node") version "3.1.1"
 }
 
-tasks.create<NpmTask>("deploy") {
+tasks.create<NpmTask>("installDist") {
     dependsOn(tasks.getByName("npmInstall"))
     args.set(listOf("run", "generate"))
 }

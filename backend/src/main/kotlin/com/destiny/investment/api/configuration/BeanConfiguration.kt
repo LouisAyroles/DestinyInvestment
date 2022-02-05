@@ -13,7 +13,7 @@ import javax.mail.PasswordAuthentication
 import javax.mail.Session
 
 @Configuration
-@EnableWebMvc
+//@EnableWebMvc
 class BeanConfiguration {
 
     /**

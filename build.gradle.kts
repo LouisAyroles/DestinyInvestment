@@ -8,23 +8,32 @@ subprojects {
     }
 }
 
+val clean by tasks.register("clean") {
+    delete(buildDir)
+
+    dependsOn(
+        tasks.getByPath("backend:clean")
+    )
+}
+
 
 val copyBackendIntoLocalBuild by tasks.register<Copy>("copyBackendIntoLocalBuild") {
     from("$projectDir/backend/build/install/backend")
     into("$buildDir/backend")
 }
 
-val copyFrontendIntoLocalBuild by tasks.register<Copy>("copyFrontendIntoLocalBuild") {
+val copyFrontendIntoBackendResources by tasks.register<Copy>("copyFrontendIntoBackendResources") {
     from("$projectDir/frontend/dist")
-    into("$buildDir/frontend")
+    into("$projectDir/backend/src/main/resources/static")
 }
 
-val buildForDeployment by tasks.register("buildForDeployment") {
+val installDist by tasks.register("installDist") {
     val tasksToRun = listOf(
+        clean,
+        tasks.getByPath("frontend:installDist"),
+        copyFrontendIntoBackendResources,
         tasks.getByPath("backend:installDist"),
-        copyBackendIntoLocalBuild,
-        tasks.getByPath("frontend:deploy"),
-        copyFrontendIntoLocalBuild
+        copyBackendIntoLocalBuild
     )
 
     for (i in 0 until tasksToRun.lastIndex) {

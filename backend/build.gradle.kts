@@ -10,7 +10,7 @@ plugins {
 }
 
 application {
-    mainClass.set("com.destiny.investment.DestinyInvestmentApplication")
+    mainClass.set("com.destiny.investment.DestinyInvestmentApplicationKt")
 }
 
 group = "com.destiny"
@@ -54,3 +54,6 @@ tasks.withType<Test> {
     useJUnitPlatform()
 }
 
+tasks.getByName("clean").doFirst {
+    delete("$projectDir/src/main/resources/static")
+}
