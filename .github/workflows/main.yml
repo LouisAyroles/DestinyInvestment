@@ -36,7 +36,7 @@ jobs:
         run: chmod +x gradlew
       
       - name: Build application
-        run: ./gradlew buildForDeployment
+        run: ./gradlew installDist
         
       - name: Make application executable
         run: chmod +x build/backend/bin/backend
