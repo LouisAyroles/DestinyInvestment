@@ -1,7 +1,5 @@
 package com.destiny.investment.api.configuration
 
-import java.nio.file.Path
-
 interface IConfiguration {
     val mail: Mail
 }

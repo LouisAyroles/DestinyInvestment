@@ -33,6 +33,7 @@ dependencies {
     implementation("com.sksamuel.hoplite:hoplite-core:1.4.16")
     implementation("com.sksamuel.hoplite:hoplite-yaml:1.4.16")
     implementation("de.comahe.i18n4k:i18n4k-core-jvm:0.2.0")
+    implementation("io.github.microutils:kotlin-logging-jvm:2.1.20")
     developmentOnly("org.springframework.boot:spring-boot-devtools")
     runtimeOnly("com.h2database:h2")
     runtimeOnly("org.postgresql:postgresql")

@@ -1,17 +1,18 @@
 package com.destiny.investment.api.configuration
 
 import com.sksamuel.hoplite.ConfigLoader
+import mu.KotlinLogging
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.mail.javamail.JavaMailSender
 import org.springframework.mail.javamail.JavaMailSenderImpl
-import org.springframework.web.servlet.config.annotation.EnableWebMvc
 import java.io.File
 import java.util.*
 import javax.mail.Authenticator
 import javax.mail.PasswordAuthentication
 import javax.mail.Session
 
+private val logger = KotlinLogging.logger {  }
 @Configuration
 //@EnableWebMvc
 class BeanConfiguration {
@@ -27,6 +28,8 @@ class BeanConfiguration {
         when {
             os.startsWith("win", ignoreCase = true) -> "${System.getenv("APPDATA")}/destiny/config.yaml"
             else -> "/etc/destiny/config.yaml"
+        }.also {
+            logger.info { "OS is '$os', loading configuration from '$it'" }
         }
     }
 

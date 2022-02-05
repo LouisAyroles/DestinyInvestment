@@ -1,6 +1,7 @@
 package com.destiny.investment.api.exceptions
 
 import com.destiny.investment.api.configuration.IConfiguration
+import mu.KotlinLogging
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.i18n.LocaleContextHolder
 import org.springframework.http.HttpStatus
@@ -12,6 +13,8 @@ import org.springframework.web.servlet.view.json.MappingJackson2JsonView
 import javax.servlet.http.HttpServletRequest
 import javax.servlet.http.HttpServletResponse
 
+
+val kLogger = KotlinLogging.logger { }
 /**
  * Global exception handler that is responsible for handling exceptions thrown during
  * api calls.
@@ -34,7 +37,8 @@ class ExceptionHandler(
         handler: Any?,
         ex: Exception
     ): ModelAndView? {
-        ex.printStackTrace()
+        kLogger.error(ex) { "Error caught" }
+
         val (errCode, err) = when (ex) {
             is DestinyException -> ex.eCause.status to ex.errorDescription
             is MaxUploadSizeExceededException -> HttpStatus.BAD_REQUEST to exceptions.file_too_big(maxFileSize, LocaleContextHolder.getLocale())
