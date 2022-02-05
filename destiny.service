@@ -6,7 +6,7 @@ After=syslog.target network-online.target
 
 [Service]
 Type=simple
-ExecStart=sh /opt/destiny/backend/bin/backend
+ExecStart=sh /opt/destiny/backend/bin/backend --server.port=80
 Restart=on-failure
 KillMode=process
 
