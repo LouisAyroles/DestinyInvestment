@@ -1,5 +1,5 @@
 <template>
-    <nav ref="menu" class="backdrop-blur-sm z-50 animated">
+    <nav ref="menu" class="backdrop-blur-sm z-50 animated bg-gray-200 dark:bg-[#05051b]">
         <div class="margin z-30">
             <div class="content">
                 <div class="center">
