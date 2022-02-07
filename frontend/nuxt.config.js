@@ -4,9 +4,10 @@ export default {
 
     // Global page headers: https://go.nuxtjs.dev/config-head
     head: {
-        title: 'frontend',
+        title: 'Destiny Connexion',
         htmlAttrs: {
-            lang: 'en'
+            lang: 'en',
+            class: 'light-mode'
         },
         meta: [
             {charset: 'utf-8'},
@@ -56,8 +57,7 @@ export default {
         '@nuxt/typescript-build',
         // https://go.nuxtjs.dev/tailwindcss
         '@nuxtjs/tailwindcss',
-        '@nuxt/postcss8',
-        '@nuxtjs/color-mode'
+        '@nuxt/postcss8'
     ],
 
     tailwindcss: {
