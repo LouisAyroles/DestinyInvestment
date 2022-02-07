@@ -135,7 +135,6 @@ import {mixins} from "vue-class-component";
     components: {DIcon, DCard, DButton, DRoadMap, DAppBar, DSmallCard, DSection}
 })
 export default class IndexPage extends mixins(aosMixin) {
-    colorMode: 'light';
     readonly information: Information[] = [{
         title: 'Secure user data and transaction',
         desc: 'We have created a system and an electronic protocol to ensure the integrity and security of transactions. The main objective is to protect the transactions of your investments.',
@@ -214,6 +213,7 @@ export default class IndexPage extends mixins(aosMixin) {
     ]
 
     mounted() {
+        document.documentElement.classList.remove('dark')
         const slider = this.$refs['slider'] as HTMLElement
         const keywords = Array.from(slider.querySelectorAll(".keyword")) as HTMLElement[]
         const sizeKeeper = this.$refs['slider-size-keeper'] as HTMLElement
@@ -346,7 +346,7 @@ export default class IndexPage extends mixins(aosMixin) {
 }
 
 .main-section-container {
-    @apply relative h-full grow grid grid-rows-2 lg:grid-rows-1 md:grid-cols-2 place-items-center md:px-0;
+    @apply relative h-full grow grid grid-rows-2 lg:grid-rows-1 md:grid-cols-2 place-items-center md:px-0 overflow-x-hidden;
 
     .main-left-panel {
         @apply flex flex-col grow items-center md:ml-20 md:mt-20 lg:ml-0 lg:mt-0 md:items-start lg:h-full lg:justify-center;
@@ -354,7 +354,7 @@ export default class IndexPage extends mixins(aosMixin) {
     }
 
     .main-right-panel {
-        @apply absolute bottom-0 right-0 max-w-[100%] sm:max-w-[80%] md:max-w-[60%] lg:max-w-[50%];
+        @apply absolute bottom-0 right-0 max-w-[100%] sm:max-w-[80%] md:max-w-[60%] lg:max-w-[50%] overflow-x-hidden;
     }
 
     .button {
