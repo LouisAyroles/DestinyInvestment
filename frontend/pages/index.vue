@@ -39,7 +39,9 @@
                         Are you looking <span class="text-primary"> <b> to raise</b></span> capital for your startup ?
                     </h1>
                     <d-button data-aos="zoom-in-up" data-aos-duration="2000" class="raise-or-invest-button"
-                              link-to="/raise" icon="arrow-right-thick">
+                              link-to="/raise"
+                              :is-nuxt-link="true"
+                              icon="arrow-right-thick">
                         APPLY TO RAISE
                     </d-button>
                 </div>
@@ -50,7 +52,9 @@
                     </h1>
                     <d-button data-aos="zoom-in-up" data-aos-duration="2000" data-aos-offset="-200"
                               class="raise-or-invest-button"
-                              link-to="/invest" icon="arrow-right-thick">
+                              link-to="/invest"
+                              :is-nuxt-link="true"
+                              icon="arrow-right-thick">
                         APPLY TO INVEST
                     </d-button>
                 </div>
@@ -131,6 +135,7 @@ import {mixins} from "vue-class-component";
     components: {DIcon, DCard, DButton, DRoadMap, DAppBar, DSmallCard, DSection}
 })
 export default class IndexPage extends mixins(aosMixin) {
+    colorMode: 'light';
     readonly information: Information[] = [{
         title: 'Secure user data and transaction',
         desc: 'We have created a system and an electronic protocol to ensure the integrity and security of transactions. The main objective is to protect the transactions of your investments.',
@@ -177,7 +182,7 @@ export default class IndexPage extends mixins(aosMixin) {
         video: "psst.mp4",
         title: "Psst..!",
         logo: "psst.png",
-        short_desc: "Psst..! est une application indispensable pour vos futures découvertes",
+        short_desc: "Increase and digitalize your business by accessing a large scale market through a unique network. Develop a relevant and impactful marketing strategy us.",
         available_date: "20/01/2022",
         money_raised: 20321,
         goal_raise: 51100

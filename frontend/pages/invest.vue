@@ -227,6 +227,7 @@ import {Step} from "~/components/DStepper.vue";
 
 @Component
 export default class invest extends Vue {
+    colorMode: 'light';
 
     /**************************************************
      *
