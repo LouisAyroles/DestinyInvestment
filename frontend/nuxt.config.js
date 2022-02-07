@@ -57,14 +57,17 @@ export default {
         '@nuxt/typescript-build',
         // https://go.nuxtjs.dev/tailwindcss
         '@nuxtjs/tailwindcss',
-        '@nuxt/postcss8'
+        '@nuxt/postcss8',
+        '@nuxtjs/color-mode'
     ],
 
     tailwindcss: {
         exposeConfig: true
     },
     colorMode: {
-        classSuffix: ""
+        preference: 'light',
+        fallback: 'light',
+        classSuffix: ''
     },
 
     // Modules: https://go.nuxtjs.dev/config-modules
