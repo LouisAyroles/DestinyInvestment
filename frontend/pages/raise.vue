@@ -192,7 +192,7 @@ import {Step} from "~/components/DStepper.vue";
 
 @Component
 export default class raise extends Vue {
-
+    colorMode: 'light';
 
     /**************************************************
      *

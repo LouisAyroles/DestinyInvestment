@@ -1,7 +1,8 @@
 <template>
-    <component :is="componentType" :href="linkTo" :class="[{'with-icon': hasIcon, 'gradient': gradient}, 'button']">
-        <slot></slot>
-        <d-icon v-if="icon !== undefined" :icon="icon"></d-icon>
+    <component :is="componentType" :href="linkTo" :to="linkTo"
+               :class="[{'with-icon': hasIcon, 'gradient': gradient}, 'button']">
+      <slot></slot>
+      <d-icon v-if="icon !== undefined" :icon="icon"></d-icon>
     </component>
 </template>
 
@@ -13,25 +14,33 @@ import DIcon from "~/components/DIcon.vue";
     components: {DIcon}
 })
 export default class DButton extends Vue {
-    /**
-     * Link to which this button should redirect.
-     *
-     * If set, the button is rendered by an <a> tag.
-     *
-     * Style is kept no matter which tag is used to render the button.
-     */
-    @Prop({required: false, type: String})
-    linkTo!: string | undefined
+  /**
+   * Link to which this button should redirect.
+   *
+   * If set, the button is rendered by an <a> tag.
+   *
+   * Style is kept no matter which tag is used to render the button.
+   */
+  @Prop({required: false, type: String})
+  linkTo!: string | undefined
 
-    /**
-     * Icon to be rendered on the right of the button.
-     *
-     * Should be taken from this list : {@link https://materialdesignicons.com/}.
-     *
-     * Note that you just need to enter the name of the icon. You shouldn't include the `mdi` prefix.
-     *
-     * For example, the `arrow-right-thick` should be passed as-is, not 'mdi-arrow-right-thick'.
-     */
+  /**
+   * If true, the buttonwill be a nuxt link.
+   *
+   * Style is kept no matter which tag is used to render the button.
+   */
+  @Prop({required: false, type: Boolean})
+  isNuxtLink!: boolean | undefined
+
+  /**
+   * Icon to be rendered on the right of the button.
+   *
+   * Should be taken from this list : {@link https://materialdesignicons.com/}.
+   *
+   * Note that you just need to enter the name of the icon. You shouldn't include the `mdi` prefix.
+   *
+   * For example, the `arrow-right-thick` should be passed as-is, not 'mdi-arrow-right-thick'.
+   */
     @Prop({required: false, type: String})
     icon!: string | undefined
 
@@ -45,9 +54,12 @@ export default class DButton extends Vue {
 
 
     get componentType(): string {
-        return this.linkTo
-            ? 'a'
-            : 'button'
+      if (this.isNuxtLink) {
+        return 'nuxt-link'
+      }
+      return this.linkTo
+          ? 'a'
+          : 'button'
     }
 
 
