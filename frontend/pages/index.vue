@@ -181,7 +181,7 @@ export default class IndexPage extends mixins(aosMixin) {
         video: "psst.mp4",
         title: "Psst..!",
         logo: "psst.png",
-        short_desc: "Increase and digitalize your business by accessing a large scale market through a unique network. Develop a relevant and impactful marketing strategy us.",
+        short_desc: "Increase and digitalize your business by accessing a large scale market through a unique network. Develop a relevant and impactful marketing strategy with us.",
         available_date: "20/01/2022",
         money_raised: 20321,
         goal_raise: 51100
@@ -196,10 +196,10 @@ export default class IndexPage extends mixins(aosMixin) {
         goal_raise: 12500
     }, {
         id: 3,
-        video: "video3.mp4",
+        video: "towni.mp4",
         title: "Towni",
         logo: "town.png",
-        short_desc: "Towni is THE applicaiton that you need to find you dream appartment !",
+        short_desc: "Whether you are looking for a large house or a small apartment in the city center, we will be able to find the rare pearl that will satisfy you.",
         available_date: "20/01/2022",
         money_raised: 20321,
         goal_raise: 51100
