@@ -135,6 +135,7 @@ import {mixins} from "vue-class-component";
     components: {DIcon, DCard, DButton, DRoadMap, DAppBar, DSmallCard, DSection}
 })
 export default class IndexPage extends mixins(aosMixin) {
+    colorMode: 'light';
     readonly information: Information[] = [{
         title: 'Secure user data and transaction',
         desc: 'We have created a system and an electronic protocol to ensure the integrity and security of transactions. The main objective is to protect the transactions of your investments.',
