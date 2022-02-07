@@ -7,7 +7,7 @@ export default {
         title: 'Destiny Connexion',
         htmlAttrs: {
             lang: 'en',
-            class: 'light'
+            class: 'light-mode'
         },
         meta: [
             {charset: 'utf-8'},
