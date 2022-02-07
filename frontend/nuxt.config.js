@@ -65,7 +65,7 @@ export default {
         exposeConfig: true
     },
     colorMode: {
-        classSuffix: ''
+        classSuffix: '-mode'
     },
 
     // Modules: https://go.nuxtjs.dev/config-modules

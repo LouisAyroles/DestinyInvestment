@@ -1,5 +1,6 @@
 <template>
     <div v-observe-visibility="playVideoOnMobile" @mouseover="playVideo" @mouseleave="pauseVideo" @blur="pauseVideo"
+         onclick="location.href='/#raise';"
          class="relative card-front front rounded-lg">
         <video ref="video" loop muted>
             <source
