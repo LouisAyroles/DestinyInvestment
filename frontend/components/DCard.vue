@@ -122,7 +122,7 @@ export default class DCard extends Vue {
 }
 
 .desc {
-    @apply text-gray-400 text-xs sm:text-sm xl:text-base dark:text-white flex justify-around overflow-hidden text-ellipsis line-clamp-5;
+    @apply text-gray-400 text-xs 2xl:text-base dark:text-white flex justify-around overflow-hidden text-ellipsis line-clamp-5;
     display: -webkit-box;
     -webkit-box-orient: vertical;
 }
