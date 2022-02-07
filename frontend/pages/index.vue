@@ -214,7 +214,7 @@ export default class IndexPage extends mixins(aosMixin) {
     ]
 
     mounted() {
-        document.documentElement.classList.remove('dark')
+        $colorMode.preference = 'light'
         const slider = this.$refs['slider'] as HTMLElement
         const keywords = Array.from(slider.querySelectorAll(".keyword")) as HTMLElement[]
         const sizeKeeper = this.$refs['slider-size-keeper'] as HTMLElement

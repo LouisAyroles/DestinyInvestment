@@ -65,8 +65,6 @@ export default {
         exposeConfig: true
     },
     colorMode: {
-        preference: 'light',
-        fallback: 'light',
         classSuffix: ''
     },
 
