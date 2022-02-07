@@ -6,7 +6,8 @@ export default {
     head: {
         title: 'Destiny Connexion',
         htmlAttrs: {
-            lang: 'en'
+            lang: 'en',
+            class: 'light'
         },
         meta: [
             {charset: 'utf-8'},
@@ -56,8 +57,7 @@ export default {
         '@nuxt/typescript-build',
         // https://go.nuxtjs.dev/tailwindcss
         '@nuxtjs/tailwindcss',
-        '@nuxt/postcss8',
-        '@nuxtjs/color-mode'
+        '@nuxt/postcss8'
     ],
 
     tailwindcss: {
