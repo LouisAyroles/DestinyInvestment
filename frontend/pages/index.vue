@@ -8,13 +8,12 @@
             <div class="main-section-container">
                 <div data-aos="fade-right" data-aos-duration="1000" class="main-left-panel">
                     <h1 class="main-title">Smart and Secure</h1>
-                    <h1 class="main-title">way to invest in <span class="inline sm:hidden"> in </span></h1>
+                    <h1 class="main-title">way to invest in </h1>
                     <h1 class="main-title2 ">
                         <span class="slider" ref="slider">
-                            <span class="slider-size-keeper" ref="slider-size-keeper"></span>
-                            <span v-for="keyword in investIn" :key="keyword" class="keyword first-hide">{{
-                                    keyword
-                                }}</span>
+                            <span ref="typewriter" class="p-0"></span>
+                            <span class="typewriter h-2/3 inline-block lg:hidden">&nbsp</span>
+                            <span class="typewriter h-2/3 hidden lg:inline-block"></span>
                         </span>
                     </h1>
                     <h3 class="main-subtitle">Reach now for the moon </h3>
@@ -214,36 +213,30 @@ export default class IndexPage extends mixins(aosMixin) {
     ]
 
     mounted() {
-        const slider = this.$refs['slider'] as HTMLElement
-        const keywords = Array.from(slider.querySelectorAll(".keyword")) as HTMLElement[]
-        const sizeKeeper = this.$refs['slider-size-keeper'] as HTMLElement
-        sizeKeeper.innerText = this.investIn.reduce((prev, curr) => prev.length > curr.length ? prev : curr, this.investIn[0] ?? "")
-
-        keywords[0]?.classList.add("visible")
-        this.next()
+        this.startTextAnimation(0)
     }
 
-    next() {
-        const slider = this.$refs['slider'] as HTMLElement
-        setInterval(() => this.changeText(Array.from(slider.querySelectorAll(".keyword")) as HTMLElement[]), 1500)
-    }
-
-    changeText(keywords: HTMLElement[]) {
-
-        keywords[this.word].classList.remove('visible')
-        keywords[this.word].classList.add('hide')
-
-        this.word = (this.word + 1) % this.investIn.length
-
-        keywords[this.word].classList.remove('hide')
-        keywords[this.word].classList.add('visible')
-        if (this.firstHide) {
-            keywords[this.word].classList.remove('first-hide')
-        }
-        if (this.word === 0 && this.firstHide) {
-            this.firstHide = false;
+    typeWriter(text: string, i: number, fnCallback: () => void) {
+        if (i < (text.length)) {
+            const type = this.$refs['typewriter'] as HTMLElement
+            type.innerText = text.substring(0, i + 1)
+            setTimeout(() => {
+                this.typeWriter(text, i + 1, fnCallback)
+            }, 200);
+        } else if (typeof fnCallback == 'function') {
+            setTimeout(fnCallback, 1500);
         }
     }
+
+    startTextAnimation(i: number) {
+        if (i < this.investIn[i].length) {
+            this.typeWriter(this.investIn[i], 0, () =>
+                this.startTextAnimation((i + 1) % this.investIn.length)
+            )
+        }
+    }
+
+
 }
 
 </script>
@@ -380,61 +373,18 @@ export default class IndexPage extends mixins(aosMixin) {
     .slider {
         @apply relative rounded-lg text-3xl md:text-5xl xl:text-6xl text-center md:text-left text-[#f9bd49] font-bold w-[45rem];
 
-        .slider-size-keeper {
-            opacity: 0 !important;
+        .typewriter {
+            border-right: .2rem solid;
+            animation: caret 0.8s steps(1) infinite;
+            margin-left: -.8rem
         }
 
-        .keyword {
-            @apply absolute top-2/4 left-0;
-            @media (max-width: 767px) {
-                transform: translate(-50%, -50%);
-                left: 50%;
-            }
-            transform: translateY(-50%);
-            opacity: 1;
-            transition: all 1s;
-        }
-
-
-        @keyframes hide-keys {
-            0% {
-                transform: translateY(-50%);
-                opacity: 1
-            }
+        @keyframes caret {
             50% {
-                opacity: 1
-            }
-            100% {
-                transform: translateY(40%);
-                opacity: 0
+                border-color: transparent;
             }
         }
 
-        @keyframes hide-keys-centered {
-            0% {
-                transform: translate(-50%, -50%);
-                opacity: 1
-            }
-            50% {
-                opacity: 1
-            }
-            100% {
-                transform: translate(-50%, 40%);
-                opacity: 0
-            }
-        }
-
-        .first-hide {
-            opacity: 0;
-        }
-
-        .hide {
-            opacity: 0;
-            @media (max-width: 767px) {
-                animation: 1s hide-keys-centered;
-            }
-            animation: 1s hide-keys;
-        }
     }
 
     .main-subtitle {
