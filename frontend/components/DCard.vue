@@ -35,7 +35,7 @@
                         <span>12 </span>
                     </div>
                     <div class="flex items-end">
-                        <d-button link-to="/invest" icon="account-star"></d-button>
+                        <d-button link-to="/invest" :is-nuxt-link="true" icon="account-star"></d-button>
                     </div>
                 </div>
             </div>

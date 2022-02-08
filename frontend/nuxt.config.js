@@ -6,8 +6,7 @@ export default {
     head: {
         title: 'Destiny Connexion',
         htmlAttrs: {
-            lang: 'en',
-            class: 'light-mode'
+            lang: 'en'
         },
         meta: [
             {charset: 'utf-8'},
@@ -65,7 +64,7 @@ export default {
         exposeConfig: true
     },
     colorMode: {
-        classSuffix: '-mode'
+        classSuffix: ''
     },
 
     // Modules: https://go.nuxtjs.dev/config-modules
