@@ -7,16 +7,16 @@
         <d-section id="home" class="home-section">
             <div class="main-section-container">
                 <div data-aos="fade-right" data-aos-duration="1000" class="main-left-panel">
-                    <h1 class="main-title">Smart and Secure</h1>
-                    <h1 class="main-title">way to invest in </h1>
-                    <h1 class="main-title2 ">
+                    <h1 ref="title-size-keeper" class="main-title"></h1>
+                    <h1 class="main-title">way to invest in</h1>
+                    <h1 class="main-title2">
                         <span class="slider" ref="slider">
-                            <span ref="typewriter" class="p-0"></span>
+                            <span ref="typewriter" class="main-title2"></span>
                             <span class="typewriter h-2/3 inline-block lg:hidden">&nbsp</span>
                             <span class="typewriter h-2/3 hidden lg:inline-block"></span>
                         </span>
                     </h1>
-                    <h3 class="main-subtitle">Reach now for the moon </h3>
+                    <h3 class="main-subtitle">Discover our European treasure</h3>
                     <d-button class="mt-8 text-white" :gradient="false"
                               icon="arrow-right-thick" link-to="/#raise">JOIN
                         US
@@ -103,15 +103,21 @@
                 </div>
                 <h1 class="contact-title uppercase">contact</h1>
                 <div class="divider horizontal-only max-w-3xl"></div>
+                <h2 class="title-1">Let's talk, any question or information? Just contact us.</h2>
                 <div class="contact-container">
                     <div class="contact-size">
                         <d-icon class="text-primary" :icon="'phone-outline'"/>
                         06 06 06 06 06
                     </div>
                     <div class="contact-size">
+                        <d-icon class="text-primary" :icon="'map-marker'"/>
+                        Barcelona - Paris - London
+                    </div>
+                    <div class="contact-size">
                         <d-icon class="text-primary" :icon="'email'"/>
                         contact@destinyconnexion.com
                     </div>
+
                 </div>
             </div>
         </d-section>
@@ -162,18 +168,18 @@ export default class IndexPage extends mixins(aosMixin) {
     }]
 
     readonly roadMapEvents: RoadMapEvent[] = [{
-        date: "February 2, 2022",
-        description: "Project is raising stars"
+        date: "April, 2022",
+        description: "A chat will be available exclusively for our startups"
     }, {
-        date: "May 01, 2022",
-        description: "Projects available"
+        date: "June, 2022",
+        description: "All projects will be available"
     }, {
-        date: "September 03, 2022",
+        date: "July, 2022",
         description: "You will be able to invest"
     },
         {
             date: "November 01, 2022",
-            description: "First event in Barcelona"
+            description: "First event of our network in Barcelona"
         }]
 
     readonly projects: Project[] = [{
@@ -209,11 +215,28 @@ export default class IndexPage extends mixins(aosMixin) {
     firstHide = true
 
     readonly investIn: string[] = [
-        "Greentech", "Sportech", "Fintech", "Blockchain", "E-commerce", "Edtech", "Cyber-security", "Artificial Intelligence"
+        "GreenTech", "SporTech", "FinTech", "Blockchain", "PetTech", "HealthTech", "Edtech", "Cyber-security", "Artificial Intelligence"
     ]
 
     mounted() {
+        this.handleSizeKeeper()
         this.startTextAnimation(0)
+    }
+
+    handleSizeKeeper() {
+        const sizeKeeper = this.$refs['title-size-keeper'] as HTMLElement
+        if (window.innerWidth >= 768) {
+            sizeKeeper.innerHTML = 'Smart and Secure &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'
+        } else {
+            sizeKeeper.innerHTML = 'Smart and Secure'
+        }
+        window.onresize = () => {
+            if (window.innerWidth >= 768) {
+                sizeKeeper.innerHTML = 'Smart and Secure &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'
+            } else {
+                sizeKeeper.innerHTML = 'Smart and Secure'
+            }
+        }
     }
 
     typeWriter(text: string, i: number, fnCallback: () => void) {
@@ -229,11 +252,9 @@ export default class IndexPage extends mixins(aosMixin) {
     }
 
     startTextAnimation(i: number) {
-        if (i < this.investIn[i].length) {
-            this.typeWriter(this.investIn[i], 0, () =>
-                this.startTextAnimation((i + 1) % this.investIn.length)
-            )
-        }
+        this.typeWriter(this.investIn[i], 0, () =>
+            this.startTextAnimation((i + 1) % this.investIn.length)
+        )
     }
 
 
@@ -316,11 +337,11 @@ export default class IndexPage extends mixins(aosMixin) {
     }
 
     .contact-container {
-        @apply grid grid-cols-1 sm:grid-cols-2 justify-items-center
+        @apply flex flex-col 2xl:flex-row justify-center 2xl:gap-20
     }
 
     .contact-size {
-        @apply sm:text-xl lg:text-3xl
+        @apply sm:text-xl lg:text-3xl text-center
     }
 }
 
@@ -339,10 +360,10 @@ export default class IndexPage extends mixins(aosMixin) {
 }
 
 .main-section-container {
-    @apply relative h-full grow grid grid-rows-2 lg:grid-rows-1 md:grid-cols-2 place-items-center md:px-0 overflow-x-hidden;
+    @apply relative h-full grow grid grid-rows-2 md:grid-rows-1 md:grid-cols-2 place-items-center md:px-0 overflow-x-hidden;
 
     .main-left-panel {
-        @apply flex flex-col grow items-center md:ml-20 md:mt-20 lg:ml-0 lg:mt-0 md:items-start lg:h-full lg:justify-center;
+        @apply flex flex-col grow items-center md:ml-0 md:mt-20 lg:ml-0 lg:mt-0 md:items-start lg:h-full lg:justify-center;
         @apply z-30;
     }
 
@@ -357,11 +378,11 @@ export default class IndexPage extends mixins(aosMixin) {
     }
 
     .main-title {
-        @apply text-3xl md:text-5xl xl:text-6xl text-center md:text-left text-black dark:text-white
+        @apply text-3xl  xl:text-6xl text-center md:text-left text-black dark:text-white
     }
 
     .main-title2 {
-        @apply text-xl md:text-3xl xl:text-6xl text-center md:text-left text-black dark:text-white;
+        @apply text-3xl xl:text-6xl text-center md:text-left text-yellow-400;
         white-space: nowrap;
     }
 
@@ -372,7 +393,6 @@ export default class IndexPage extends mixins(aosMixin) {
 
     .slider {
         @apply relative rounded-lg text-3xl md:text-5xl xl:text-6xl text-center md:text-left text-[#f9bd49] font-bold w-[45rem];
-
         .typewriter {
             border-right: .2rem solid;
             animation: caret 0.8s steps(1) infinite;

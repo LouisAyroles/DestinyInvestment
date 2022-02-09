@@ -30,8 +30,7 @@
                         <span class="goal">{{ project.goal_raise }} €</span>
                     </div>
                     <div class="flex flex-col">
-                        <span class="money-raise">Investors </span>
-                        <span class="money-raise">waiting</span>
+                        <span class="money-raise">Interested? </span>
                         <span>12 </span>
                     </div>
                     <div class="flex items-end">
