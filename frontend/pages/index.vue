@@ -107,7 +107,7 @@
                 <div class="contact-container">
                     <div class="contact-size">
                         <d-icon class="text-primary" :icon="'phone-outline'"/>
-                        06 06 06 06 06
+                        +336.29.43.28.67
                     </div>
                     <div class="contact-size">
                         <d-icon class="text-primary" :icon="'map-marker'"/>
