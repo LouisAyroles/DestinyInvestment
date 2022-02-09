@@ -7,11 +7,11 @@
         <d-section id="home" class="home-section">
             <div class="main-section-container">
                 <div data-aos="fade-right" data-aos-duration="1000" class="main-left-panel">
-                    <h1 ref="title-size-keeper" class="main-title"></h1>
+                    <h1 ref="title-size-keeper" class="main-title">Smart and Secure</h1>
                     <h1 class="main-title">way to invest in</h1>
                     <h1 class="main-title2">
                         <span class="slider" ref="slider">
-                            <span ref="typewriter" class="main-title2"></span>
+                            <span ref="typewriter" class="main-title2">{{ investIn[0] }}</span>
                             <span class="typewriter h-2/3 inline-block lg:hidden">&nbsp</span>
                             <span class="typewriter h-2/3 hidden lg:inline-block"></span>
                         </span>

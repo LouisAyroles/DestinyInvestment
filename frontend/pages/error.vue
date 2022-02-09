@@ -43,7 +43,7 @@ export default class error extends Vue {
 }
 
 .main-section-container {
-    @apply relative h-full grow grid grid-rows-2 lg:grid-rows-1 md:grid-cols-2 place-items-center md:px-0 overflow-x-hidden;
+    @apply relative h-full grow grid grid-rows-2 md:grid-rows-1 md:grid-cols-2 place-items-center md:px-0 overflow-x-hidden;
 
     .main-left-panel {
         @apply flex flex-col grow items-center md:ml-20 md:mt-20 lg:ml-0 lg:mt-0 lg:h-full justify-center;
