@@ -53,7 +53,7 @@
                         </div>
 
                         <!-- Second Card -->
-                        <div class="swiper-slide" ref="second-card">
+                        <div class="swiper-slide">
                             <div class="flex justify-center">
                                 <div class="card-container-checkbox">
                                     <div class="hidden md:block">
@@ -88,7 +88,7 @@
                         </div>
 
                         <!-- Third Card -->
-                        <div class="swiper-slide" ref="third-card">
+                        <div class="swiper-slide">
                             <div class="flex justify-center">
                                 <div class="card-container">
                                     <div class="hidden md:block">
@@ -121,7 +121,7 @@
                         </div>
 
                         <!-- Fourth Card -->
-                        <div class="swiper-slide" ref="fourth-card">
+                        <div class="swiper-slide">
                             <div class="flex justify-center">
                                 <div class="card-container ">
                                     <div class="hidden md:block">
@@ -161,7 +161,7 @@
                         </div>
 
                         <!-- Fifth Card -->
-                        <div class="swiper-slide" ref="fifth-card">
+                        <div class="swiper-slide">
                             <div class="flex justify-center">
                                 <div class="confirmation-card-container ">
                                     <div class="min-w-full min-h-full p-2 flex flex-col">

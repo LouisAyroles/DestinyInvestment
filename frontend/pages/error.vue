@@ -55,11 +55,11 @@ export default class error extends Vue {
     }
 
     .main-title {
-        @apply text-3xl md:text-5xl xl:text-6xl text-center md:text-left text-yellow-400 dark:text-white
+        @apply text-3xl md:text-5xl xl:text-6xl text-center md:text-left text-yellow-400
     }
 
     .main-subtitle {
-        @apply mt-8 text-center text-xs md:text-lg xl:text-2xl sm:text-left
+        @apply mt-8 text-center text-xs md:text-lg xl:text-2xl sm:text-left dark:text-white
     }
 }
 

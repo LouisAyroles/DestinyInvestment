@@ -12,18 +12,19 @@
                     <div class="second-subcard"></div>
                 </div>
 
-                <swiper @slide-change="scrollToTheTop" ref="mySwiper" :options="swiperOptions">
-                    <swiper-slide ref="first-card">
-                        <div class="flex justify-center">
-                            <div class="card-container ">
-                                <div class="hidden md:block">
-                                    <h1 class="title">Personal details</h1>
-                                </div>
+                <div v-swiper:myDirectiveSwiper="swiperOptions" @slide-change="scrollToTheTop">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide" ref="first-card">
+                            <div class="flex justify-center">
+                                <div class="card-container ">
+                                    <div class="hidden md:block">
+                                        <h1 class="title">Personal details</h1>
+                                    </div>
 
-                                <div class="input-container">
-                                    <div class="inputs">
-                                        <div class="relative">
-                                            <input autocomplete="off" v-model="name" id="name" type="text"
+                                    <div class="input-container">
+                                        <div class="inputs">
+                                            <div class="relative">
+                                                <input autocomplete="off" v-model="name" id="name" type="text"
                                                    :class="{'border-primary-dark' :!isNameValid && this.tryToNext}"
                                                    class="peer placeholder-transparent px-2 h-10 w-full border-2 rounded-lg text-gray-900 focus:outline-none focus:borer-rose-600"
                                                    placeholder="Name"/>
@@ -47,27 +48,27 @@
                                                   v-if="!isMailValid && isMailNotEmpty && this.tryToNext">This is not a valid email </span>
                                             <span class="text-sm" v-if="!(!isMailValid && this.tryToNext)">&nbsp</span>
                                         </div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="button-container">
-                                    <d-button @click.native="next" icon="arrow-right-thick" class="text-white"/>
+                                    <div class="button-container">
+                                        <d-button @click.native="next" icon="arrow-right-thick" class="text-white"/>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </swiper-slide>
 
                     <!-- Second Card -->
-                    <swiper-slide ref="second-card">
-                        <div class="flex justify-center">
-                            <div class="card-container">
-                                <div class="hidden md:block">
-                                    <h1 class="title">Company details</h1>
-                                </div>
-                                <span class="question">What is the name of your company?</span>
-                                <div class="input-container">
-                                    <div class="inputs">
-                                        <div class="relative">
+                        <div class="swiper-slide">
+                            <div class="flex justify-center">
+                                <div class="card-container">
+                                    <div class="hidden md:block">
+                                        <h1 class="title">Company details</h1>
+                                    </div>
+                                    <span class="question">What is the name of your company?</span>
+                                    <div class="input-container">
+                                        <div class="inputs">
                                             <div class="relative">
+                                                <div class="relative">
                                                 <input autocomplete="off" v-model="companyName" id="companyName"
                                                        type="text"
                                                        :class="{'border-primary-dark' :!isValidCard2 && this.tryToNext}"
@@ -80,30 +81,30 @@
                                                 <span class="error"
                                                       v-if="!(!isValidCard2 && this.tryToNext)">&nbsp</span>
                                             </div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
 
-                                <div class="button-container">
-                                    <d-button @click.native="prev" icon="arrow-left-thick" class="text-white"/>
-                                    <d-button @click.native="next" icon="arrow-right-thick" class="text-white"/>
+                                    <div class="button-container">
+                                        <d-button @click.native="prev" icon="arrow-left-thick" class="text-white"/>
+                                        <d-button @click.native="next" icon="arrow-right-thick" class="text-white"/>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </swiper-slide>
 
                     <!-- Third Card -->
-                    <swiper-slide ref="third-card">
-                        <div class="flex justify-center">
-                            <div class="card-container">
-                                <div class="hidden md:block">
-                                    <h1 class="title">Pitch Deck</h1>
-                                </div>
-                                <span class="error text-center md:text-left" v-if="!isValidCard3 && this.tryToNext">Please upload your pitch deck. </span>
-                                <span class="error" v-if="!(!isValidCard3 && this.tryToNext)">&nbsp</span>
-                                <div class="input-container grow">
-                                    <div class="inputs">
-                                        <div class="flex items-center justify-center bg-grey-lighter">
+                        <div class="swiper-slide">
+                            <div class="flex justify-center">
+                                <div class="card-container">
+                                    <div class="hidden md:block">
+                                        <h1 class="title">Pitch Deck</h1>
+                                    </div>
+                                    <span class="error text-center md:text-left" v-if="!isValidCard3 && this.tryToNext">Please upload your pitch deck. </span>
+                                    <span class="error" v-if="!(!isValidCard3 && this.tryToNext)">&nbsp</span>
+                                    <div class="input-container grow">
+                                        <div class="inputs">
+                                            <div class="flex items-center justify-center bg-grey-lighter">
                                             <label v-if="pitchDeck === ''"
                                                    class="w-64 flex flex-col items-center px-4 py-6 bg-white text-blue rounded-lg shadow-lg tracking-wide uppercase border border-blue cursor-pointer hover:bg-blue hover:text-primary-dark">
                                                 <svg class="w-8 h-8" fill="currentColor"
@@ -121,30 +122,30 @@
                                                 <input type='file' class="hidden" accept=".pdf"
                                                        v-on:change="handleFileUpload($event)"/>
                                             </label>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
 
-                                <div class="button-container">
-                                    <d-button @click.native="prev" icon="arrow-left-thick" class="text-white"/>
-                                    <d-button @click.native="next" icon="arrow-right-thick" class="text-white"/>
+                                    <div class="button-container">
+                                        <d-button @click.native="prev" icon="arrow-left-thick" class="text-white"/>
+                                        <d-button @click.native="next" icon="arrow-right-thick" class="text-white"/>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </swiper-slide>
 
                     <!-- Fourth Card -->
-                    <swiper-slide ref="fifth-card">
-                        <div class="flex justify-center">
-                            <div class="confirmation-card-container ">
-                                <div class="min-w-full min-h-full p-10">
-                                    <div class="hidden md:block">
-                                        <h1 class="title"> Confirmation </h1>
-                                    </div>
-                                    <div class="input-container grow">
-                                        <div class="inputs">
-                                            <div class="relative">
-                                                <div class="flex flex-col">
+                        <div class="swiper-slide">
+                            <div class="flex justify-center">
+                                <div class="confirmation-card-container ">
+                                    <div class="min-w-full min-h-full p-10">
+                                        <div class="hidden md:block">
+                                            <h1 class="title"> Confirmation </h1>
+                                        </div>
+                                        <div class="input-container grow">
+                                            <div class="inputs">
+                                                <div class="relative">
+                                                    <div class="flex flex-col">
                                                     <div class="flex flex-row my-2 ">
                                                         <span class="text-primary-dark md:text-gray-700"><b> Name : </b><span
                                                             class="text-black">&nbsp {{ name }}</span></span>
@@ -167,19 +168,19 @@
                                                                 }}</span> </span>
                                                     </div>
                                                 </div>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="button-container">
-                                        <d-button @click.native="prev" icon="arrow-left-thick" class="text-white"/>
-                                        <d-button @click.native="submit" icon="check" class="text-white"/>
+                                        <div class="button-container">
+                                            <d-button @click.native="prev" icon="arrow-left-thick" class="text-white"/>
+                                            <d-button @click.native="submit" icon="check" class="text-white"/>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </swiper-slide>
-
-                </swiper>
+                    </div>
+                </div>
             </div>
         </d-section>
     </div>
