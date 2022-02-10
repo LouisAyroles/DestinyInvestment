@@ -34,7 +34,7 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           password: ${{ secrets.SSH_PASSWORD }}
           port: ${{ secrets.SSH_PORT }}
-          source: "build/backend"
+          source: "build/backend, build/frontend"
           target: "/tmp/destiny/"
           strip_components: 1
           
@@ -45,7 +45,7 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           password: ${{ secrets.SSH_PASSWORD }}
           port: ${{ secrets.SSH_PORT }}
-          source: "destiny.service"
+          source: "server_configuration"
           target: "/tmp"
       
       - name: Run server
@@ -57,10 +57,14 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           script: |
             sudo rm -Rf /opt/destiny
+            sudo mkdir -p /opt/destiny
             sudo mv /tmp/destiny /opt
             sudo rm -f /etc/systemd/system/destiny.service
-            sudo mv /tmp/destiny.service /etc/systemd/system/destiny.service
+            sudo mv /tmp/server_configuration/destiny.service /etc/systemd/system/destiny.service
+            sudo rm /etc/nginx/nginx.conf
+            sudo mv /tmp/server_configuration/nginx.conf /etc/nginx
             sudo systemctl daemon-reload
             sudo systemctl restart destiny.service
+            sudo systemctl restart nginx.service
             sudo rm -Rf /tmp/destiny
-            sudo rm -f /tmp/destiny.service
+            sudo rm -Rf /tmp/server_configuration

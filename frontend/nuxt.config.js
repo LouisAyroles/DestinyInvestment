@@ -12,6 +12,7 @@ export default {
             {charset: 'utf-8'},
             {name: 'viewport', content: 'width=device-width, initial-scale=1'},
             {hid: 'description', name: 'description', content: ''},
+            {hid: 'description', name: 'description', content: ''},
             {name: 'format-detection', content: 'telephone=no'}
         ],
         link: [
@@ -63,6 +64,7 @@ export default {
     tailwindcss: {
         exposeConfig: true
     },
+
     colorMode: {
         classSuffix: ''
     },
@@ -70,17 +72,15 @@ export default {
     // Modules: https://go.nuxtjs.dev/config-modules
     modules: [
         // https://go.nuxtjs.dev/axios
-        '@nuxtjs/proxy',
         '@nuxtjs/axios',
     ],
 
-    proxy: {
-        '/api': 'http://localhost:8080',
-    },
-    // Axios module configuration: https://go.nuxtjs.dev/config-axios
     axios: {
-        // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-        baseURL: '/'
+        proxy: true,
+    },
+
+    proxy: {
+        target: "localhost:8000"
     },
 
     // Build Configuration: https://go.nuxtjs.dev/config-build

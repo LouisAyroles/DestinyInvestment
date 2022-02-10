@@ -18,20 +18,23 @@ val clean by tasks.register("clean") {
 
 
 val copyBackendIntoLocalBuild by tasks.register<Copy>("copyBackendIntoLocalBuild") {
+    delete("$buildDir/backend")
     from("$projectDir/backend/build/install/backend")
     into("$buildDir/backend")
 }
 
-val copyFrontendIntoBackendResources by tasks.register<Copy>("copyFrontendIntoBackendResources") {
+val copyFrontendToLocalBuildDir by tasks.register<Copy>("copyFrontendToLocalBuildDir") {
+    delete("$buildDir/frontend")
     from("$projectDir/frontend/dist")
-    into("$projectDir/backend/src/main/resources/static")
+    into("$buildDir/frontend")
+    duplicatesStrategy = DuplicatesStrategy.INCLUDE
 }
 
 val installDist by tasks.register("installDist") {
     val tasksToRun = listOf(
         clean,
         tasks.getByPath("frontend:installDist"),
-        copyFrontendIntoBackendResources,
+        copyFrontendToLocalBuildDir,
         tasks.getByPath("backend:installDist"),
         copyBackendIntoLocalBuild
     )
