@@ -29,7 +29,7 @@ export default {
     css: [
         '@/assets/css/main.css',
         '@mdi/font/css/materialdesignicons.min.css',
-        {src: "swiper/css/swiper.css"}
+        "swiper/css/swiper.css"
     ],
 
 
@@ -41,7 +41,6 @@ export default {
         },
         {
             src: '~/plugins/swiper.ts',
-            ssr: false,
             mode: 'client'
         },
         {
