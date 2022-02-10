@@ -12,7 +12,7 @@
                     <div class="second-subcard"></div>
                 </div>
 
-                <div v-swiper:myDirectiveSwiper="swiperOptions" @slide-change="scrollToTheTop">
+                <div v-swiper="swiperOptions" @slide-change="scrollToTheTop" instanceName="raiseSwiper">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide" ref="first-card">
                             <div class="flex justify-center">
@@ -193,7 +193,6 @@ import {Step} from "~/components/DStepper.vue";
 
 @Component
 export default class raise extends Vue {
-    colorMode: 'light';
 
     /**************************************************
      *
@@ -284,9 +283,6 @@ export default class raise extends Vue {
      *
      ***************************************************/
 
-    get swiper() {
-        return (this as any).$refs.mySwiper.$swiper
-    }
 
     next() {
         if (!this.isFormValid[this.currentStep]) {
@@ -294,11 +290,11 @@ export default class raise extends Vue {
             return
         }
         this.tryToNext = false
-        this.swiper.slideTo(++this.currentStep, 1000, false)
+        this.raiseSwiper.slideTo(++this.currentStep, 1000, false)
     }
 
     prev() {
-        this.swiper.slideTo(--this.currentStep, 1000, false)
+        this.raiseSwiper.slideTo(--this.currentStep, 1000, false)
     }
 
 

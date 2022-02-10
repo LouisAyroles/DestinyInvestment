@@ -10,7 +10,7 @@
                     <div class="first-subcard"></div>
                     <div class="second-subcard"></div>
                 </div>
-                <div v-swiper:myDirectiveSwiper="swiperOptions" @slide-change="scrollToTheTop">
+                <div v-swiper="swiperOptions" @slide-change="scrollToTheTop" instanceName="investSwiper">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide" ref="first-card">
                             <div class="flex justify-center">
@@ -355,11 +355,11 @@ export default class invest extends Vue {
             return
         }
         this.tryToNext = false
-        this.swiper.slideTo(++this.currentStep, 1000, false)
+        this.investSwiper.slideTo(++this.currentStep, 1000, false)
     }
 
     prev() {
-        this.swiper.slideTo(--this.currentStep, 1000, false)
+        this.investSwiper.slideTo(--this.currentStep, 1000, false)
     }
 
     submit() {
