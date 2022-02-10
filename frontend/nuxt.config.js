@@ -27,7 +27,8 @@ export default {
     // Global CSS: https://go.nuxtjs.dev/config-css
     css: [
         '@/assets/css/main.css',
-        '@mdi/font/css/materialdesignicons.min.css'
+        '@mdi/font/css/materialdesignicons.min.css',
+        {src: "swiper/css/swiper.css"}
     ],
 
 
