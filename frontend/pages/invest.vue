@@ -10,17 +10,17 @@
                     <div class="first-subcard"></div>
                     <div class="second-subcard"></div>
                 </div>
-
-                <swiper @slide-change="scrollToTheTop" ref="mySwiper" :options="swiperOptions">
-                    <swiper-slide ref="first-card">
-                        <div class="flex justify-center">
-                            <div class="card-container">
-                                <div class="hidden md:block">
-                                    <h1 class="title">Personal details</h1>
-                                </div>
-                                <div class="inputs">
-                                    <div class="relative">
-                                        <input autocomplete="off" v-model="name" id="name" type="text"
+                <client-only>
+                    <swiper @slide-change="scrollToTheTop" ref="mySwiper" :options="swiperOptions">
+                        <swiper-slide ref="first-card">
+                            <div class="flex justify-center">
+                                <div class="card-container">
+                                    <div class="hidden md:block">
+                                        <h1 class="title">Personal details</h1>
+                                    </div>
+                                    <div class="inputs">
+                                        <div class="relative">
+                                            <input autocomplete="off" v-model="name" id="name" type="text"
                                                :class="{'border-primary-dark' :!isNameValid && this.tryToNext}"
                                                class="peer placeholder-transparent px-2 h-10 w-full border-2 rounded-lg text-gray-900 focus:outline-none focus:borer-rose-600"
                                                placeholder="Email address"/>
@@ -214,7 +214,8 @@
                             </div>
                         </div>
                     </swiper-slide>
-                </swiper>
+                    </swiper>
+                </client-only>
             </div>
         </d-section>
     </div>

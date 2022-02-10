@@ -41,7 +41,8 @@ export default {
         },
         {
             src: '~/plugins/swiper.ts',
-            ssr: false
+            ssr: false,
+            mode: 'client'
         },
         {
             src: '~/plugins/notifier.ts',
