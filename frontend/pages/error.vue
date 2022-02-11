@@ -1,7 +1,6 @@
 <template>
     <div class="sections h-full overflow-y-hidden">
-        <d-app-bar class="fixed top-0 left-0 right-0"/>
-        <d-section class="error-section">
+        <div class="error-section">
             <div class="main-section-container">
                 <div class="main-left-panel">
                     <h1 class="main-title">404</h1>
@@ -21,7 +20,7 @@
                     <img src="@/assets/infography/error.svg" alt="destiny">
                 </div>
             </div>
-        </d-section>
+        </div>
     </div>
 
 
@@ -38,7 +37,7 @@ export default class error extends Vue {
 
 <style lang="scss" scoped>
 .error-section {
-    @apply mt-20 flex flex-col 2xl:bg-[url('@/assets/infography/bg.svg')] md:bg-[url('@/assets/infography/bg-md.svg')];
+    @apply h-full min-h-full flex flex-col 2xl:bg-[url('@/assets/infography/bg.svg')] md:bg-[url('@/assets/infography/bg-md.svg')];
     background-repeat: no-repeat;
 }
 
