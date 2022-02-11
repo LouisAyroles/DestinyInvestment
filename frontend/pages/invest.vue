@@ -10,7 +10,7 @@
                     <div class="first-subcard"></div>
                     <div class="second-subcard"></div>
                 </div>
-                <div v-swiper="swiperOptions" @slide-change="scrollToTheTop" instanceName="investSwiper">
+                <div v-swiper="swiperOptions" @slide-change="scrollToTheTop">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide" ref="first-card">
                             <div class="flex justify-center">
@@ -229,7 +229,6 @@ import {Step} from "~/components/DStepper.vue";
 
 @Component
 export default class invest extends Vue {
-    colorMode: 'light';
 
     /**************************************************
      *
@@ -355,11 +354,11 @@ export default class invest extends Vue {
             return
         }
         this.tryToNext = false
-        this.investSwiper.slideTo(++this.currentStep, 1000, false)
+        ;(this as any).$swiper.slideTo(++this.currentStep, 1000, false)
     }
 
     prev() {
-        this.investSwiper.slideTo(--this.currentStep, 1000, false)
+        ;(this as any).$swiper.slideTo(--this.currentStep, 1000, false)
     }
 
     submit() {
