@@ -17,7 +17,7 @@
                 </div>
 
                 <div class="main-right-panel">
-                    <img src="@/assets/infography/error.svg" alt="destiny">
+                    <img src="~/assets/infography/error.svg" alt="destiny">
                 </div>
             </div>
         </div>
