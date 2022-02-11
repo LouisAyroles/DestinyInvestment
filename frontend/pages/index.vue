@@ -241,7 +241,8 @@ export default class IndexPage extends mixins(aosMixin) {
 
     typeWriter(text: string, i: number, fnCallback: () => void) {
         if (i < (text.length)) {
-            const type = this.$refs['typewriter'] as HTMLElement
+            const type = this.$refs['typewriter'] as HTMLElement | null
+            if (!type) return
             type.innerText = text.substring(0, i + 1)
             setTimeout(() => {
                 this.typeWriter(text, i + 1, fnCallback)

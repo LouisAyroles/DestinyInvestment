@@ -62,5 +62,13 @@ export default class error extends Vue {
     }
 }
 
+html, body {
+    height: 100%;
+}
+
+#__nuxt, #__layout {
+    height: 100%;
+}
+
 
 </style>
