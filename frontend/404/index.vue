@@ -31,7 +31,7 @@
 import {Component, Vue} from 'vue-property-decorator'
 
 @Component
-export default class error extends Vue {
+export default class index extends Vue {
 }
 </script>
 
@@ -62,6 +62,10 @@ export default class error extends Vue {
     }
 }
 
+</style>
+
+<style>
+
 html, body {
     height: 100%;
 }
@@ -69,6 +73,4 @@ html, body {
 #__nuxt, #__layout {
     height: 100%;
 }
-
-
 </style>
