@@ -1,8 +1,5 @@
 <template>
     <div class="sections h-full overflow-y-hidden">
-        <!--App bar-->
-        <d-app-bar current-page="Home" class="fixed top-0 left-0 right-0 bg-gray-100"/>
-
         <div class="error-section">
             <div class="main-section-container">
                 <div class="main-left-panel">
@@ -40,7 +37,7 @@ export default class index extends Vue {
 
 <style lang="scss" scoped>
 .error-section {
-    @apply mt-20  h-full min-h-full flex flex-col 2xl:bg-[url('@/assets/infography/bg.svg')] md:bg-[url('@/assets/infography/bg-md.svg')];
+    @apply h-full min-h-full flex flex-col 2xl:bg-[url('@/assets/infography/bg.svg')] md:bg-[url('@/assets/infography/bg-md.svg')];
     background-repeat: no-repeat;
 }
 
@@ -72,7 +69,7 @@ export default class index extends Vue {
 html, body {
     font-family: 'Poppins', sans-serif;
     /* Common theme */
-    @apply p-0 min-w-full min-h-full h-full scroll-pt-20 xl:scroll-pt-0;
+    @apply p-0 min-w-full min-h-full h-full;
     /* Light theme */
     @apply bg-gray-100 text-gray-900;
     /* Dark theme */
