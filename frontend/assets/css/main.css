@@ -2,6 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 300;
+    font-display: swap;
+    src: url('~assets/font/Poppins-Light.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Poppins';
+    font-style: italic;
+    font-weight: 300;
+    font-display: swap;
+    src: url('~assets/font/Poppins-LightItalic.ttf') format('truetype');
+}
 
 .title-1 {
     @apply text-2xl md:text-4xl text-black dark:text-white text-center;
